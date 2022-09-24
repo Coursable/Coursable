@@ -15,7 +15,7 @@ struct SchoolScheduleApp: App {
         
         
         WindowGroup {
-            ContentView()
+            MainView()
                 .environmentObject(periodViewModel)
         }
     }

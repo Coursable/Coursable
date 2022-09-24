@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF9B609128DF4DD100086E9E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainView.swift */; };
 		DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
 		DFF73B8928DE87DA00EF69D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFF73B8828DE87DA00EF69D1 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF9B609028DF4DD100086E9E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolScheduleApp.swift; sourceTree = "<group>"; };
 		DFF73B8628DE87D900EF69D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF9B608F28DF4DC200086E9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B609028DF4DD100086E9E /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DFF73B7828DE87D900EF69D1 = {
 			isa = PBXGroup;
 			children = (
@@ -57,9 +67,9 @@
 		DFF73B8328DE87D900EF69D1 /* SchoolSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				DF9B608F28DF4DC200086E9E /* Views */,
 				DFF73B9928DE8A7D00EF69D1 /* Extensions */,
 				DFF73B9628DE899400EF69D1 /* ViewModels */,
-				DFF73B9528DE894A00EF69D1 /* Views */,
 				DFF73B9228DE886F00EF69D1 /* Models */,
 				DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */,
 				DFF73B8628DE87D900EF69D1 /* ContentView.swift */,
@@ -83,13 +93,6 @@
 				DFF73B9328DE888000EF69D1 /* PeriodModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		DFF73B9528DE894A00EF69D1 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		DFF73B9628DE899400EF69D1 /* ViewModels */ = {
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */,
+				DF9B609128DF4DD100086E9E /* MainView.swift in Sources */,
 				DFF73B9428DE888000EF69D1 /* PeriodModel.swift in Sources */,
 				DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */,
 				DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */,

@@ -12,7 +12,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text(periodViewModel.currentPeriodModel.startTime)
+            Text("Hello World")
+            
         }
         .padding()
     }

@@ -24,7 +24,18 @@ extension DateFormatter {
         
         return formatter
     }()
+    
+    static let dateFormatYearLength: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        return formatter
+    }()
+
 }
+
+
 
 
 extension String {
@@ -34,9 +45,11 @@ extension String {
         return parsedDate
     }
     
-    func parseFullLengthStringToDate() -> Date {
-        guard let parsedDate = DateFormatter.dateFormatFullLength.date(from: self) else { return Date() }
+    func parseFullLengthStringToDate(string: String) -> Date {
+        guard let parsedDate = DateFormatter.dateFormatFullLength.date(from: string) else { return Date() }
                 
         return parsedDate
     }
+    
+    
 }
