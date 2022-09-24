@@ -10,34 +10,58 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
 
+    @State var showAnimation: Bool = false
+    @State var ringColor: Color = .accentColor
+    
     var body: some View {
-        Text(periodViewModel.currentTime, format: .dateTime.year().day().month().hour().minute().second())
-            .onReceive(periodViewModel.timer) { input in
-                periodViewModel.updateTime(input: input)
-            }
-        
-        
-        if let todaysSchedule = periodViewModel.todaysSchedule {
-            if let currentPeriodNumber = periodViewModel.currentPeriodNumber {
-                
-                
-                if let period = todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) {
-                    Text(period.endTime)
-                    Text(String(ceil(Double(periodViewModel.currentTimeLeftInPeriod))))
+        VStack {
+            ProgressRing(progress: periodViewModel.currentProgressInPeriod, ringColor: .accentColor, showAnimation: showAnimation)
+                .frame(width: 300.0, height: 300.0)
+                .padding()
+            Spacer()
+            
+            Text(periodViewModel.currentTime, format: .dateTime.year().day().month().hour().minute().second())
+                .onReceive(periodViewModel.timer) { input in
+                    periodViewModel.updateTime(input: input)
+                    showAnimation.toggle()
+                }
+            
+            
+            if let todaysSchedule = periodViewModel.todaysSchedule {
+                if let currentPeriodNumber = periodViewModel.currentPeriodNumber {
+                    
+                    
+                    if let period = todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) {
+                        Text(period.endTime)
+                        Text(String(periodViewModel.currentTimeLeftInPeriod.asString(style: .positional)))
+                    }
+                    else {
+                        if periodViewModel.nextPeriod != nil {
+                            Text("No Periods Meeting Right Now")
+                            Text("Next period starting in: " + String(periodViewModel.passingTime.asString(style: .positional)))
+                        }
+                        else {
+                            Text("No More Periods Meeting Today")
+                        }
+
+                    }
                 }
                 else {
-                    Text("No Periods Meeting Right Now")
+                    if periodViewModel.nextPeriod != nil {
+                        Text("No Periods Meeting Right Now")
+                        Text("Next period starting in: " + String(periodViewModel.passingTime.asString(style: .positional)))
+                    }
+                    else {
+                        Text("No More Periods Meeting Today")
+                    }
                 }
-
-                //
             }
             else {
-                Text("No Periods Meeting Right Now")
+                Text("No Classes Today")
             }
         }
-        else {
-            Text("No Classes Today")
-        }
+        
+        
         
     }
 }

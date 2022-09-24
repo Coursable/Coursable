@@ -16,6 +16,10 @@ class PeriodViewModel: ObservableObject {
     @Published var currentTime = Date()
     @Published var currentWeekDay: Int?
     @Published var currentTimeLeftInPeriod: Double = 0
+    @Published var currentProgressInPeriod: Double = 0
+    @Published var passingTime: Double = 0
+    @Published var nextPeriod: PeriodModel?
+    
     
     init() {
         setTodaysSchedule()
@@ -28,6 +32,8 @@ class PeriodViewModel: ObservableObject {
         setCurrentPeriod()
         endCurrentPeriod()
         updateTimeLeftInPeriod()
+        updateProgressInPeriod()
+        setPassingTime()
     }
     
     func setTodaysSchedule() {
@@ -71,6 +77,69 @@ class PeriodViewModel: ObservableObject {
                     currentTimeLeftInPeriod = 0
                 }
             }
+        }
+    }
+    
+    func updateProgressInPeriod() {
+        if let todaysScheduleCheck = todaysSchedule {
+            if let currentPeriodNumberCheck = self.currentPeriodNumber {
+                if let period = todaysScheduleCheck.periods.first(where: {$0.periodNumber == currentPeriodNumberCheck}) {
+                    currentProgressInPeriod = (currentTime.timeIntervalSinceReferenceDate-period.fullStartTimeParsed.timeIntervalSinceReferenceDate)/period.classLength
+                }
+                else {
+                    print("No period found -> Setting period progress left to 0")
+                    currentProgressInPeriod = 0
+                }
+            }
+            else {
+                currentProgressInPeriod = 0
+            }
+        }
+    }
+    
+    func setPassingTime() {
+        if let todaysScheduleCheck = todaysSchedule {
+            if self.currentPeriodNumber == nil {
+                //if there is no period running
+                nextPeriod = nil //remove any previous values
+                
+                for period in todaysScheduleCheck.periods {
+                    if let nextPeriodCheck = nextPeriod {
+                        //compare current period
+                        if period.fullStartTimeParsed.timeIntervalSinceReferenceDate < nextPeriodCheck.fullStartTimeParsed.timeIntervalSinceReferenceDate && period.fullStartTimeParsed.timeIntervalSinceReferenceDate > Date().timeIntervalSinceReferenceDate{
+                            nextPeriod = period
+                        }
+                    }
+                    else {
+                        if period.fullStartTimeParsed.timeIntervalSinceReferenceDate > Date().timeIntervalSinceReferenceDate {
+                            nextPeriod = period
+                        }
+                    }
+                }
+                
+                
+                if let nextPeriodCheck = nextPeriod {
+                    if (nextPeriodCheck.fullStartTimeParsed.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate) > 0 {
+                        passingTime = nextPeriodCheck.fullStartTimeParsed.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+                    }
+                    else {
+                        nextPeriod = nil
+                        passingTime = 0
+
+                    }
+                    
+                }
+
+            }
+            else {
+                //if there is a period running
+                nextPeriod = nil
+                passingTime = 0
+            }
+        }
+        else {
+            nextPeriod = nil
+            passingTime = 0
         }
     }
     

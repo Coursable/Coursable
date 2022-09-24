@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF9B609128DF4DD100086E9E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainView.swift */; };
 		DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF9B609028DF4DD100086E9E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolScheduleApp.swift; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				DF9B609028DF4DD100086E9E /* MainView.swift */,
+				DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				DF9B609128DF4DD100086E9E /* MainView.swift in Sources */,
 				DFF73B9428DE888000EF69D1 /* PeriodModel.swift in Sources */,
 				DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */,
+				DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */,
 				DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
 			);
