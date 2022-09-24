@@ -15,6 +15,7 @@ class PeriodViewModel: ObservableObject {
     @Published var currentPeriodNumber: Int?
     @Published var currentTime = Date()
     @Published var currentWeekDay: Int?
+    @Published var currentTimeLeftInPeriod: Double = 0
     
     init() {
         setTodaysSchedule()
@@ -26,6 +27,7 @@ class PeriodViewModel: ObservableObject {
         checkIfWeekDayChanged()
         setCurrentPeriod()
         endCurrentPeriod()
+        updateTimeLeftInPeriod()
     }
     
     func setTodaysSchedule() {
@@ -58,13 +60,35 @@ class PeriodViewModel: ObservableObject {
         }
     }
     
+    func updateTimeLeftInPeriod() {
+        if let todaysScheduleCheck = todaysSchedule {
+            if let currentPeriodNumberCheck = self.currentPeriodNumber {
+                if let period = todaysScheduleCheck.periods.first(where: {$0.periodNumber == currentPeriodNumberCheck}) {
+                    currentTimeLeftInPeriod = period.fullEndTimeParsed.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+                }
+                else {
+                    print("No period found -> Setting time left to 0")
+                    currentTimeLeftInPeriod = 0
+                }
+            }
+        }
+    }
+    
     func setCurrentPeriod() {
+        var foundCorrectPeriod: Bool = false
+        
         if let todaysScheduleCheck = todaysSchedule {
             for period in todaysScheduleCheck.periods {
                 if period.fullEndTimeParsed.timeIntervalSinceReferenceDate > Date().timeIntervalSinceReferenceDate && Date().timeIntervalSinceReferenceDate >  period.fullStartTimeParsed.timeIntervalSinceReferenceDate {
                     currentPeriodNumber = period.periodNumber
+                    foundCorrectPeriod = true
                 }
             }
+            
+        }
+        
+        if !foundCorrectPeriod {
+            currentPeriodNumber = nil
         }
     }
     

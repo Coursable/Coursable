@@ -23,6 +23,7 @@ struct MainView: View {
                 
                 if let period = todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) {
                     Text(period.endTime)
+                    Text(String(ceil(Double(periodViewModel.currentTimeLeftInPeriod))))
                 }
                 else {
                     Text("No Periods Meeting Right Now")
