@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct SchoolScheduleApp: App {
+    @StateObject var periodViewModel = PeriodViewModel()
+    
     var body: some Scene {
+        
+        
         WindowGroup {
             ContentView()
+                .environmentObject(periodViewModel)
         }
     }
 }
