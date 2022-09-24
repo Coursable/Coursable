@@ -36,12 +36,22 @@ extension DateFormatter {
 }
 
 extension Double {
-  func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
+  func asString1(style: DateComponentsFormatter.UnitsStyle) -> String {
     let formatter = DateComponentsFormatter()
     formatter.allowedUnits = [.hour, .minute, .second, .nanosecond]
     formatter.unitsStyle = style
     return formatter.string(from: self) ?? ""
   }
+    
+    func asString() -> String {
+        if self.hour != 0 {
+            return String(format: "%02d:%02d:%02d", self.hour, self.minute, self.second)
+        }
+        else {
+            return String(format: "%02d:%02d", self.minute, self.second)
+        }
+        
+    }
 }
 
 

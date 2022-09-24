@@ -27,6 +27,12 @@ struct ProgressRing: View {
                 .foregroundColor(ringColor)
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.easeOut, value: showAnimation)
+            
+            VStack {
+                ProgressText()
+                    .multilineTextAlignment(.center)
+            }
+            
         }
     }
 }

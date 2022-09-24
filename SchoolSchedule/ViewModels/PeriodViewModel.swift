@@ -22,11 +22,11 @@ class PeriodViewModel: ObservableObject {
     
     
     init() {
-        setTodaysSchedule()
-        setCurrentPeriod()
+        updateTime(input: Date())
     }
     
     func updateTime(input: Date) {
+        //Add loading feature
         currentTime = input
         checkIfWeekDayChanged()
         setCurrentPeriod()

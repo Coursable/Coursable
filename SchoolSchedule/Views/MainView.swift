@@ -25,40 +25,6 @@ struct MainView: View {
                     periodViewModel.updateTime(input: input)
                     showAnimation.toggle()
                 }
-            
-            
-            if let todaysSchedule = periodViewModel.todaysSchedule {
-                if let currentPeriodNumber = periodViewModel.currentPeriodNumber {
-                    
-                    
-                    if let period = todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) {
-                        Text(period.endTime)
-                        Text(String(periodViewModel.currentTimeLeftInPeriod.asString(style: .positional)))
-                    }
-                    else {
-                        if periodViewModel.nextPeriod != nil {
-                            Text("No Periods Meeting Right Now")
-                            Text("Next period starting in: " + String(periodViewModel.passingTime.asString(style: .positional)))
-                        }
-                        else {
-                            Text("No More Periods Meeting Today")
-                        }
-
-                    }
-                }
-                else {
-                    if periodViewModel.nextPeriod != nil {
-                        Text("No Periods Meeting Right Now")
-                        Text("Next period starting in: " + String(periodViewModel.passingTime.asString(style: .positional)))
-                    }
-                    else {
-                        Text("No More Periods Meeting Today")
-                    }
-                }
-            }
-            else {
-                Text("No Classes Today")
-            }
         }
         
         
