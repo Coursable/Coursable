@@ -10,6 +10,7 @@
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF8A95AF28DF662B00802129 /* ProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8A95AE28DF662B00802129 /* ProgressText.swift */; };
 		DF9B609128DF4DD100086E9E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainView.swift */; };
+		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
 		DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
 		DFF73B8928DE87DA00EF69D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFF73B8828DE87DA00EF69D1 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF8A95AE28DF662B00802129 /* ProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressText.swift; sourceTree = "<group>"; };
 		DF9B609028DF4DD100086E9E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolScheduleApp.swift; sourceTree = "<group>"; };
 		DFF73B8628DE87D900EF69D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				DFF73B9A28DE8A8700EF69D1 /* Extensions.swift */,
+				DFCF684928E0B79400DE77DA /* ColorHandler.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */,
+				DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */,
 				DF9B609128DF4DD100086E9E /* MainView.swift in Sources */,
 				DFF73B9428DE888000EF69D1 /* PeriodModel.swift in Sources */,
 				DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */,

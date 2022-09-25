@@ -15,7 +15,7 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            ProgressRing(progress: periodViewModel.currentProgressInPeriod, ringColor: .accentColor, showAnimation: showAnimation)
+            ProgressRing(progress: periodViewModel.currentProgressInPeriod, ringColor: .linearGradient(colors: [.blue, .pink], startPoint: .topLeading, endPoint: .bottomTrailing), showAnimation: showAnimation)
                 .frame(width: 300.0, height: 300.0)
                 .padding()
             Spacer()

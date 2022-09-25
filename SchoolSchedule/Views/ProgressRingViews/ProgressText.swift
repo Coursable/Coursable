@@ -16,35 +16,53 @@ struct ProgressText: View {
                 
                 
                 if let period = todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) {
-                    Text("Class Ends In: \n" + periodViewModel.currentTimeLeftInPeriod.asString())
-                        .modifier(PeriodTextProgress())
+                    VStack {
+                        Text("Event Ends In:")
+                            .modifier(SubTextProgress())
+                        Text(periodViewModel.currentTimeLeftInPeriod.asString())
+                            .modifier(PeriodTextProgress(scaleEffect: 1.2))
+                    }
+
+                        
                 }
                 else {
                     if periodViewModel.nextPeriod != nil {
-                        Text("Next Class In: \n" + periodViewModel.passingTime.asString())
-                            .modifier(PeriodTextProgress())
+                        VStack {
+                            Text("Next Event In:")
+                                .modifier(SubTextProgress())
+                            Text(periodViewModel.passingTime.asString())
+                                .modifier(PeriodTextProgress(scaleEffect: 1.2))
+                        }
                     }
                     else {
-                        Text("Day Finished!")
-                            .modifier(PeriodTextProgress())
+                        //Day Completed
+                        Text("No More \nEvents Today")
+                            .modifier(SubTextProgress(fontWeight: .heavy, font: .title))
                     }
 
                 }
             }
             else {
                 if periodViewModel.nextPeriod != nil {
-                    Text("Next Class In: \n" + periodViewModel.passingTime.asString())
-                        .modifier(PeriodTextProgress())
+                    VStack {
+                        Text("Next Event In:")
+                            .modifier(SubTextProgress())
+                        Text(periodViewModel.passingTime.asString())
+                            .modifier(PeriodTextProgress(scaleEffect: 1.2))
+                    }
+                    
                 }
                 else {
-                    Text("Day Finished!")
-                        .modifier(PeriodTextProgress())
+                    //Day Completed
+                    Text("No More \nEvents Today")
+                        .modifier(SubTextProgress(fontWeight: .heavy, font: .title))
                 }
             }
         }
         else {
-            Text("No Classes Today!")
-                .modifier(PeriodTextProgress())
+            //Day Completed
+            Text("No Events \nToday")
+                .modifier(SubTextProgress(fontWeight: .heavy, font: .title))
         }
     }
 }
@@ -56,11 +74,32 @@ struct ProgressText_Previews: PreviewProvider {
     }
 }
 
+
+
+
+
 struct PeriodTextProgress: ViewModifier {
+    
+    var scaleEffect: Double = 1
     
     func body(content: Content) -> some View {
         content
-            .font(.system(.title, design: .rounded))
-            .fontWeight(.semibold)
+            .font(.system(.largeTitle))
+            .scaleEffect(scaleEffect)
+            .fontWeight(.heavy)
     }
 }
+struct SubTextProgress: ViewModifier {
+    
+    var fontWeight: Font.Weight = .semibold
+    var font: Font = .title2
+    
+    func body(content: Content) -> some View {
+        content
+            .font(font)
+            .fontWeight(fontWeight)
+            
+    }
+}
+
+

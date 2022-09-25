@@ -21,6 +21,12 @@ class PeriodViewModel: ObservableObject {
     @Published var nextPeriod: PeriodModel?
     
     
+    enum PeriodError: Error {
+        case invalidPeriod
+        case noPeriodProvided
+        case noEvents
+    }
+    
     init() {
         updateTime(input: Date())
     }
@@ -35,6 +41,7 @@ class PeriodViewModel: ObservableObject {
         updateProgressInPeriod()
         setPassingTime()
     }
+    
     
     func setTodaysSchedule() {
         currentWeekDay = Calendar.current.dateComponents([.weekday], from: Date()).weekday
@@ -66,35 +73,56 @@ class PeriodViewModel: ObservableObject {
         }
     }
     
-    func updateTimeLeftInPeriod() {
+    func getCurrentPeriod() throws -> PeriodModel {
+        
+
+        
         if let todaysScheduleCheck = todaysSchedule {
             if let currentPeriodNumberCheck = self.currentPeriodNumber {
                 if let period = todaysScheduleCheck.periods.first(where: {$0.periodNumber == currentPeriodNumberCheck}) {
-                    currentTimeLeftInPeriod = period.fullEndTimeParsed.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+                    return period
                 }
                 else {
-                    print("No period found -> Setting time left to 0")
-                    currentTimeLeftInPeriod = 0
-                }
-            }
-        }
-    }
-    
-    func updateProgressInPeriod() {
-        if let todaysScheduleCheck = todaysSchedule {
-            if let currentPeriodNumberCheck = self.currentPeriodNumber {
-                if let period = todaysScheduleCheck.periods.first(where: {$0.periodNumber == currentPeriodNumberCheck}) {
-                    currentProgressInPeriod = (currentTime.timeIntervalSinceReferenceDate-period.fullStartTimeParsed.timeIntervalSinceReferenceDate)/period.classLength
-                }
-                else {
-                    print("No period found -> Setting period progress left to 0")
-                    currentProgressInPeriod = 0
+                    throw PeriodError.invalidPeriod
                 }
             }
             else {
-                currentProgressInPeriod = 0
+                throw PeriodError.noPeriodProvided
             }
         }
+        else {
+            throw PeriodError.noEvents
+        }
+    }
+    
+    func updateTimeLeftInPeriod() {
+        
+        do {
+            let period = try getCurrentPeriod()
+            currentTimeLeftInPeriod = period.fullEndTimeParsed.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+        } catch PeriodError.invalidPeriod {
+            print("No period found -> Setting time left to 0")
+            currentTimeLeftInPeriod = 0
+        } catch {
+            currentTimeLeftInPeriod = 0
+        }
+        
+
+    }
+    
+    func updateProgressInPeriod() {
+        
+        do {
+            let period = try getCurrentPeriod()
+            currentProgressInPeriod = (currentTime.timeIntervalSinceReferenceDate-period.fullStartTimeParsed.timeIntervalSinceReferenceDate)/period.classLength
+        } catch PeriodError.invalidPeriod {
+            print("No period found -> Setting period progress left to 0")
+            currentProgressInPeriod = 0
+        } catch {
+            currentProgressInPeriod = 0
+        }
+        
+
     }
     
     func setPassingTime() {
@@ -162,20 +190,20 @@ class PeriodViewModel: ObservableObject {
     }
     
     func endCurrentPeriod() {
-        if let todaysScheduleCheck = todaysSchedule {
-            if let currentPeriodNumberCheck = self.currentPeriodNumber {
-                if let period = todaysScheduleCheck.periods.first(where: {$0.periodNumber == currentPeriodNumberCheck}) {
-                    if period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate {
-                        currentPeriodNumber = nil
-                        print("Period Ended")
-                    }
-                }
-                else {
-                    print("Did not find period in schedule")
-                    currentPeriodNumber = nil
-                }
+        do {
+            let period = try getCurrentPeriod()
+            if period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate {
+                print("Period Ended")
+                currentPeriodNumber = nil
+
             }
+        } catch PeriodError.invalidPeriod {
+            print("No period found -> Setting period number to nil")
+            currentPeriodNumber = nil
+        } catch {
+            currentPeriodNumber = nil
         }
+
     }
 
 }
