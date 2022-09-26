@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 class PeriodViewModel: ObservableObject {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -19,6 +19,7 @@ class PeriodViewModel: ObservableObject {
     @Published var currentProgressInPeriod: Double = 0
     @Published var passingTime: Double = 0
     @Published var nextPeriod: PeriodModel?
+    @Published var currentRingColor: LinearGradient = .defaultGray
     
     
     enum PeriodError: Error {
@@ -178,6 +179,7 @@ class PeriodViewModel: ObservableObject {
             for period in todaysScheduleCheck.periods {
                 if period.fullEndTimeParsed.timeIntervalSinceReferenceDate > Date().timeIntervalSinceReferenceDate && Date().timeIntervalSinceReferenceDate >  period.fullStartTimeParsed.timeIntervalSinceReferenceDate {
                     currentPeriodNumber = period.periodNumber
+                    currentRingColor = period.subject.color
                     foundCorrectPeriod = true
                 }
             }
@@ -195,13 +197,16 @@ class PeriodViewModel: ObservableObject {
             if period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate {
                 print("Period Ended")
                 currentPeriodNumber = nil
+                currentRingColor = .defaultGray
 
             }
         } catch PeriodError.invalidPeriod {
             print("No period found -> Setting period number to nil")
             currentPeriodNumber = nil
+            currentRingColor = .defaultGray
         } catch {
             currentPeriodNumber = nil
+            currentRingColor = .defaultGray
         }
 
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF6A548E28E208EF00DD0FEC /* TopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6A548D28E208EF00DD0FEC /* TopbarText.swift */; };
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF8A95AF28DF662B00802129 /* ProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8A95AE28DF662B00802129 /* ProgressText.swift */; };
 		DF9B609128DF4DD100086E9E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF6A548D28E208EF00DD0FEC /* TopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopbarText.swift; sourceTree = "<group>"; };
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF8A95AE28DF662B00802129 /* ProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressText.swift; sourceTree = "<group>"; };
 		DF9B609028DF4DD100086E9E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF6A548C28E208DC00DD0FEC /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B609028DF4DD100086E9E /* MainView.swift */,
+				DF6A548D28E208EF00DD0FEC /* TopbarText.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
 		DF8A95AD28DF661700802129 /* ProgressRingViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,8 +69,8 @@
 		DF9B608F28DF4DC200086E9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF6A548C28E208DC00DD0FEC /* MainViews */,
 				DF8A95AD28DF661700802129 /* ProgressRingViews */,
-				DF9B609028DF4DD100086E9E /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +217,7 @@
 				DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */,
 				DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
+				DF6A548E28E208EF00DD0FEC /* TopbarText.swift in Sources */,
 				DF8A95AF28DF662B00802129 /* ProgressText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
