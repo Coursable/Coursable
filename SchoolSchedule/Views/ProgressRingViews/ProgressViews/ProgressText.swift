@@ -15,47 +15,29 @@ struct ProgressText: View {
             if let currentPeriodNumber = periodViewModel.currentPeriodNumber {
                 
                 
-                if let period = todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) {
-                    VStack {
-                        Text("Event Ends In:")
-                            .modifier(SubTextProgress())
-                        Text(periodViewModel.currentTimeLeftInPeriod.asString())
-                            .modifier(PeriodTextProgress(scaleEffect: 1.2))
-                    }
-
+                if todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) != nil {
+                    CurrentEventProgressText()
                         
                 }
                 else {
                     if periodViewModel.nextPeriod != nil {
-                        VStack {
-                            Text("Next Event In:")
-                                .modifier(SubTextProgress())
-                            Text(periodViewModel.passingTime.asString())
-                                .modifier(PeriodTextProgress(scaleEffect: 1.2))
-                        }
+                        NextEventProgressText()
                     }
                     else {
                         //Day Completed
-                        Text("No More \nEvents Today")
-                            .modifier(SubTextProgress(fontWeight: .heavy, font: .title))
+                        NoMoreEventsProgressText()
                     }
 
                 }
             }
             else {
                 if periodViewModel.nextPeriod != nil {
-                    VStack {
-                        Text("Next Event In:")
-                            .modifier(SubTextProgress())
-                        Text(periodViewModel.passingTime.asString())
-                            .modifier(PeriodTextProgress(scaleEffect: 1.2))
-                    }
+                    NextEventProgressText()
                     
                 }
                 else {
                     //Day Completed
-                    Text("No More \nEvents Today")
-                        .modifier(SubTextProgress(fontWeight: .heavy, font: .title))
+                    NoMoreEventsProgressText()
                 }
             }
         }
