@@ -1,8 +1,8 @@
 //
-//  ProgressText.swift
+//  ProgressTextNew.swift
 //  SchoolSchedule
 //
-//  Created by Ari Reitman on 9/24/22.
+//  Created by Ari Reitman on 9/27/22.
 //
 
 import SwiftUI
@@ -11,40 +11,16 @@ struct ProgressText: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
     
     var body: some View {
-        if let todaysSchedule = periodViewModel.todaysSchedule {
-            if let currentPeriodNumber = periodViewModel.currentPeriodNumber {
-                
-                
-                if todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) != nil {
-                    CurrentEventProgressText()
-                        
-                }
-                else {
-                    if periodViewModel.nextPeriod != nil {
-                        NextEventProgressText()
-                    }
-                    else {
-                        //Day Completed
-                        NoMoreEventsProgressText()
-                    }
-
-                }
-            }
-            else {
-                if periodViewModel.nextPeriod != nil {
-                    NextEventProgressText()
-                    
-                }
-                else {
-                    //Day Completed
-                    NoMoreEventsProgressText()
-                }
-            }
-        }
-        else {
-            //Day Completed
-            Text("No Events \nToday")
-                .modifier(SubTextProgress(fontWeight: .heavy, font: .title))
+        switch(periodViewModel.getScheduleInfo()) {
+        case .CurrentEvent:
+            CurrentEventProgressText()
+        case .NextEvent:
+            NextEventProgressText()
+        case .NoEventsToday:
+            NoEventsProgressText()
+        default:
+            NoMoreEventsProgressText()
+            
         }
     }
 }
@@ -55,10 +31,6 @@ struct ProgressText_Previews: PreviewProvider {
             .environmentObject(PeriodViewModel())
     }
 }
-
-
-
-
 
 struct PeriodTextProgress: ViewModifier {
     
@@ -83,5 +55,3 @@ struct SubTextProgress: ViewModifier {
             
     }
 }
-
-

@@ -1,8 +1,8 @@
 //
-//  TopbarText.swift
+//  TopbarTextNew.swift
 //  SchoolSchedule
 //
-//  Created by Ari Reitman on 9/26/22.
+//  Created by Ari Reitman on 9/27/22.
 //
 
 import SwiftUI
@@ -12,40 +12,23 @@ struct TopbarText: View {
     
     var body: some View {
         VStack(spacing: 5) {
-            if let todaysSchedule = periodViewModel.todaysSchedule {
-                if let currentPeriodNumber = periodViewModel.currentPeriodNumber {
-                    
-                    
-                    if let period = todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) {
-                        CurrentEventTopbarText(periodModel: period)
-
-                            
-                    }
-                    else {
-                        if let nextPeriodCheck = periodViewModel.nextPeriod {
-                            NextEventTopbarText(periodModel: nextPeriodCheck)
-                        }
-                        else {
-                            //Day Completed
-                            NoMoreEventsTopbarText()
-                        }
-
-                    }
+            switch(periodViewModel.getScheduleInfo()) {
+            case .CurrentEvent:
+                if let period =  try? periodViewModel.getCurrentPeriod() {
+                    CurrentEventTopbarText(periodModel: period)
                 }
-                else {
-                    if let nextPeriodCheck = periodViewModel.nextPeriod {
-                        NextEventTopbarText(periodModel: nextPeriodCheck)
-                    }
-                    else {
-                        //Day Completed
-                        NoMoreEventsTopbarText()
-                    }
+                
+            case .NextEvent:
+                if let nextPeriod = periodViewModel.nextPeriod {
+                    NextEventTopbarText(periodModel: nextPeriod)
                 }
-            }
-            else {
-                //Day Completed
+            case .NoEventsToday:
                 NoEventsTopbarText()
+            default:
+                NoMoreEventsTopbarText()
+                
             }
+            
 
         }
     }

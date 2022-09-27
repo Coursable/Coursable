@@ -28,6 +28,14 @@ class PeriodViewModel: ObservableObject {
         case noEvents
     }
     
+    
+    enum ScheduleInfo {
+        case NoEventsToday
+        case NoMoreEventsToday
+        case NextEvent
+        case CurrentEvent
+    }
+    
     init() {
         updateTime(input: Date())
     }
@@ -41,6 +49,44 @@ class PeriodViewModel: ObservableObject {
         updateTimeLeftInPeriod()
         updateProgressInPeriod()
         setPassingTime()
+    }
+
+    
+    
+    func getScheduleInfo() -> ScheduleInfo {
+        if let todaysSchedule = self.todaysSchedule {
+            if let currentPeriodNumber = self.currentPeriodNumber {
+                
+                
+                if todaysSchedule.periods.first(where: {$0.periodNumber == currentPeriodNumber}) != nil {
+                    return .CurrentEvent  
+                }
+                else {
+                    if self.nextPeriod != nil {
+                        return .NextEvent
+                    }
+                    else {
+                        //Day Completed
+                        return .NoMoreEventsToday
+                    }
+
+                }
+            }
+            else {
+                if self.nextPeriod != nil {
+                    return .NextEvent
+                }
+                else {
+                    //Day Completed
+                    return .NoMoreEventsToday
+                }
+            }
+        }
+        else {
+            //Day Completed
+            return .NoEventsToday
+        }
+
     }
     
     

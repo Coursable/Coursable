@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF6A548E28E208EF00DD0FEC /* TopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6A548D28E208EF00DD0FEC /* TopbarText.swift */; };
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
-		DF8A95AF28DF662B00802129 /* ProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8A95AE28DF662B00802129 /* ProgressText.swift */; };
 		DF9B609128DF4DD100086E9E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainView.swift */; };
 		DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */; };
 		DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55328E2484F00C60E12 /* NoMoreEventsTopbarText.swift */; };
@@ -18,6 +16,9 @@
 		DF9BD55B28E249CA00C60E12 /* NoMoreEventsProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55A28E249CA00C60E12 /* NoMoreEventsProgressText.swift */; };
 		DF9BD55D28E24A9A00C60E12 /* NextEventProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55C28E24A9A00C60E12 /* NextEventProgressText.swift */; };
 		DF9BD55F28E24B1000C60E12 /* CurrentEventProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55E28E24B1000C60E12 /* CurrentEventProgressText.swift */; };
+		DF9BD56128E39CAF00C60E12 /* TopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD56028E39CAF00C60E12 /* TopbarText.swift */; };
+		DF9BD56328E3A59600C60E12 /* ProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD56228E3A59600C60E12 /* ProgressText.swift */; };
+		DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD56428E3A63200C60E12 /* NoEventsProgressText.swift */; };
 		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
 		DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
@@ -29,9 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DF6A548D28E208EF00DD0FEC /* TopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopbarText.swift; sourceTree = "<group>"; };
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
-		DF8A95AE28DF662B00802129 /* ProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressText.swift; sourceTree = "<group>"; };
 		DF9B609028DF4DD100086E9E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextEventTopbarText.swift; sourceTree = "<group>"; };
 		DF9BD55328E2484F00C60E12 /* NoMoreEventsTopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMoreEventsTopbarText.swift; sourceTree = "<group>"; };
@@ -40,6 +39,9 @@
 		DF9BD55A28E249CA00C60E12 /* NoMoreEventsProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMoreEventsProgressText.swift; sourceTree = "<group>"; };
 		DF9BD55C28E24A9A00C60E12 /* NextEventProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextEventProgressText.swift; sourceTree = "<group>"; };
 		DF9BD55E28E24B1000C60E12 /* CurrentEventProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEventProgressText.swift; sourceTree = "<group>"; };
+		DF9BD56028E39CAF00C60E12 /* TopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopbarText.swift; sourceTree = "<group>"; };
+		DF9BD56228E3A59600C60E12 /* ProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressText.swift; sourceTree = "<group>"; };
+		DF9BD56428E3A63200C60E12 /* NoEventsProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventsProgressText.swift; sourceTree = "<group>"; };
 		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolScheduleApp.swift; sourceTree = "<group>"; };
@@ -92,11 +94,11 @@
 		DF9BD55028E2445600C60E12 /* TopbarViews */ = {
 			isa = PBXGroup;
 			children = (
-				DF6A548D28E208EF00DD0FEC /* TopbarText.swift */,
 				DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */,
 				DF9BD55328E2484F00C60E12 /* NoMoreEventsTopbarText.swift */,
 				DF9BD55528E2489300C60E12 /* NoEventsTopbarText.swift */,
 				DF9BD55728E248FE00C60E12 /* CurrentEventTopbarText.swift */,
+				DF9BD56028E39CAF00C60E12 /* TopbarText.swift */,
 			);
 			path = TopbarViews;
 			sourceTree = "<group>";
@@ -104,10 +106,11 @@
 		DF9BD55928E249B500C60E12 /* ProgressViews */ = {
 			isa = PBXGroup;
 			children = (
-				DF8A95AE28DF662B00802129 /* ProgressText.swift */,
 				DF9BD55A28E249CA00C60E12 /* NoMoreEventsProgressText.swift */,
 				DF9BD55C28E24A9A00C60E12 /* NextEventProgressText.swift */,
 				DF9BD55E28E24B1000C60E12 /* CurrentEventProgressText.swift */,
+				DF9BD56228E3A59600C60E12 /* ProgressText.swift */,
+				DF9BD56428E3A63200C60E12 /* NoEventsProgressText.swift */,
 			);
 			path = ProgressViews;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF9BD55F28E24B1000C60E12 /* CurrentEventProgressText.swift in Sources */,
+				DF9BD56128E39CAF00C60E12 /* TopbarText.swift in Sources */,
 				DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */,
 				DF9BD55D28E24A9A00C60E12 /* NextEventProgressText.swift in Sources */,
 				DF9BD55828E248FE00C60E12 /* CurrentEventTopbarText.swift in Sources */,
@@ -255,13 +259,13 @@
 				DFF73B9428DE888000EF69D1 /* PeriodModel.swift in Sources */,
 				DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */,
 				DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */,
+				DF9BD56328E3A59600C60E12 /* ProgressText.swift in Sources */,
 				DF9BD55628E2489300C60E12 /* NoEventsTopbarText.swift in Sources */,
 				DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */,
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
+				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
 				DF9BD55B28E249CA00C60E12 /* NoMoreEventsProgressText.swift in Sources */,
-				DF6A548E28E208EF00DD0FEC /* TopbarText.swift in Sources */,
-				DF8A95AF28DF662B00802129 /* ProgressText.swift in Sources */,
 				DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
