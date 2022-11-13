@@ -13,7 +13,7 @@ struct ProgressRingView: View {
     
     var body: some View {
         ProgressRing(progress: periodViewModel.currentProgressInPeriod, ringColor: .bluePink, showMoveAnimation: showRingMoveAnimation)
-                .frame(width: 300.0, height: 300.0)
+            .frame(width: UIScreen.main.bounds.width*0.85)
                 .padding()
                 .padding(.top)
                 .onReceive(periodViewModel.timer) { input in

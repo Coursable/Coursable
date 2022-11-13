@@ -89,7 +89,6 @@ class PeriodViewModel: ObservableObject {
 
     }
     
-    
     func setTodaysSchedule() {
         currentWeekDay = Calendar.current.dateComponents([.weekday], from: Date()).weekday
         

@@ -32,6 +32,6 @@ struct CurrentEventTopbarText: View {
 
 struct CurrentEventTopbarText_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentEventTopbarText(periodModel: PeriodModel.periodExample)
+        CurrentEventTopbarText(periodModel: PeriodModel.periodOneExample)
     }
 }

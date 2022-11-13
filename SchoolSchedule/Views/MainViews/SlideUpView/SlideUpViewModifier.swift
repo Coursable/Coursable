@@ -51,8 +51,6 @@ struct SlideUpViewModifier: ViewModifier {
                 
                 ZStack(alignment: .top) {
                     content.padding(.top, 30)
-                    Text("\(String(isSlideUp))")
-                        .offset(y:100)
                 }
                 .background(backgroundColorValue)
                 .cornerRadius(30)

@@ -29,6 +29,6 @@ struct NextEventTopbarText: View {
 
 struct NextEventTopbarText_Previews: PreviewProvider {
     static var previews: some View {
-        NextEventTopbarText(periodModel: PeriodModel.periodExample)
+        NextEventTopbarText(periodModel: PeriodModel.periodOneExample)
     }
 }
