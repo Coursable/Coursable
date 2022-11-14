@@ -33,13 +33,6 @@ struct SlideUpViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         ZStack(alignment: .top) {
             
-//            ZStack(alignment: .top) {
-//                content.padding(.top, 30)
-//            }
-//            .background(backgroundColorValue)
-//            .cornerRadius(30)
-//            .frame(minWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height)
-            
             ZStack(alignment: .top) {
                 
                 SlideUpCircle(isSlideUp: isSlideUp)

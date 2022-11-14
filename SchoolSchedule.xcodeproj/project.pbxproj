@@ -13,6 +13,8 @@
 		DF082102291EC5DF00FF4A75 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082101291EC5DF00FF4A75 /* MainView.swift */; };
 		DF082104291EC7E800FF4A75 /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082103291EC7E800FF4A75 /* ProgressRingView.swift */; };
 		DF082106291FE7E500FF4A75 /* SlideUpCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */; };
+		DF4FCF9E2923023400D82824 /* StatsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9D2923023400D82824 /* StatsCardView.swift */; };
+		DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */; };
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF9B609128DF4DD100086E9E /* MainPage_FirstLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */; };
 		DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */; };
@@ -27,6 +29,9 @@
 		DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD56428E3A63200C60E12 /* NoEventsProgressText.swift */; };
 		DFA4639E2920401500FC826B /* CourseIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4639D2920401500FC826B /* CourseIconView.swift */; };
 		DFA463A02920764200FC826B /* CourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4639F2920764200FC826B /* CourseCardView.swift */; };
+		DFA463A22921957C00FC826B /* CourseTimeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA463A12921957C00FC826B /* CourseTimeInfoView.swift */; };
+		DFA463A42921960900FC826B /* CourseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA463A32921960900FC826B /* CourseInfoView.swift */; };
+		DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA463A62921995A00FC826B /* DayProgressBarView.swift */; };
 		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
 		DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
@@ -44,6 +49,8 @@
 		DF082101291EC5DF00FF4A75 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DF082103291EC7E800FF4A75 /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpCircle.swift; sourceTree = "<group>"; };
+		DF4FCF9D2923023400D82824 /* StatsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardView.swift; sourceTree = "<group>"; };
+		DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCoursesCardView.swift; sourceTree = "<group>"; };
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage_FirstLayerView.swift; sourceTree = "<group>"; };
 		DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextEventTopbarText.swift; sourceTree = "<group>"; };
@@ -58,6 +65,9 @@
 		DF9BD56428E3A63200C60E12 /* NoEventsProgressText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventsProgressText.swift; sourceTree = "<group>"; };
 		DFA4639D2920401500FC826B /* CourseIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseIconView.swift; sourceTree = "<group>"; };
 		DFA4639F2920764200FC826B /* CourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardView.swift; sourceTree = "<group>"; };
+		DFA463A12921957C00FC826B /* CourseTimeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTimeInfoView.swift; sourceTree = "<group>"; };
+		DFA463A32921960900FC826B /* CourseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoView.swift; sourceTree = "<group>"; };
+		DFA463A62921995A00FC826B /* DayProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayProgressBarView.swift; sourceTree = "<group>"; };
 		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolScheduleApp.swift; sourceTree = "<group>"; };
@@ -83,6 +93,7 @@
 		DF0820FA291EBB2300FF4A75 /* SlideUpView */ = {
 			isa = PBXGroup;
 			children = (
+				DFA463A52921992F00FC826B /* StatsViews */,
 				DFA4639C29203FFF00FC826B /* CourseListViews */,
 				DF0820FB291EBB4E00FF4A75 /* SlideUpViewModifier.swift */,
 				DF0820FD291EBB8600FF4A75 /* SlideUp.swift */,
@@ -151,8 +162,20 @@
 			children = (
 				DFA4639D2920401500FC826B /* CourseIconView.swift */,
 				DFA4639F2920764200FC826B /* CourseCardView.swift */,
+				DFA463A12921957C00FC826B /* CourseTimeInfoView.swift */,
+				DFA463A32921960900FC826B /* CourseInfoView.swift */,
 			);
 			path = CourseListViews;
+			sourceTree = "<group>";
+		};
+		DFA463A52921992F00FC826B /* StatsViews */ = {
+			isa = PBXGroup;
+			children = (
+				DFA463A62921995A00FC826B /* DayProgressBarView.swift */,
+				DF4FCF9D2923023400D82824 /* StatsCardView.swift */,
+				DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */,
+			);
+			path = StatsViews;
 			sourceTree = "<group>";
 		};
 		DFF73B7828DE87D900EF69D1 = {
@@ -292,6 +315,7 @@
 				DF9BD55F28E24B1000C60E12 /* CurrentEventProgressText.swift in Sources */,
 				DF9BD56128E39CAF00C60E12 /* TopbarText.swift in Sources */,
 				DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */,
+				DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */,
 				DFA4639E2920401500FC826B /* CourseIconView.swift in Sources */,
 				DF9BD55D28E24A9A00C60E12 /* NextEventProgressText.swift in Sources */,
 				DF9BD55828E248FE00C60E12 /* CurrentEventTopbarText.swift in Sources */,
@@ -308,8 +332,12 @@
 				DF082106291FE7E500FF4A75 /* SlideUpCircle.swift in Sources */,
 				DF0820FC291EBB4E00FF4A75 /* SlideUpViewModifier.swift in Sources */,
 				DF9BD56328E3A59600C60E12 /* ProgressText.swift in Sources */,
+				DFA463A42921960900FC826B /* CourseInfoView.swift in Sources */,
+				DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */,
 				DF9BD55628E2489300C60E12 /* NoEventsTopbarText.swift in Sources */,
 				DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */,
+				DFA463A22921957C00FC826B /* CourseTimeInfoView.swift in Sources */,
+				DF4FCF9E2923023400D82824 /* StatsCardView.swift in Sources */,
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
 				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
