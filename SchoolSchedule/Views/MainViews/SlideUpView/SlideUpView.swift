@@ -18,31 +18,38 @@ struct SlideUpView: View {
         
         
         
-        SlideUp(startingOffset: UIScreen.main.bounds.height*0.37, endingOffset: UIScreen.main.bounds.height*0.13, backgroundColor: .white, barColor: .secondary) {
+        SlideUp(startingOffset: UIScreen.main.bounds.height*0.35, endingOffset: UIScreen.main.bounds.height*0.13, backgroundColor: .white, barColor: .secondary) {
             
             
             Form {
                 if let todaysSchedule = periodViewModel.todaysSchedule {
                     Section("Stats") {
 
-                        VStack(spacing: 12) {
-                            DayProgressBarView(value: $progressValue).frame(height: 20)
+                        VStack(spacing: 20) {
+                            VStack(alignment: .leading) {
+                                DayProgressBarView(value: $progressValue).frame(height: 20)
+                                Text("0% Done With The Day")
+                                    .fontWeight(.bold)
+                                    .font(.title3)
+                                    .foregroundColor(.secondary)
+                                    
+                            }
+                            
                             
                             HStack {
                                 CompletedCoursesCardView()
                                     .padding()
-                                    .modifier(StatsCardView())
-                                CompletedCoursesCardView()
+                                    .modifier(StatsCardModifierView())
+                                RemainingCoursesCardView()
                                     .padding()
-                                    .modifier(StatsCardView())
+                                    .modifier(StatsCardModifierView())
                             }
-                            CompletedCoursesCardView()
-                                .padding()
-                                .modifier(StatsCardView())
                         }
+                        .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
                         
                         
                     }
+                    
                     
                     
                     Section("Courses") {

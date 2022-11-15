@@ -10,6 +10,7 @@ import SwiftUI
 struct DayProgressBarView: View {
     
     @Binding var value: Float
+    var barColor: LinearGradient = .bluePink
     
     var body: some View {
         GeometryReader { geometry in
@@ -17,10 +18,15 @@ struct DayProgressBarView: View {
                 
                 Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
                     .opacity(0.3)
-                    .foregroundColor(Color(UIColor.systemTeal))
+                    .foregroundStyle(barColor)
                                 
                 Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
-                    .foregroundColor(Color(UIColor.systemBlue))
+//                    .overlay(
+//                        barColor
+//                            //.scaleEffect(x: 5)
+//                    )
+                    .foregroundStyle(barColor)
+                    //.scaleEffect(x: 5)
                     .animation(.linear, value: value)
             }.cornerRadius(45.0)
         

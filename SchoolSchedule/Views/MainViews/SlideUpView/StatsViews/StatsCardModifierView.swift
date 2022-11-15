@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct StatsCardView: ViewModifier {
+struct StatsCardModifierView: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background {
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(Color(UIColor.systemGray6))
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(.gray, lineWidth: 2)
+                    .opacity(0.2)
             }
     }
 }

@@ -13,8 +13,9 @@
 		DF082102291EC5DF00FF4A75 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082101291EC5DF00FF4A75 /* MainView.swift */; };
 		DF082104291EC7E800FF4A75 /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082103291EC7E800FF4A75 /* ProgressRingView.swift */; };
 		DF082106291FE7E500FF4A75 /* SlideUpCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */; };
-		DF4FCF9E2923023400D82824 /* StatsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9D2923023400D82824 /* StatsCardView.swift */; };
+		DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */; };
 		DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */; };
+		DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */; };
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF9B609128DF4DD100086E9E /* MainPage_FirstLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */; };
 		DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */; };
@@ -49,8 +50,9 @@
 		DF082101291EC5DF00FF4A75 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DF082103291EC7E800FF4A75 /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpCircle.swift; sourceTree = "<group>"; };
-		DF4FCF9D2923023400D82824 /* StatsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardView.swift; sourceTree = "<group>"; };
+		DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardModifierView.swift; sourceTree = "<group>"; };
 		DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCoursesCardView.swift; sourceTree = "<group>"; };
+		DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingCoursesCardView.swift; sourceTree = "<group>"; };
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage_FirstLayerView.swift; sourceTree = "<group>"; };
 		DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextEventTopbarText.swift; sourceTree = "<group>"; };
@@ -172,8 +174,9 @@
 			isa = PBXGroup;
 			children = (
 				DFA463A62921995A00FC826B /* DayProgressBarView.swift */,
-				DF4FCF9D2923023400D82824 /* StatsCardView.swift */,
+				DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */,
 				DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */,
+				DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */,
 			);
 			path = StatsViews;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				DF082100291EBCF800FF4A75 /* SlideUpView.swift in Sources */,
 				DF9B609128DF4DD100086E9E /* MainPage_FirstLayerView.swift in Sources */,
 				DFF73B9428DE888000EF69D1 /* PeriodModel.swift in Sources */,
+				DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */,
 				DF082104291EC7E800FF4A75 /* ProgressRingView.swift in Sources */,
 				DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */,
 				DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */,
@@ -337,7 +341,7 @@
 				DF9BD55628E2489300C60E12 /* NoEventsTopbarText.swift in Sources */,
 				DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */,
 				DFA463A22921957C00FC826B /* CourseTimeInfoView.swift in Sources */,
-				DF4FCF9E2923023400D82824 /* StatsCardView.swift in Sources */,
+				DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */,
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
 				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
