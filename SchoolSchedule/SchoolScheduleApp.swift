@@ -15,9 +15,9 @@ struct SchoolScheduleApp: App {
         
         
         WindowGroup {
-            MainPage_FirstLayerView()
+            MainView()
                 .environmentObject(periodViewModel)
-                .preferredColorScheme(.dark)
+                .preferredColorScheme(.light)
         }
     }
 }

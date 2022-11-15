@@ -20,10 +20,10 @@ struct DayProgressBarView: View {
                     .opacity(0.3)
                     .foregroundStyle(barColor)
                                 
-                Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
+                RoundedRectangle(cornerRadius: 20).frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
 //                    .overlay(
 //                        barColor
-//                            //.scaleEffect(x: 5)
+//                            .scaleEffect(x: 1)
 //                    )
                     .foregroundStyle(barColor)
                     //.scaleEffect(x: 5)

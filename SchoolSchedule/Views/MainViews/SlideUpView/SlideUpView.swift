@@ -26,7 +26,11 @@ struct SlideUpView: View {
                     Section("Stats") {
 
                         VStack(spacing: 20) {
+                            
+                            
+                            
                             VStack(alignment: .leading) {
+                                
                                 DayProgressBarView(value: $progressValue).frame(height: 20)
                                 Text("0% Done With The Day")
                                     .fontWeight(.bold)
