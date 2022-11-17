@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DayProgressBarView: View {
     
-    @Binding var value: Float
+    var value: Float
     var barColor: LinearGradient = .bluePink
     
     var body: some View {
@@ -36,6 +36,6 @@ struct DayProgressBarView: View {
 
 struct DayProgressBarView_Previews: PreviewProvider {
     static var previews: some View {
-        DayProgressBarView(value: .constant(10))
+        DayProgressBarView(value: 10)
     }
 }

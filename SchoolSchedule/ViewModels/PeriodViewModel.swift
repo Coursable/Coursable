@@ -22,6 +22,7 @@ class PeriodViewModel: ObservableObject {
     @Published var currentRingColor: LinearGradient = .defaultGray
     @Published var completedClassesToday: [PeriodModel] = []
     @Published var numberOfClassesToday: Int = 0
+    @Published var currentDayCompletedPercentage: Double = 0.0
     
     
     enum PeriodError: Error {
@@ -38,9 +39,14 @@ class PeriodViewModel: ObservableObject {
         case CurrentEvent
     }
     
+    
+    
+    
     init() {
         updateTime(input: Date())
     }
+    
+    
     
     func updateTime(input: Date) {
         //Add loading feature
@@ -53,6 +59,7 @@ class PeriodViewModel: ObservableObject {
         setPassingTime()
         setNumberOfClassesToday()
         setClassesCompletedToday()
+        setCurrentDayCompletedPercentage()
     }
 
     
@@ -197,6 +204,10 @@ class PeriodViewModel: ObservableObject {
         }
         
 
+    }
+    
+    func setCurrentDayCompletedPercentage() {
+        currentDayCompletedPercentage = Double(completedClassesToday.count)/Double(numberOfClassesToday)
     }
     
     func setPassingTime() {

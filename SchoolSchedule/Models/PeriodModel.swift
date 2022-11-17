@@ -38,9 +38,9 @@ struct PeriodModel: Identifiable {
     
     
     
-    static let periodOneExample = PeriodModel(id: "1", startTime: "8:40:30", endTime: "8:50:00", periodNumber: 3, subject: Subject.MathSubjectExample)
-    static let periodTwoExample = PeriodModel(id: "2", startTime: "14:00:00", endTime: "14:01:30", periodNumber: 4, subject: Subject.LanguageArtsSubjectExample)
-    static let periodThreeExample = PeriodModel(id: "3", startTime: "16:00:00", endTime: "17:05:30", periodNumber: 5, subject: Subject.ScienceSubjectExample)
+    static let periodOneExample = PeriodModel(id: "1", startTime: "11:16:00", endTime: "12:05:00", periodNumber: 3, subject: Subject.MathSubjectExample)
+    static let periodTwoExample = PeriodModel(id: "2", startTime: "13:00:00", endTime: "13:30:30", periodNumber: 4, subject: Subject.LanguageArtsSubjectExample)
+    static let periodThreeExample = PeriodModel(id: "3", startTime: "14:00:00", endTime: "14:30:30", periodNumber: 5, subject: Subject.ScienceSubjectExample)
 }
 
 struct Subject: Identifiable {

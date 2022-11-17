@@ -11,7 +11,6 @@ struct SlideUpView: View {
     
     @EnvironmentObject var periodViewModel: PeriodViewModel
     
-    @State var progressValue: Float = 0.2
    
     
     var body: some View {
@@ -23,16 +22,15 @@ struct SlideUpView: View {
             
             Form {
                 if let todaysSchedule = periodViewModel.todaysSchedule {
-                    Section("Stats") {
+                    Section("Progress") {
 
                         VStack(spacing: 20) {
                             
                             
                             
                             VStack(alignment: .leading) {
-                                
-                                DayProgressBarView(value: $progressValue).frame(height: 20)
-                                Text("0% Done With The Day")
+                                DayProgressBarView(value: Float(periodViewModel.currentDayCompletedPercentage)).frame(height: 20)
+                                Text(String(format: "%g", floor(periodViewModel.currentDayCompletedPercentage*100)) + "% Done With The Day")
                                     .fontWeight(.bold)
                                     .font(.title3)
                                     .foregroundColor(.secondary)
@@ -56,7 +54,7 @@ struct SlideUpView: View {
                     
                     
                     
-                    Section("Courses") {
+                    Section("Courses Meeting Today (\(periodViewModel.numberOfClassesToday))") {
                         ForEach(todaysSchedule.periods.sorted { $0.periodNumber < $1.periodNumber}) { period in
                             ZStack {
                                 NavigationLink(destination: Text("test")) {
