@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct RemainingCoursesCardView: View {
+    var remainingCourses: Int
     var body: some View {
         VStack(alignment: .leading) {
             
             HStack {
-                Text("0")
+                Text("\(remainingCourses)")
                 Spacer()
                 Image(systemName: "book.closed.circle.fill")
                     .foregroundColor(.blue)
@@ -29,6 +30,6 @@ struct RemainingCoursesCardView: View {
 
 struct RemainingCoursesCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RemainingCoursesCardView()
+        RemainingCoursesCardView(remainingCourses: 3)
     }
 }

@@ -38,7 +38,7 @@ struct PeriodModel: Identifiable {
     
     
     
-    static let periodOneExample = PeriodModel(id: "1", startTime: "11:40:30", endTime: "12:05:00", periodNumber: 3, subject: Subject.MathSubjectExample)
+    static let periodOneExample = PeriodModel(id: "1", startTime: "8:40:30", endTime: "8:50:00", periodNumber: 3, subject: Subject.MathSubjectExample)
     static let periodTwoExample = PeriodModel(id: "2", startTime: "14:00:00", endTime: "14:01:30", periodNumber: 4, subject: Subject.LanguageArtsSubjectExample)
     static let periodThreeExample = PeriodModel(id: "3", startTime: "16:00:00", endTime: "17:05:30", periodNumber: 5, subject: Subject.ScienceSubjectExample)
 }
@@ -61,14 +61,23 @@ struct DayModel: Identifiable {
     var day: Int
     var periods: [PeriodModel]
     
-    static let ExampleDay = DayModel(id: "1", day: 2, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
-    static let ExampleDay1 = DayModel(id: "2", day: 3, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
+    static let ExampleDay1 = DayModel(id: "1", day: 5, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
+    /*
+     day 1=Sunday
+     day 2=Monday
+     day 3=Tuesday
+     day 4=Wednesday
+     day 5=Thursday
+     day 6=Friday
+     day 7=Saturday
+    */
+    
 }
 
 struct FullSchedule: Identifiable {
     var id: String
     var allClasses: [DayModel]
     
-    static let FullScheduleExample = FullSchedule(id: "1", allClasses: [DayModel.ExampleDay, DayModel.ExampleDay1])
+    static let FullScheduleExample = FullSchedule(id: "1", allClasses: [DayModel.ExampleDay1])
 }
 

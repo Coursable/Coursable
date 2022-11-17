@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct CompletedCoursesCardView: View {
+    
+    var numberOfCoursesCompleted: Int
+    
     var body: some View {
         VStack(alignment: .leading) {
             
             HStack {
-                Text("0")
+                Text("\(numberOfCoursesCompleted)")
                 Spacer()
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundColor(.green)
@@ -29,6 +32,6 @@ struct CompletedCoursesCardView: View {
 
 struct CompletedCoursesCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedCoursesCardView()
+        CompletedCoursesCardView(numberOfCoursesCompleted: 3)
     }
 }

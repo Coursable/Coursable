@@ -20,6 +20,8 @@ class PeriodViewModel: ObservableObject {
     @Published var passingTime: Double = 0
     @Published var nextPeriod: PeriodModel?
     @Published var currentRingColor: LinearGradient = .defaultGray
+    @Published var completedClassesToday: [PeriodModel] = []
+    @Published var numberOfClassesToday: Int = 0
     
     
     enum PeriodError: Error {
@@ -49,6 +51,8 @@ class PeriodViewModel: ObservableObject {
         updateTimeLeftInPeriod()
         updateProgressInPeriod()
         setPassingTime()
+        setNumberOfClassesToday()
+        setClassesCompletedToday()
     }
 
     
@@ -119,10 +123,34 @@ class PeriodViewModel: ObservableObject {
         }
     }
     
+    func setNumberOfClassesToday() {
+        if let todaysSchedule = todaysSchedule {
+            //Set the number of classes today
+            numberOfClassesToday = todaysSchedule.periods.count
+        }
+        else {
+            //No classes today
+            numberOfClassesToday = 0
+        }
+    }
+    
+    func setClassesCompletedToday() { //currently working on
+        if let todaysScheduleCheck = todaysSchedule {
+            completedClassesToday = []
+            for period in todaysScheduleCheck.periods {
+                if (period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate) {
+                    
+                    completedClassesToday.append(period)
+                }
+            }
+        }
+        else {
+            completedClassesToday = []
+        }
+    }
+    
+    
     func getCurrentPeriod() throws -> PeriodModel {
-        
-
-        
         if let todaysScheduleCheck = todaysSchedule {
             if let currentPeriodNumberCheck = self.currentPeriodNumber {
                 if let period = todaysScheduleCheck.periods.first(where: {$0.periodNumber == currentPeriodNumberCheck}) {

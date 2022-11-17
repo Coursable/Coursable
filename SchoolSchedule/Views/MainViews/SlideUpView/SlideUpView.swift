@@ -41,10 +41,10 @@ struct SlideUpView: View {
                             
                             
                             HStack {
-                                CompletedCoursesCardView()
+                                CompletedCoursesCardView(numberOfCoursesCompleted: periodViewModel.completedClassesToday.count)
                                     .padding()
                                     .modifier(StatsCardModifierView())
-                                RemainingCoursesCardView()
+                                RemainingCoursesCardView(remainingCourses: periodViewModel.numberOfClassesToday - periodViewModel.completedClassesToday.count)
                                     .padding()
                                     .modifier(StatsCardModifierView())
                             }
