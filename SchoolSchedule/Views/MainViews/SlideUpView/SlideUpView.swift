@@ -10,8 +10,18 @@ import SwiftUI
 struct SlideUpView: View {
     
     @EnvironmentObject var periodViewModel: PeriodViewModel
-    
+    @State var hideCompletedCourses: Bool = false
    
+    var filteredCourses: [PeriodModel] {
+        if let todaysSchedule = periodViewModel.todaysSchedule {
+            return todaysSchedule.periods.filter { period in
+                (!hideCompletedCourses || !periodViewModel.completedClassesToday.contains(where: { period.id == $0.id }))
+            }
+        }
+        return [] // no schedule
+
+    }
+    
     
     var body: some View {
         
@@ -21,41 +31,22 @@ struct SlideUpView: View {
             
             
             Form {
-                if let todaysSchedule = periodViewModel.todaysSchedule {
+                if periodViewModel.todaysSchedule != nil {
                     Section("Progress") {
 
                         VStack(spacing: 20) {
+
+                            ProgressBarStatsView()
                             
-                            
-                            
-                            VStack(alignment: .leading) {
-                                DayProgressBarView(value: Float(periodViewModel.currentDayCompletedPercentage)).frame(height: 20)
-                                Text(String(format: "%g", floor(periodViewModel.currentDayCompletedPercentage*100)) + "% Done With The Day")
-                                    .fontWeight(.bold)
-                                    .font(.title3)
-                                    .foregroundColor(.secondary)
-                                    
-                            }
-                            
-                            
-                            HStack {
-                                CompletedCoursesCardView(numberOfCoursesCompleted: periodViewModel.completedClassesToday.count)
-                                    .padding()
-                                    .modifier(StatsCardModifierView())
-                                RemainingCoursesCardView(remainingCourses: periodViewModel.numberOfClassesToday - periodViewModel.completedClassesToday.count)
-                                    .padding()
-                                    .modifier(StatsCardModifierView())
-                            }
+                            StatsCardView()
                         }
                         .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
                         
                         
                     }
                     
-                    
-                    
-                    Section("Courses Meeting Today (\(periodViewModel.numberOfClassesToday))") {
-                        ForEach(todaysSchedule.periods.sorted { $0.periodNumber < $1.periodNumber}) { period in
+                    Section {
+                        ForEach(filteredCourses.sorted { $0.startTimeParsed.timeIntervalSinceReferenceDate < $1.startTimeParsed.timeIntervalSinceReferenceDate || $0.periodNumber < $1.periodNumber}) { period in
                             ZStack {
                                 NavigationLink(destination: Text("test")) {
                                     Rectangle().opacity(0.0)
@@ -70,9 +61,16 @@ struct SlideUpView: View {
                             .padding(.bottom, 10)
                             .listRowSeparator(.hidden)
                         }
-                    }
-                    
+                    } header: {
+                        HStack {
+                            Text(hideCompletedCourses ? "Courses Remaining Today (\(periodViewModel.numberOfClassesToday - periodViewModel.completedClassesToday.count))" : "Courses Meeting Today (\(periodViewModel.numberOfClassesToday))")
+                            Spacer()
+                            CourseFilterMenuView(hideCompletedCourses: $hideCompletedCourses)
+                            .textCase(nil)
+                        }
 
+
+                    }
                 }
                 else {
                     Text("No Periods Today")

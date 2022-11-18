@@ -146,8 +146,8 @@ class PeriodViewModel: ObservableObject {
             completedClassesToday = []
             for period in todaysScheduleCheck.periods {
                 if (period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate) {
-                    
                     completedClassesToday.append(period)
+                    
                 }
             }
         }

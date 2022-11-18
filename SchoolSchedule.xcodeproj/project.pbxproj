@@ -13,6 +13,9 @@
 		DF082102291EC5DF00FF4A75 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082101291EC5DF00FF4A75 /* MainView.swift */; };
 		DF082104291EC7E800FF4A75 /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082103291EC7E800FF4A75 /* ProgressRingView.swift */; };
 		DF082106291FE7E500FF4A75 /* SlideUpCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */; };
+		DF23215429271F5A005D5698 /* CourseFilterMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF23215329271F5A005D5698 /* CourseFilterMenuView.swift */; };
+		DF23215629271FE2005D5698 /* StatsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF23215529271FE2005D5698 /* StatsCardView.swift */; };
+		DF2321582927208E005D5698 /* ProgressBarStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2321572927208E005D5698 /* ProgressBarStatsView.swift */; };
 		DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */; };
 		DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */; };
 		DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */; };
@@ -50,6 +53,9 @@
 		DF082101291EC5DF00FF4A75 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DF082103291EC7E800FF4A75 /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpCircle.swift; sourceTree = "<group>"; };
+		DF23215329271F5A005D5698 /* CourseFilterMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseFilterMenuView.swift; sourceTree = "<group>"; };
+		DF23215529271FE2005D5698 /* StatsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardView.swift; sourceTree = "<group>"; };
+		DF2321572927208E005D5698 /* ProgressBarStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarStatsView.swift; sourceTree = "<group>"; };
 		DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardModifierView.swift; sourceTree = "<group>"; };
 		DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCoursesCardView.swift; sourceTree = "<group>"; };
 		DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingCoursesCardView.swift; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 				DF0820FD291EBB8600FF4A75 /* SlideUp.swift */,
 				DF0820FF291EBCF800FF4A75 /* SlideUpView.swift */,
 				DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */,
+				DF23215329271F5A005D5698 /* CourseFilterMenuView.swift */,
 			);
 			path = SlideUpView;
 			sourceTree = "<group>";
@@ -177,6 +184,8 @@
 				DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */,
 				DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */,
 				DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */,
+				DF23215529271FE2005D5698 /* StatsCardView.swift */,
+				DF2321572927208E005D5698 /* ProgressBarStatsView.swift */,
 			);
 			path = StatsViews;
 			sourceTree = "<group>";
@@ -315,9 +324,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF23215629271FE2005D5698 /* StatsCardView.swift in Sources */,
 				DF9BD55F28E24B1000C60E12 /* CurrentEventProgressText.swift in Sources */,
 				DF9BD56128E39CAF00C60E12 /* TopbarText.swift in Sources */,
 				DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */,
+				DF2321582927208E005D5698 /* ProgressBarStatsView.swift in Sources */,
 				DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */,
 				DFA4639E2920401500FC826B /* CourseIconView.swift in Sources */,
 				DF9BD55D28E24A9A00C60E12 /* NextEventProgressText.swift in Sources */,
@@ -346,6 +357,7 @@
 				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
 				DF9BD55B28E249CA00C60E12 /* NoMoreEventsProgressText.swift in Sources */,
+				DF23215429271F5A005D5698 /* CourseFilterMenuView.swift in Sources */,
 				DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
