@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainPage_FirstLayerView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
-
     
     var body: some View {
         NavigationView {
@@ -22,6 +21,9 @@ struct MainPage_FirstLayerView: View {
                     TopbarText()
                     
                     ProgressRingView()
+                        .onReceive(periodViewModel.timer) { input in
+                            periodViewModel.updateTime(input: input)
+                        }
                     
                     Spacer()
 

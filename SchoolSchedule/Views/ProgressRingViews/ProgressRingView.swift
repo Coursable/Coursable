@@ -9,17 +9,13 @@ import SwiftUI
 
 struct ProgressRingView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
-    @State var showRingMoveAnimation: Bool = false
     
     var body: some View {
-        ProgressRing(progress: periodViewModel.currentProgressInPeriod, ringColor: .bluePink, showMoveAnimation: showRingMoveAnimation)
+        ProgressRing(progress: periodViewModel.currentProgressInPeriod, ringColor: .bluePink, showMoveAnimation: periodViewModel.showRingMoveAnimation)
             .frame(width: UIScreen.main.bounds.width*0.85)
                 .padding()
                 .padding(.top)
-                .onReceive(periodViewModel.timer) { input in
-                    periodViewModel.updateTime(input: input)
-                    showRingMoveAnimation.toggle()
-                }
+
     }
 }
 

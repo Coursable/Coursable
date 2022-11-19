@@ -10,16 +10,16 @@ import SwiftUI
 struct SlideUpView: View {
     
     @EnvironmentObject var periodViewModel: PeriodViewModel
-    @State var hideCompletedCourses: Bool = false
-   
+    @State var hideCompletedCourses: Bool = true
+    
     var filteredCourses: [PeriodModel] {
         if let todaysSchedule = periodViewModel.todaysSchedule {
+
             return todaysSchedule.periods.filter { period in
                 (!hideCompletedCourses || !periodViewModel.completedClassesToday.contains(where: { period.id == $0.id }))
             }
         }
         return [] // no schedule
-
     }
     
     
@@ -31,7 +31,8 @@ struct SlideUpView: View {
             
             
             Form {
-                if periodViewModel.todaysSchedule != nil {
+
+                if let todaysSchedule = periodViewModel.todaysSchedule {
                     Section("Progress") {
 
                         VStack(spacing: 20) {
@@ -44,23 +45,29 @@ struct SlideUpView: View {
                         
                         
                     }
-                    
                     Section {
-                        ForEach(filteredCourses.sorted { $0.startTimeParsed.timeIntervalSinceReferenceDate < $1.startTimeParsed.timeIntervalSinceReferenceDate || $0.periodNumber < $1.periodNumber}) { period in
-                            ZStack {
-                                NavigationLink(destination: Text("test")) {
-                                    Rectangle().opacity(0.0)
+                        //todaysSchedule.periods.filter { period in !periodViewModel.completedClassesToday.contains(where: { period.id == $0.id }) }
+                        ForEach(periodViewModel.todaysSchedule!.periods.filter { period in
+                            !periodViewModel.completedClassesToday.contains(where: { period.id == $0.id }) } ) { period in
+                                ZStack {
+                                    NavigationLink(destination: Text("test")) {
+                                        Rectangle().opacity(0.0)
+                                    }
+                                    .padding(.trailing, 20)
+                                    CourseCardView(period: period)
                                 }
-                                .padding(.trailing, 20)
-                                CourseCardView(period: period)
-                            }
-                            .listStyle(InsetGroupedListStyle())
-                            .listRowBackground(Color(UIColor.clear))
-                            .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.bottom, 10)
-                            .listRowSeparator(.hidden)
+                                .transition(AnyTransition.scale)
+                                .listStyle(InsetGroupedListStyle())
+                                .listRowBackground(Color(UIColor.clear))
+                                .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
+                                .buttonStyle(PlainButtonStyle())
+                                .padding(.bottom, 10)
+                                .listRowSeparator(.hidden)
                         }
+                        
+                        
+                        
+                        
                     } header: {
                         HStack {
                             Text(hideCompletedCourses ? "Courses Remaining Today (\(periodViewModel.numberOfClassesToday - periodViewModel.completedClassesToday.count))" : "Courses Meeting Today (\(periodViewModel.numberOfClassesToday))")
@@ -71,6 +78,7 @@ struct SlideUpView: View {
 
 
                     }
+                    
                 }
                 else {
                     Text("No Periods Today")

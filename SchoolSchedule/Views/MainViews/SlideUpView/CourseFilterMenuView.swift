@@ -24,7 +24,12 @@ struct CourseFilterMenuView: View {
                 
             })
         } label: {
-            Image(systemName: "ellipsis")
+            //Image(systemName: "ellipsis")
+            HStack {
+                Text("Filter")
+                Image(systemName: "chevron.down")
+            }
+            .font(.subheadline)
         }
     }
 }

@@ -23,7 +23,7 @@ class PeriodViewModel: ObservableObject {
     @Published var completedClassesToday: [PeriodModel] = []
     @Published var numberOfClassesToday: Int = 0
     @Published var currentDayCompletedPercentage: Double = 0.0
-    
+    @Published var showRingMoveAnimation: Bool = false
     
     enum PeriodError: Error {
         case invalidPeriod
@@ -49,7 +49,8 @@ class PeriodViewModel: ObservableObject {
     
     
     func updateTime(input: Date) {
-        //Add loading feature
+
+        showRingMoveAnimation.toggle()
         currentTime = input
         checkIfWeekDayChanged()
         setCurrentPeriod()
@@ -58,8 +59,9 @@ class PeriodViewModel: ObservableObject {
         updateProgressInPeriod()
         setPassingTime()
         setNumberOfClassesToday()
-        setClassesCompletedToday()
         setCurrentDayCompletedPercentage()
+        setClassesCompletedToday()
+        
     }
 
     
@@ -143,12 +145,22 @@ class PeriodViewModel: ObservableObject {
     
     func setClassesCompletedToday() { //currently working on
         if let todaysScheduleCheck = todaysSchedule {
-            completedClassesToday = []
+            //completedClassesToday = []
             for period in todaysScheduleCheck.periods {
-                if (period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate) {
-                    completedClassesToday.append(period)
-                    
+                if (!completedClassesToday.contains(where: { $0.id == period.id })) {
+                    if (period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate) {
+                        withAnimation {
+                            completedClassesToday.append(period)
+                        }
+                            
+                        
+                        
+                        
+                        
+                        
+                    }
                 }
+                
             }
         }
         else {
