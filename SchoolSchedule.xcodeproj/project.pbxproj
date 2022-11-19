@@ -36,6 +36,7 @@
 		DFA463A22921957C00FC826B /* CourseTimeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA463A12921957C00FC826B /* CourseTimeInfoView.swift */; };
 		DFA463A42921960900FC826B /* CourseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA463A32921960900FC826B /* CourseInfoView.swift */; };
 		DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA463A62921995A00FC826B /* DayProgressBarView.swift */; };
+		DFA5807029298C2F000790A4 /* FilterTopBarSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5806F29298C2F000790A4 /* FilterTopBarSectionView.swift */; };
 		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
 		DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
@@ -76,6 +77,7 @@
 		DFA463A12921957C00FC826B /* CourseTimeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTimeInfoView.swift; sourceTree = "<group>"; };
 		DFA463A32921960900FC826B /* CourseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoView.swift; sourceTree = "<group>"; };
 		DFA463A62921995A00FC826B /* DayProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayProgressBarView.swift; sourceTree = "<group>"; };
+		DFA5806F29298C2F000790A4 /* FilterTopBarSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTopBarSectionView.swift; sourceTree = "<group>"; };
 		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolScheduleApp.swift; sourceTree = "<group>"; };
@@ -101,13 +103,10 @@
 		DF0820FA291EBB2300FF4A75 /* SlideUpView */ = {
 			isa = PBXGroup;
 			children = (
+				DFA5806E29298BE6000790A4 /* FilterSectionViews */,
+				DFA5806D29298BCA000790A4 /* SlideUpElements */,
 				DFA463A52921992F00FC826B /* StatsViews */,
 				DFA4639C29203FFF00FC826B /* CourseListViews */,
-				DF0820FB291EBB4E00FF4A75 /* SlideUpViewModifier.swift */,
-				DF0820FD291EBB8600FF4A75 /* SlideUp.swift */,
-				DF0820FF291EBCF800FF4A75 /* SlideUpView.swift */,
-				DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */,
-				DF23215329271F5A005D5698 /* CourseFilterMenuView.swift */,
 			);
 			path = SlideUpView;
 			sourceTree = "<group>";
@@ -188,6 +187,26 @@
 				DF2321572927208E005D5698 /* ProgressBarStatsView.swift */,
 			);
 			path = StatsViews;
+			sourceTree = "<group>";
+		};
+		DFA5806D29298BCA000790A4 /* SlideUpElements */ = {
+			isa = PBXGroup;
+			children = (
+				DF0820FB291EBB4E00FF4A75 /* SlideUpViewModifier.swift */,
+				DF0820FD291EBB8600FF4A75 /* SlideUp.swift */,
+				DF0820FF291EBCF800FF4A75 /* SlideUpView.swift */,
+				DF082105291FE7E500FF4A75 /* SlideUpCircle.swift */,
+			);
+			path = SlideUpElements;
+			sourceTree = "<group>";
+		};
+		DFA5806E29298BE6000790A4 /* FilterSectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				DF23215329271F5A005D5698 /* CourseFilterMenuView.swift */,
+				DFA5806F29298C2F000790A4 /* FilterTopBarSectionView.swift */,
+			);
+			path = FilterSectionViews;
 			sourceTree = "<group>";
 		};
 		DFF73B7828DE87D900EF69D1 = {
@@ -326,6 +345,7 @@
 			files = (
 				DF23215629271FE2005D5698 /* StatsCardView.swift in Sources */,
 				DF9BD55F28E24B1000C60E12 /* CurrentEventProgressText.swift in Sources */,
+				DFA5807029298C2F000790A4 /* FilterTopBarSectionView.swift in Sources */,
 				DF9BD56128E39CAF00C60E12 /* TopbarText.swift in Sources */,
 				DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */,
 				DF2321582927208E005D5698 /* ProgressBarStatsView.swift in Sources */,

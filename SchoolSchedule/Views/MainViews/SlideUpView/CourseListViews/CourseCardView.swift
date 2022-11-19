@@ -8,14 +8,36 @@
 import SwiftUI
 
 struct CourseCardView: View {
+    @EnvironmentObject var periodViewModel: PeriodViewModel
     var period: PeriodModel
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                CourseIconView(period: period)
-                CourseInfoView(period: period)
-                    .padding(.leading, 3)
+            HStack(alignment: .top) {
+                HStack {
+                    CourseIconView(period: period)
+                    CourseInfoView(period: period)
+                        .padding(.leading, 3)
+                }
+                Spacer()
+                if let currentPeriodNumber = periodViewModel.currentPeriodNumber {
+                    if currentPeriodNumber == period.periodNumber {
+                        Text("In Progress")
+                            .font(.footnote)
+                            .padding([.leading,.trailing], 10)
+                            .padding([.top, .bottom], 4)
+                            .foregroundColor(.white)
+                            .fontWeight(.semibold)
+                            .background {
+                                
+                                RoundedRectangle(cornerRadius: 16)
+                                    .foregroundColor(.blue)
+                                    
+                            }
+                    }
+                    
+                }
+                
             }
             CourseTimeInfoView(period: period)
         }
@@ -33,5 +55,6 @@ struct CourseCardView: View {
 struct CourseCardview_Previews: PreviewProvider {
     static var previews: some View {
         CourseCardView(period: PeriodModel.periodOneExample)
+            .environmentObject(PeriodViewModel())
     }
 }

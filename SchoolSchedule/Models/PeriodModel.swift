@@ -38,9 +38,9 @@ struct PeriodModel: Identifiable {
     
     
     
-    static let periodOneExample = PeriodModel(id: "1", startTime: "11:16:00", endTime: "12:05:00", periodNumber: 3, subject: Subject.MathSubjectExample)
-    static let periodTwoExample = PeriodModel(id: "2", startTime: "21:19:00", endTime: "21:21:55", periodNumber: 4, subject: Subject.LanguageArtsSubjectExample)
-    static let periodThreeExample = PeriodModel(id: "3", startTime: "21:23:00", endTime: "21:25:00", periodNumber: 5, subject: Subject.ScienceSubjectExample)
+    static let periodOneExample = PeriodModel(id: "1", startTime: "18:35:00", endTime: "18:35:40", periodNumber: 3, subject: Subject.MathSubjectExample)
+    static let periodTwoExample = PeriodModel(id: "2", startTime: "18:36:00", endTime: "18:36:30", periodNumber: 4, subject: Subject.LanguageArtsSubjectExample)
+    static let periodThreeExample = PeriodModel(id: "3", startTime: "19:03:00", endTime: "19:03:30", periodNumber: 5, subject: Subject.ScienceSubjectExample)
 }
 
 struct Subject: Identifiable {
@@ -61,7 +61,7 @@ struct DayModel: Identifiable {
     var day: Int
     var periods: [PeriodModel]
     
-    static let ExampleDay1 = DayModel(id: "1", day: 6, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
+    static let ExampleDay1 = DayModel(id: "1", day: 7, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
     /*
      day 1=Sunday
      day 2=Monday

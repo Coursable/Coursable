@@ -59,7 +59,6 @@ class PeriodViewModel: ObservableObject {
         updateProgressInPeriod()
         setPassingTime()
         setNumberOfClassesToday()
-        //setCurrentDayCompletedPercentage()
         setClassesCompletedToday()
         
         
@@ -269,16 +268,35 @@ class PeriodViewModel: ObservableObject {
         if let todaysScheduleCheck = todaysSchedule {
             for period in todaysScheduleCheck.periods {
                 if period.fullEndTimeParsed.timeIntervalSinceReferenceDate > Date().timeIntervalSinceReferenceDate && Date().timeIntervalSinceReferenceDate >  period.fullStartTimeParsed.timeIntervalSinceReferenceDate {
-                    currentPeriodNumber = period.periodNumber
-                    currentRingColor = period.subject.color
+                    if let currentPeriodNumberValue = currentPeriodNumber {
+                        if (period.periodNumber == currentPeriodNumberValue) {
+                            return //if the period is the same as the current period number, disregard
+                        }
+                    }
+                    
+                    //otherwise switch the period number
+                    
+                    withAnimation {
+                        currentPeriodNumber = period.periodNumber
+                    }
                     foundCorrectPeriod = true
+                    
+                    
+
+                    
+                    
+                    
+                    
+                    
                 }
             }
             
         }
         
         if !foundCorrectPeriod {
-            currentPeriodNumber = nil
+            withAnimation {
+                currentPeriodNumber = nil
+            }
         }
     }
     
