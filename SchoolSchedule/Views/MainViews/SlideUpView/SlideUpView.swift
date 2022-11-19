@@ -47,8 +47,11 @@ struct SlideUpView: View {
                     }
                     Section {
                         //todaysSchedule.periods.filter { period in !periodViewModel.completedClassesToday.contains(where: { period.id == $0.id }) }
-                        ForEach(periodViewModel.todaysSchedule!.periods.filter { period in
-                            !periodViewModel.completedClassesToday.contains(where: { period.id == $0.id }) } ) { period in
+                        
+                        
+                        //periodViewModel.todaysSchedule!.periods.filter { period in
+                        //!periodViewModel.completedClassesToday.contains(where: { period.id == $0.id }) }
+                        ForEach(filteredCourses.sorted { $0.startTimeParsed.timeIntervalSinceReferenceDate < $1.startTimeParsed.timeIntervalSinceReferenceDate || $0.periodNumber < $1.periodNumber}) { period in
                                 ZStack {
                                     NavigationLink(destination: Text("test")) {
                                         Rectangle().opacity(0.0)

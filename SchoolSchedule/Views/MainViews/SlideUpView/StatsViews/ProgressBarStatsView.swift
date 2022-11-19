@@ -12,8 +12,8 @@ struct ProgressBarStatsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            DayProgressBarView(value: Float(periodViewModel.currentDayCompletedPercentage)).frame(height: 20)
-            Text(String(format: "%g", floor(periodViewModel.currentDayCompletedPercentage*100)) + "% Done With The Day")
+            DayProgressBarView(value: Float(Double(periodViewModel.completedClassesToday.count)/Double(periodViewModel.numberOfClassesToday))).frame(height: 20)
+            Text(String(format: "%g", floor(Float(Double(periodViewModel.completedClassesToday.count)/Double(periodViewModel.numberOfClassesToday))*100)) + "% Done With The Day")
                 .fontWeight(.bold)
                 .font(.headline)
                 .foregroundColor(.secondary)

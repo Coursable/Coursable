@@ -59,8 +59,9 @@ class PeriodViewModel: ObservableObject {
         updateProgressInPeriod()
         setPassingTime()
         setNumberOfClassesToday()
-        setCurrentDayCompletedPercentage()
+        //setCurrentDayCompletedPercentage()
         setClassesCompletedToday()
+        
         
     }
 
@@ -146,18 +147,12 @@ class PeriodViewModel: ObservableObject {
     func setClassesCompletedToday() { //currently working on
         if let todaysScheduleCheck = todaysSchedule {
             //completedClassesToday = []
-            for period in todaysScheduleCheck.periods {
-                if (!completedClassesToday.contains(where: { $0.id == period.id })) {
-                    if (period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate) {
-                        withAnimation {
+            withAnimation {
+                for period in todaysScheduleCheck.periods {
+                    if (!completedClassesToday.contains(where: { $0.id == period.id })) {
+                        if (period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate) {
                             completedClassesToday.append(period)
                         }
-                            
-                        
-                        
-                        
-                        
-                        
                     }
                 }
                 
