@@ -20,6 +20,10 @@
 		DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */; };
 		DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */; };
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
+		DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4102929B83200DB0364 /* TopNavBar.swift */; };
+		DF92E4132929B9D100DB0364 /* TopNavBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */; };
+		DF92E4152929BABF00DB0364 /* NavBarTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4142929BABF00DB0364 /* NavBarTest.swift */; };
+		DF92E4192929BEF900DB0364 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4182929BEF900DB0364 /* Modifiers.swift */; };
 		DF9B609128DF4DD100086E9E /* MainPage_FirstLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */; };
 		DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */; };
 		DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55328E2484F00C60E12 /* NoMoreEventsTopbarText.swift */; };
@@ -61,6 +65,11 @@
 		DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCoursesCardView.swift; sourceTree = "<group>"; };
 		DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingCoursesCardView.swift; sourceTree = "<group>"; };
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
+		DF92E4102929B83200DB0364 /* TopNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBar.swift; sourceTree = "<group>"; };
+		DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBarViewModifier.swift; sourceTree = "<group>"; };
+		DF92E4142929BABF00DB0364 /* NavBarTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarTest.swift; sourceTree = "<group>"; };
+		DF92E4162929BEA700DB0364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF92E4182929BEF900DB0364 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage_FirstLayerView.swift; sourceTree = "<group>"; };
 		DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextEventTopbarText.swift; sourceTree = "<group>"; };
 		DF9BD55328E2484F00C60E12 /* NoMoreEventsTopbarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMoreEventsTopbarText.swift; sourceTree = "<group>"; };
@@ -132,9 +141,18 @@
 			path = ProgressRingViews;
 			sourceTree = "<group>";
 		};
+		DF92E4172929BEEE00DB0364 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				DF92E4182929BEF900DB0364 /* Modifiers.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		DF9B608F28DF4DC200086E9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF92E4172929BEEE00DB0364 /* ViewModifiers */,
 				DF6A548C28E208DC00DD0FEC /* MainViews */,
 				DF8A95AD28DF661700802129 /* ProgressRingViews */,
 			);
@@ -149,6 +167,9 @@
 				DF9BD55528E2489300C60E12 /* NoEventsTopbarText.swift */,
 				DF9BD55728E248FE00C60E12 /* CurrentEventTopbarText.swift */,
 				DF9BD56028E39CAF00C60E12 /* TopbarText.swift */,
+				DF92E4102929B83200DB0364 /* TopNavBar.swift */,
+				DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */,
+				DF92E4142929BABF00DB0364 /* NavBarTest.swift */,
 			);
 			path = TopbarViews;
 			sourceTree = "<group>";
@@ -228,6 +249,7 @@
 		DFF73B8328DE87D900EF69D1 /* SchoolSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				DF92E4162929BEA700DB0364 /* Info.plist */,
 				DF9B608F28DF4DC200086E9E /* Views */,
 				DFF73B9928DE8A7D00EF69D1 /* Extensions */,
 				DFF73B9628DE899400EF69D1 /* ViewModels */,
@@ -347,10 +369,12 @@
 				DF9BD55F28E24B1000C60E12 /* CurrentEventProgressText.swift in Sources */,
 				DFA5807029298C2F000790A4 /* FilterTopBarSectionView.swift in Sources */,
 				DF9BD56128E39CAF00C60E12 /* TopbarText.swift in Sources */,
+				DF92E4192929BEF900DB0364 /* Modifiers.swift in Sources */,
 				DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */,
 				DF2321582927208E005D5698 /* ProgressBarStatsView.swift in Sources */,
 				DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */,
 				DFA4639E2920401500FC826B /* CourseIconView.swift in Sources */,
+				DF92E4152929BABF00DB0364 /* NavBarTest.swift in Sources */,
 				DF9BD55D28E24A9A00C60E12 /* NextEventProgressText.swift in Sources */,
 				DF9BD55828E248FE00C60E12 /* CurrentEventTopbarText.swift in Sources */,
 				DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */,
@@ -366,6 +390,7 @@
 				DF0820FE291EBB8600FF4A75 /* SlideUp.swift in Sources */,
 				DF082106291FE7E500FF4A75 /* SlideUpCircle.swift in Sources */,
 				DF0820FC291EBB4E00FF4A75 /* SlideUpViewModifier.swift in Sources */,
+				DF92E4132929B9D100DB0364 /* TopNavBarViewModifier.swift in Sources */,
 				DF9BD56328E3A59600C60E12 /* ProgressText.swift in Sources */,
 				DFA463A42921960900FC826B /* CourseInfoView.swift in Sources */,
 				DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */,
@@ -376,6 +401,7 @@
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
 				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
+				DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */,
 				DF9BD55B28E249CA00C60E12 /* NoMoreEventsProgressText.swift in Sources */,
 				DF23215429271F5A005D5698 /* CourseFilterMenuView.swift in Sources */,
 				DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */,
@@ -510,9 +536,12 @@
 				DEVELOPMENT_TEAM = 7FRTJ9C37P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SchoolSchedule/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -539,9 +568,12 @@
 				DEVELOPMENT_TEAM = 7FRTJ9C37P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SchoolSchedule/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

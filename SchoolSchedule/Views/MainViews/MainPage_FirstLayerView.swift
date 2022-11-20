@@ -18,14 +18,23 @@ struct MainPage_FirstLayerView: View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    TopbarText()
+                    TopNavBar(showBackButton: false) {
+                        HStack {
+                            Spacer()
+                            TopbarText()
+                                .foregroundColor(.white)
+                                .padding()
+                            Spacer()
+                        }
+                    }
                     
                     ProgressRingView()
                         .onReceive(periodViewModel.timer) { input in
                             periodViewModel.updateTime(input: input)
                         }
-                    
                     Spacer()
+                    
+                    
 
                     
                 }

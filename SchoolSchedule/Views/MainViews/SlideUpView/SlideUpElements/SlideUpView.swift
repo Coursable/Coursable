@@ -36,7 +36,7 @@ struct SlideUpView: View {
         
         
         
-        SlideUp(startingOffset: UIScreen.main.bounds.height*0.35, endingOffset: UIScreen.main.bounds.height*0.13, backgroundColor: .white, barColor: .secondary) {
+        SlideUp(startingOffset: UIScreen.main.bounds.height*0.35, endingOffset: UIScreen.main.bounds.height*0.16, backgroundColor: .white, barColor: .secondary) {
             
             
             Form {
@@ -57,7 +57,7 @@ struct SlideUpView: View {
                 Section {
                     ForEach(filteredCourses.sorted { $0.startTimeParsed.timeIntervalSinceReferenceDate < $1.startTimeParsed.timeIntervalSinceReferenceDate || $0.periodNumber < $1.periodNumber}) { period in
                             ZStack {
-                                NavigationLink(destination: Text("test")) {
+                                NavigationLink(destination: NavBarTest()) {
                                     Rectangle().opacity(0.0)
                                 }
                                 .padding(.trailing, 20)
