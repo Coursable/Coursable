@@ -276,6 +276,8 @@ class PeriodViewModel: ObservableObject {
                     
                     //otherwise switch the period number
                     
+                    currentRingColor = period.subject.color
+                    
                     withAnimation {
                         currentPeriodNumber = period.periodNumber
                     }
@@ -294,9 +296,9 @@ class PeriodViewModel: ObservableObject {
         }
         
         if !foundCorrectPeriod {
-            withAnimation {
+            //withAnimation {
                 currentPeriodNumber = nil
-            }
+            //}
         }
     }
     

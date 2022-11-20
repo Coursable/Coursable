@@ -22,7 +22,7 @@
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4102929B83200DB0364 /* TopNavBar.swift */; };
 		DF92E4132929B9D100DB0364 /* TopNavBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */; };
-		DF92E4152929BABF00DB0364 /* NavBarTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4142929BABF00DB0364 /* NavBarTest.swift */; };
+		DF92E4152929BABF00DB0364 /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4142929BABF00DB0364 /* DestinationView.swift */; };
 		DF92E4192929BEF900DB0364 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4182929BEF900DB0364 /* Modifiers.swift */; };
 		DF9B609128DF4DD100086E9E /* MainPage_FirstLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */; };
 		DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BD55128E247A600C60E12 /* NextEventTopbarText.swift */; };
@@ -67,7 +67,7 @@
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF92E4102929B83200DB0364 /* TopNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBar.swift; sourceTree = "<group>"; };
 		DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBarViewModifier.swift; sourceTree = "<group>"; };
-		DF92E4142929BABF00DB0364 /* NavBarTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarTest.swift; sourceTree = "<group>"; };
+		DF92E4142929BABF00DB0364 /* DestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationView.swift; sourceTree = "<group>"; };
 		DF92E4162929BEA700DB0364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF92E4182929BEF900DB0364 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage_FirstLayerView.swift; sourceTree = "<group>"; };
@@ -112,6 +112,7 @@
 		DF0820FA291EBB2300FF4A75 /* SlideUpView */ = {
 			isa = PBXGroup;
 			children = (
+				DF92E4142929BABF00DB0364 /* DestinationView.swift */,
 				DFA5806E29298BE6000790A4 /* FilterSectionViews */,
 				DFA5806D29298BCA000790A4 /* SlideUpElements */,
 				DFA463A52921992F00FC826B /* StatsViews */,
@@ -169,7 +170,6 @@
 				DF9BD56028E39CAF00C60E12 /* TopbarText.swift */,
 				DF92E4102929B83200DB0364 /* TopNavBar.swift */,
 				DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */,
-				DF92E4142929BABF00DB0364 /* NavBarTest.swift */,
 			);
 			path = TopbarViews;
 			sourceTree = "<group>";
@@ -374,7 +374,7 @@
 				DF2321582927208E005D5698 /* ProgressBarStatsView.swift in Sources */,
 				DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */,
 				DFA4639E2920401500FC826B /* CourseIconView.swift in Sources */,
-				DF92E4152929BABF00DB0364 /* NavBarTest.swift in Sources */,
+				DF92E4152929BABF00DB0364 /* DestinationView.swift in Sources */,
 				DF9BD55D28E24A9A00C60E12 /* NextEventProgressText.swift in Sources */,
 				DF9BD55828E248FE00C60E12 /* CurrentEventTopbarText.swift in Sources */,
 				DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */,

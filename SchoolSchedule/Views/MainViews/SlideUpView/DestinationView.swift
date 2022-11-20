@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavBarTest: View {
+struct DestinationView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -44,7 +44,7 @@ struct NavBarTest: View {
 struct NavBarTest_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            NavBarTest(periodModel: PeriodModel.periodOneExample)
+            DestinationView(periodModel: PeriodModel.periodOneExample)
             Spacer()
         }
     }
