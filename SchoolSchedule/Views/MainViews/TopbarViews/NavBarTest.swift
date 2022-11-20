@@ -11,17 +11,29 @@ struct NavBarTest: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    var periodModel: PeriodModel
+    
     var body: some View {
         VStack {
             TopNavBar {
-                Text("test")
-                    .foregroundColor(.white)
-
+                VStack {
+                    Text(periodModel.subject.name)
+                        .font(.title3.weight(.semibold))
+                    
+                    HStack(spacing: 2) {
+                        Text(periodModel.startTimeParsed, format: .dateTime.hour().minute())
+                        Text("-")
+                        Text(periodModel.endTimeParsed, format: .dateTime.hour().minute())
+                        Text(" ")
+                        Text("Room " + periodModel.subject.roomNumber)
+                    }
+                    .font(.subheadline.weight(.semibold))     
+                }
+                .foregroundColor(.white)
             }
             
             Spacer()
         }
-        .background(.red)
         .navigationBarHidden(true)
 
         
@@ -32,7 +44,7 @@ struct NavBarTest: View {
 struct NavBarTest_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            NavBarTest()
+            NavBarTest(periodModel: PeriodModel.periodOneExample)
             Spacer()
         }
     }

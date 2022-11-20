@@ -57,7 +57,7 @@ struct SlideUpView: View {
                 Section {
                     ForEach(filteredCourses.sorted { $0.startTimeParsed.timeIntervalSinceReferenceDate < $1.startTimeParsed.timeIntervalSinceReferenceDate || $0.periodNumber < $1.periodNumber}) { period in
                             ZStack {
-                                NavigationLink(destination: NavBarTest()) {
+                                NavigationLink(destination: NavBarTest(periodModel: period)) {
                                     Rectangle().opacity(0.0)
                                 }
                                 .padding(.trailing, 20)

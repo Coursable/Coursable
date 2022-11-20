@@ -17,13 +17,16 @@ struct MainPage_FirstLayerView: View {
                 Color("Background")
                     .ignoresSafeArea()
                 
+                
                 VStack {
+//                    TopbarText()
+//                        .foregroundColor(.white)
+//                        .padding()
                     TopNavBar(showBackButton: false) {
                         HStack {
                             Spacer()
                             TopbarText()
                                 .foregroundColor(.white)
-                                .padding()
                             Spacer()
                         }
                     }

@@ -32,7 +32,7 @@ struct TopNavBarViewModifier: ViewModifier {
         }
         .background {
             Color("Background").ignoresSafeArea(edges: .top)
-                .frame(width: UIScreen.main.bounds.width * 10)
+                .frame(width: UIScreen.main.bounds.width * 10) //extend the frame to prevent background clashing
         }
 
     }
