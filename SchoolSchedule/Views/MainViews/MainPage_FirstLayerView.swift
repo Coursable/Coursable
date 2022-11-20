@@ -19,16 +19,16 @@ struct MainPage_FirstLayerView: View {
                 
                 
                 VStack {
-//                    TopbarText()
-//                        .foregroundColor(.white)
-//                        .padding()
                     TopNavBar(showBackButton: false) {
+
                         HStack {
                             Spacer()
                             TopbarText()
                                 .foregroundColor(.white)
                             Spacer()
                         }
+
+                        
                     }
                     
                     ProgressRingView()
@@ -45,6 +45,7 @@ struct MainPage_FirstLayerView: View {
             }
         
         }
+
     }
 }
 

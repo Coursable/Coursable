@@ -148,9 +148,18 @@ class PeriodViewModel: ObservableObject {
             //completedClassesToday = []
             withAnimation {
                 for period in todaysScheduleCheck.periods {
-                    if (!completedClassesToday.contains(where: { $0.id == period.id })) {
-                        if (period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate) {
+                    if (period.fullEndTimeParsed.timeIntervalSinceReferenceDate < Date().timeIntervalSinceReferenceDate) {
+                        if (!completedClassesToday.contains(where: { $0.id == period.id })) {
                             completedClassesToday.append(period)
+                        }
+                    }
+                    else {
+                        if completedClassesToday.contains(where: { $0.id == period.id }) {
+                            
+                            if let removeIndex =  completedClassesToday.firstIndex(where: { $0.id == period.id }) {
+                                completedClassesToday.remove(at: removeIndex)
+                            }
+                            
                         }
                     }
                 }

@@ -37,8 +37,7 @@ struct SlideUpView: View {
         
         
         SlideUp(startingOffset: UIScreen.main.bounds.height*0.35, endingOffset: UIScreen.main.bounds.height*0.16, backgroundColor: .white, barColor: .secondary) {
-            
-            
+
             Form {
                 Section("Progress") {
 
