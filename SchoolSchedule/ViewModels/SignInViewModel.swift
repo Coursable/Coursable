@@ -20,18 +20,22 @@ class SignInViewModel: ObservableObject {
     }
     
     
-    func signIn(email: String, password: String) async -> Bool {
+    enum signInCodes {
+        case success
+        case invalidEmailPassword
+    }
+    
+    func signIn(email: String, password: String) async -> signInCodes {
         do {
             try await auth.signIn(withEmail: email, password: password)
             
             DispatchQueue.main.async {
                 self.isSignedIn = true
-                print(self.isSignedIn)
             }
             
             print("Successfully logged in under user: \(email)")
             
-            return true
+            return signInCodes.success
             
         } catch {
             DispatchQueue.main.async {
@@ -39,29 +43,34 @@ class SignInViewModel: ObservableObject {
             }
             
             print(error.localizedDescription)
-            return false
+            
+            return signInCodes.invalidEmailPassword
         }
-        
-        
-        
-//        auth.signIn(withEmail: email, password: password) { [weak self] result, error in
-//            if let error = error {
-//                print(error.localizedDescription)
-//                DispatchQueue.main.async {
-//                    self?.didSucceed = false
-//                }
-//
-//            }
-//            else {
-//                DispatchQueue.main.async {
-//                    self?.didSucceed = true
-//                    self?.isSignedIn = true
-//                }
-//            }
-//
-//
-//        }
-        
-        
+    }
+    
+    
+    func signOut() {
+        do {
+            try auth.signOut()
+            
+            DispatchQueue.main.async {
+                self.isSignedIn = false
+            }
+            
+            print("Successfully logged out user")
+            
+            return
+            
+        } catch {
+            DispatchQueue.main.async {
+                self.isSignedIn = false
+            }
+            
+            print(error.localizedDescription)
+            
+            return
+        }
+
+            
     }
 }

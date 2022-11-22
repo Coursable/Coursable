@@ -14,10 +14,20 @@ struct MainSignInView: View {
         VStack {
             if signInViewModel.isSignedIn {
                 
-                MainPage()
+                //MainPage()
+                VStack {
+                    Text("Your logged in")
+                    Button {
+                        signInViewModel.signOut()
+                    } label: {
+                        Text("Sign Out")
+                    }
+
+                }
+                
             }
             else {
-                LoggingInViewHandler()
+                LoginView()
             }
         }
         .onAppear {

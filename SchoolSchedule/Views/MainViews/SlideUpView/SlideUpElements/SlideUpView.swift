@@ -42,9 +42,9 @@ struct SlideUpView: View {
                 Section("Progress") {
 
                     VStack(spacing: 20) {
-                        if isTodaysScheduleValid {
+                        //if isTodaysScheduleValid {
                             ProgressBarStatsView()
-                        }
+                        //}
                         
                         
                         StatsCardView()

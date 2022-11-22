@@ -27,6 +27,7 @@
 		DF616D46292C454800727CCB /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D45292C454800727CCB /* SignInViewModel.swift */; };
 		DF616D4A292C49B600727CCB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF616D49292C49B600727CCB /* GoogleService-Info.plist */; };
 		DF616D4E292C559200727CCB /* MainSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D4D292C559200727CCB /* MainSignInView.swift */; };
+		DF616D50292D1AA500727CCB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D4F292D1AA500727CCB /* LoginView.swift */; };
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4102929B83200DB0364 /* TopNavBar.swift */; };
 		DF92E4132929B9D100DB0364 /* TopNavBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */; };
@@ -76,6 +77,7 @@
 		DF616D45292C454800727CCB /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		DF616D49292C49B600727CCB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF616D4D292C559200727CCB /* MainSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignInView.swift; sourceTree = "<group>"; };
+		DF616D4F292D1AA500727CCB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF92E4102929B83200DB0364 /* TopNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBar.swift; sourceTree = "<group>"; };
 		DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBarViewModifier.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				DF616D43292C453800727CCB /* LoggingInViewHandler.swift */,
 				DF616D4D292C559200727CCB /* MainSignInView.swift */,
+				DF616D4F292D1AA500727CCB /* LoginView.swift */,
 			);
 			path = SignInViews;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				DF92E4132929B9D100DB0364 /* TopNavBarViewModifier.swift in Sources */,
 				DF9BD56328E3A59600C60E12 /* ProgressText.swift in Sources */,
 				DFA463A42921960900FC826B /* CourseInfoView.swift in Sources */,
+				DF616D50292D1AA500727CCB /* LoginView.swift in Sources */,
 				DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */,
 				DF9BD55628E2489300C60E12 /* NoEventsTopbarText.swift in Sources */,
 				DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */,
