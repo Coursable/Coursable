@@ -11,7 +11,7 @@ struct MainPage_FirstLayerView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             ZStack {
                 
                 Color("Background")
@@ -44,7 +44,7 @@ struct MainPage_FirstLayerView: View {
                 .foregroundColor(.white)
             }
         
-        }
+        //}
 
     }
 }

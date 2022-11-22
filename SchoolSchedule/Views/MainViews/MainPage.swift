@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MainPage: View {
     var body: some View {
-        NavigationView {
+        //NavigationView {
             ZStack {
                 MainPage_FirstLayerView()
                 SlideUpView()
             }
-        }
+        //}
     }
 }
 

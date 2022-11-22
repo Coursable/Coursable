@@ -13,38 +13,79 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     @State var isLoading: Bool = false
-    
-    @State var displayErrorMessage: Bool = false
+    @State var hasError: Bool = false
     @State var errorMessage = ""
     
     var body: some View {
         ZStack {
             VStack {
-                TopNavBar(showBackButton: false) {
-                    VStack {
-                        Text("Login")
-                            .foregroundColor(.white)
-                            .font(.title3.weight(.semibold))
-                    }.ignoresSafeArea(edges: .top)
-                    
+                HStack {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Welcome")
+                            .fontWeight(.bold)
+                            .font(.title)
+                            
+                        Text("To begin using the app, please sign in")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding()
+                    Spacer()
                 }
                 
                 VStack {
-                    TextField("Email", text: $email)
+                    Group {
+                        HStack {
+                            TextField("Email", text: $email)
+
+                            if hasError {
+                                Image(systemName: "exclamationmark.triangle")
+                                    .foregroundColor(.red)
+                            }
+                            
+                        }
+                        .padding([.top, .bottom], 5)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .autocorrectionDisabled(true)
                         .autocapitalization(.none)
                         .cornerRadius(16)
-                    SecureField("Password", text: $password)
-                        .padding()
-                        .background(Color(.secondarySystemBackground))
-                        .autocorrectionDisabled(true)
-                        .autocapitalization(.none)
-                        .cornerRadius(16)
+                        
+                        
+                        VStack {
+                            HStack {
+                                SecureField("Password", text: $password)
+
+                                
+                                if hasError {
+                                    Image(systemName: "exclamationmark.triangle")
+                                        .foregroundColor(.red)
+                                }
+                                
+                                    
+                            }
+                            .padding([.top, .bottom], 5)
+                            .padding()
+                            .background(Color(.secondarySystemBackground))
+                            .autocorrectionDisabled(true)
+                            .autocapitalization(.none)
+                            .cornerRadius(16)
+                            .padding(.top, 17)
+                            
+                            
+                            HStack {
+                                Spacer()
+                                Text("Forgot Password?")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+
+                    
                     
                     Button {
-                        if !email.isEmpty && !password.isEmpty {
+                        if !email.isEmpty && !password.isEmpty && !isLoading {
                             Task {
                                 withAnimation {
                                     isLoading = true
@@ -54,14 +95,19 @@ struct LoginView: View {
                                 case .invalidEmailPassword:
                                     withAnimation(.linear(duration: 0.2)) {
                                         errorMessage = "Invalid Email or Password"
-                                        displayErrorMessage = true
+                                        hasError = true
                                     }
                                 case .success:
                                     withAnimation(.linear(duration: 0.2)) {
                                         errorMessage = ""
-                                        displayErrorMessage = false
+                                        hasError = false
                                     }
                                 }
+                                
+                                Task {
+                                    await resetErrorText()
+                                }
+                                    
 
                                 withAnimation {
                                     isLoading = false
@@ -70,41 +116,83 @@ struct LoginView: View {
                             }
                         }
                     } label: {
-                        Text("Sign In")
-                            .foregroundColor(.white)
-                            .padding()
-                            .padding([.leading, .trailing], 100)
-                            .background(Color("Background"))
-                            .cornerRadius(16)
+                        
+                        Group {
+                            if !isLoading {
+                                Text("Sign In")
+                                    .fontWeight(.semibold)
+                                    .font(.title2)
+                            }
+                            else {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            }
+                            
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: UIScreen.main.bounds.width*0.9, height: 65)
+                        .background(Color("Background"))
+                        .opacity(isLoading ? 0.6 : 1)
+                        .cornerRadius(16)
                     }
                     .padding(.top, 50)
                     
-                    Button {
-                        
-                    } label: {
-                        Text("Don't have an account? Sign up")
-                    }
-                    .padding(.top, 10)
-
                     
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                        .opacity(displayErrorMessage ? 1 : 0)
-                        .padding(.top, 10)
+                    HStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(height: 1)
+                            .foregroundColor(.secondary)
+                        
+                        Text("or sign in with")
+                            .foregroundColor(.secondary)
+                        
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(height: 1)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.top)
+                    
+                    HStack {
+                        SignInWithApple()
+                            .cornerRadius(16)
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.9, height: 60)
+                    .padding(.top)
+                    
+                    
+                    HStack(spacing: 0) {
+                        Text("Don't have an account? ")
+                            .foregroundColor(.secondary)
+                        Text("Sign Up")
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("Background"))
+                    }
+                    .padding(.top)
+                    
+                    
+
                     
                     
                     
                     
                     Spacer()
+                    
+                    
                 }
                 .padding()
                 
      
             }
-            if isLoading {
-                ProgressView()
-            }
             
+        }
+        
+    }
+    
+    @Sendable private func resetErrorText() async {
+        try? await Task.sleep(for: .seconds(3))
+        
+        withAnimation {
+            errorMessage = ""
         }
         
     }
@@ -113,5 +201,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(SignInViewModel())
     }
 }

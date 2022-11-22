@@ -11,27 +11,30 @@ struct MainSignInView: View {
     @EnvironmentObject var signInViewModel: SignInViewModel
     
     var body: some View {
-        VStack {
-            if signInViewModel.isSignedIn {
-                
-                //MainPage()
-                VStack {
-                    Text("Your logged in")
-                    Button {
-                        signInViewModel.signOut()
-                    } label: {
-                        Text("Sign Out")
-                    }
+        NavigationView {
+            VStack {
+                if signInViewModel.isSignedIn {
+                    
+                    //MainPage()
+                    VStack {
+                        //MainPage()
+                        Text("Your logged in")
+                        Button {
+                            signInViewModel.signOut()
+                        } label: {
+                            Text("Sign Out")
+                        }
 
+                    }
+                    
                 }
-                
+                else {
+                    LoginView()
+                }
             }
-            else {
-                LoginView()
-            }
+            .onAppear {
+                signInViewModel.isSignedIn = signInViewModel.signedIn
         }
-        .onAppear {
-            signInViewModel.isSignedIn = signInViewModel.signedIn
         }
     }
 }
