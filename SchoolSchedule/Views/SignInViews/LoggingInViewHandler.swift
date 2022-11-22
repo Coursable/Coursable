@@ -13,6 +13,8 @@ struct LoggingInViewHandler: View {
     @State var email = ""
     @State var password = ""
     
+    @State var displayErrorMessage: Bool = false
+    
     var body: some View {
         VStack {
             TextField("Email", text: $email)
@@ -27,7 +29,17 @@ struct LoggingInViewHandler: View {
                 .autocapitalization(.none)
             
             Button {
-                signInViewModel.signIn(email: email, password: password)
+                Task {
+                    
+                    await signInViewModel.signIn(email: email, password: password) //{
+                    
+                       // withAnimation(.linear(duration: 0.2)) {
+                        //    displayErrorMessage = true
+                        //}
+                        
+                    //}
+                }
+                print(signInViewModel.signedIn)
             } label: {
                 Text("Sign In")
                     .foregroundColor(.white)
@@ -35,9 +47,19 @@ struct LoggingInViewHandler: View {
                     .background(.blue)
                     .cornerRadius(16)
             }
-
+            Text("Unable to log in")
+                .foregroundColor(.red)
+                .opacity(displayErrorMessage ? 1 : 0)
+            
+            Text(String(signInViewModel.isSignedIn))
+            Text(String(signInViewModel.signedIn))
+        }
+        .onAppear {
+            signInViewModel.isSignedIn = signInViewModel.signedIn
+            print("refershed")
         }
     }
+
 }
 
 struct LoggingInViewHandler_Previews: PreviewProvider {

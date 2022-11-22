@@ -19,7 +19,7 @@ struct SchoolScheduleApp: App {
         
         
         WindowGroup {
-            LoggingInViewHandler()
+            MainSignInView()
                 .environmentObject(periodViewModel)
                 .environmentObject(signInViewModel)
                 .preferredColorScheme(.light)
