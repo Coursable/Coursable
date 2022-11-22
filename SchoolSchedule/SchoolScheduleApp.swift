@@ -6,18 +6,32 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct SchoolScheduleApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @StateObject var periodViewModel = PeriodViewModel()
+    @StateObject var signInViewModel = SignInViewModel()
     
     var body: some Scene {
         
         
         WindowGroup {
-            MainView()
+            LoggingInViewHandler()
                 .environmentObject(periodViewModel)
+                .environmentObject(signInViewModel)
                 .preferredColorScheme(.light)
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        FirebaseApp.configure()
+        
+        return true
     }
 }

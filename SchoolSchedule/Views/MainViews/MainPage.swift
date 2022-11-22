@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct MainPage: View {
     var body: some View {
         NavigationView {
             ZStack {
@@ -20,7 +20,7 @@ struct MainView: View {
 
 struct SecondaryMain_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainPage()
             .environmentObject(PeriodViewModel())
     }
 }
