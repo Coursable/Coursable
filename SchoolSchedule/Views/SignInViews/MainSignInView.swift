@@ -15,17 +15,16 @@ struct MainSignInView: View {
             VStack {
                 if signInViewModel.isSignedIn {
                     
-                    //MainPage()
-                    VStack {
-                        //MainPage()
-                        Text("Your logged in")
-                        Button {
-                            signInViewModel.signOut()
-                        } label: {
-                            Text("Sign Out")
-                        }
+                    MainPage()
+                    //VStack {
+//                        Text("Your logged in")
+//                        Button {
+//                            signInViewModel.signOut()
+//                        } label: {
+//                            Text("Sign Out")
+//                        }
 
-                    }
+                    //}
                     
                 }
                 else {

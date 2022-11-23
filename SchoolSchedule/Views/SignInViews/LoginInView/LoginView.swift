@@ -60,7 +60,10 @@ struct LoginView: View {
                             .foregroundColor(.secondary)
                         Text("Sign Up")
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("Background"))
+                            .foregroundStyle(LinearGradient.bluePink)
+                            //.foregroundColor(Color("Background"))
+                            
+                            
                     }
                     .padding(.top)
                     
@@ -74,6 +77,10 @@ struct LoginView: View {
             }
             
         }
+        .onAppear {
+            UIWindow().window?.windowScene?.statusBarManager?.statusBarStyle
+        }
+        
         
     }
 }

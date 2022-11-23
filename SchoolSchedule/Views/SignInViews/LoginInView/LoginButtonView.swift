@@ -60,9 +60,13 @@ struct LoginButtonView: View {
             }
             .foregroundColor(.white)
             .frame(width: UIScreen.main.bounds.width*0.9, height: 65)
-            .background(Color("Background"))
+            
+            .background(LinearGradient.bluePink)
+            //.backgroundStyle(LinearGradient.bluePink)
+            //C olor("Background")
             .opacity(isLoading ? 0.6 : 1)
             .cornerRadius(16)
+            
         }
     }
 }

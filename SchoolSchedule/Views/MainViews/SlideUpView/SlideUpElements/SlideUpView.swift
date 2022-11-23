@@ -87,9 +87,15 @@ struct SlideUpView: View {
 struct SlideUpView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SlideUpView()
-                .background(.secondary)
-                .environmentObject(PeriodViewModel())
+            ZStack {
+                MainPage_FirstLayerView()
+                    .environmentObject(PeriodViewModel())
+                SlideUpView()
+                    //.background(.secondary)
+                
+                    .environmentObject(PeriodViewModel())
+            }
+            
         }
     }
 }

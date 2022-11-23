@@ -11,7 +11,7 @@ struct MainPage_FirstLayerView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
     
     var body: some View {
-        //NavigationView {
+        NavigationView {
             ZStack {
                 
                 Color("Background")
@@ -19,17 +19,16 @@ struct MainPage_FirstLayerView: View {
                 
                 
                 VStack {
-                    TopNavBar(showBackButton: false) {
+                    
 
-                        HStack {
-                            Spacer()
-                            TopbarText()
-                                .foregroundColor(.white)
-                            Spacer()
-                        }
-
-                        
+                    HStack {
+                        Spacer()
+                        TopbarText()
+                            .foregroundColor(.white)
+                        Spacer()
                     }
+                    .padding(.top)
+
                     
                     ProgressRingView()
                         .onReceive(periodViewModel.timer) { input in
@@ -44,7 +43,7 @@ struct MainPage_FirstLayerView: View {
                 .foregroundColor(.white)
             }
         
-        //}
+        }
 
     }
 }
