@@ -33,51 +33,49 @@ struct SlideUpView: View {
     
     
     var body: some View {
-        
-        
-        
-        SlideUp(startingOffset: UIScreen.main.bounds.height*0.4, endingOffset: UIScreen.main.bounds.height*0.09, backgroundColor: .white, barColor: .secondary) {
-            Form {
-                Section("Progress") {
 
-                    VStack(spacing: 20) {
-                        //if isTodaysScheduleValid {
+        GeometryReader { geometry in
+            SlideUp(startingOffset: geometry.size.height*0.36, endingOffset: geometry.size.height*0.14, backgroundColor: .white, barColor: .secondary, screenHeight: geometry.size.height) {
+                Form {
+                    Section("Progress") {
+
+                        VStack(spacing: 20) {
                             ProgressBarStatsView()
-                        //}
+                            StatsCardView()
+                        }
+                        .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
 
 
-                        StatsCardView()
                     }
-                    .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
-
-
-                }
-                Section {
-                    ForEach(filteredCourses.sorted { $0.startTimeParsed.timeIntervalSinceReferenceDate < $1.startTimeParsed.timeIntervalSinceReferenceDate || $0.periodNumber < $1.periodNumber}) { period in
-                            ZStack {
-                                NavigationLink(destination: DestinationView(periodModel: period)) {
-                                    Rectangle().opacity(0.0)
+                    Section {
+                        ForEach(filteredCourses.sorted { $0.startTimeParsed.timeIntervalSinceReferenceDate < $1.startTimeParsed.timeIntervalSinceReferenceDate || $0.periodNumber < $1.periodNumber}) { period in
+                                ZStack {
+                                    NavigationLink(destination: DestinationView(periodModel: period)) {
+                                        Rectangle().opacity(0.0)
+                                    }
+                                    .padding(.trailing, 20)
+                                    CourseCardView(period: period)
                                 }
-                                .padding(.trailing, 20)
-                                CourseCardView(period: period)
-                            }
-                            .transition(AnyTransition.scale)
-                            .listStyle(InsetGroupedListStyle())
-                            .listRowBackground(Color(UIColor.clear))
-                            .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.bottom, 10)
-                            .listRowSeparator(.hidden)
+                                .transition(AnyTransition.scale)
+                                .listStyle(InsetGroupedListStyle())
+                                .listRowBackground(Color(UIColor.clear))
+                                .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
+                                .buttonStyle(PlainButtonStyle())
+                                .padding(.bottom, 10)
+                                .listRowSeparator(.hidden)
+                        }
+                    } header: {
+                        FilterTopBarSectionView(hideCompletedCourses: $hideCompletedCourses)
+
                     }
-                } header: {
-                    FilterTopBarSectionView(hideCompletedCourses: $hideCompletedCourses)
 
                 }
+                .scrollContentBackground(.hidden)
+                .background(.white)
 
             }
-            .scrollContentBackground(.hidden)
-            .background(.white)
         }
+        
     }
     
 

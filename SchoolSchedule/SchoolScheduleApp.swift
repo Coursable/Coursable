@@ -19,10 +19,12 @@ struct SchoolScheduleApp: App {
         
         
         WindowGroup {
-            MainSignInView()
-                .environmentObject(periodViewModel)
-                .environmentObject(signInViewModel)
+            NavigationView {
+                MainSignInView()
+                    .environmentObject(periodViewModel)
+                    .environmentObject(signInViewModel)
                 .preferredColorScheme(.light)
+            }
         }
     }
 }

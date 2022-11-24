@@ -9,13 +9,12 @@ import SwiftUI
 
 struct MainPage: View {
     var body: some View {
-        NavigationView {
-            ZStack {
-                MainPage_FirstLayerView()
-                SlideUpView()
-            }
+        ZStack {
+            MainPage_FirstLayerView()
+            SlideUpView()
+                .ignoresSafeArea() //remove the extra space from navigation bar
         }
-        
+
     }
 }
 

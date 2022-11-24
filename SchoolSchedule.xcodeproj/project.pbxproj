@@ -153,7 +153,6 @@
 				DF616D60292D903A00727CCB /* SignUpView */,
 				DF616D55292D8D5100727CCB /* LoginInView */,
 				DF616D4D292C559200727CCB /* MainSignInView.swift */,
-				DF616D51292D76E400727CCB /* SignInWithApple.swift */,
 			);
 			path = SignInViews;
 			sourceTree = "<group>";
@@ -161,6 +160,7 @@
 		DF616D55292D8D5100727CCB /* LoginInView */ = {
 			isa = PBXGroup;
 			children = (
+				DF616D51292D76E400727CCB /* SignInWithApple.swift */,
 				DF616D4F292D1AA500727CCB /* LoginView.swift */,
 				DF616D56292D8D7200727CCB /* EmailCardView.swift */,
 				DF616D58292D8E0600727CCB /* PasswordCardView.swift */,

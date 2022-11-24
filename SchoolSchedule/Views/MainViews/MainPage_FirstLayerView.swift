@@ -34,7 +34,7 @@ struct MainPage_FirstLayerView: View {
             }
             .foregroundColor(.white)
             .background(Color("Background"))
-
+            
         //}
 
     }

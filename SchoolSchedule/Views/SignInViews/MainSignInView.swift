@@ -11,11 +11,11 @@ struct MainSignInView: View {
     @EnvironmentObject var signInViewModel: SignInViewModel
     
     var body: some View {
-        VStack {
+        //VStack {
             if signInViewModel.isSignedIn {
                 
-                MainPage()
-                    .transition(.move(edge: .trailing))
+                    MainPage()
+                    
                     //.transition(.slide)
 //                    VStack {
 //                        Text("Your logged in")
@@ -31,12 +31,12 @@ struct MainSignInView: View {
             else {
                 LoginView()
             }
-        }
-        .onAppear {
+        //}
+        //.onAppear {
             //signInViewModel.isSignedIn = signInViewModel.signedIn
             
             
-        }
+        //}
     }
 }
 

@@ -10,8 +10,8 @@ import SwiftUI
 struct LoginView: View {
     
     @EnvironmentObject var signInViewModel: SignInViewModel
-    @State var email = ""
-    @State var password = ""
+    @State var email = "a.reitman@icloud.com"
+    @State var password = "Chess123"
     @State var isLoading: Bool = false
     @State var hasError: Bool = false
     @State var isSecured: Bool = true
@@ -153,6 +153,7 @@ struct LoginView: View {
         }
         .background(Color("Background"))
         .scrollDisabled(true)
+        
 
     }
 
