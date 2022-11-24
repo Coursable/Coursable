@@ -11,39 +11,31 @@ struct MainPage_FirstLayerView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
     
     var body: some View {
-        NavigationView {
-            ZStack {
+        //NavigationView {
+            VStack {
                 
-                Color("Background")
-                    .ignoresSafeArea()
-                
-                
-                VStack {
-                    
-
-                    HStack {
-                        Spacer()
-                        TopbarText()
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
-                    .padding(.top)
-
-                    
-                    ProgressRingView()
-                        .onReceive(periodViewModel.timer) { input in
-                            periodViewModel.updateTime(input: input)
-                        }
+                HStack {
                     Spacer()
-                    
-                    
-
-                    
+                    TopbarText()
+                        .foregroundColor(.white)
+                    Spacer()
                 }
-                .foregroundColor(.white)
+
+                
+                ProgressRingView()
+                    .onReceive(periodViewModel.timer) { input in
+                        periodViewModel.updateTime(input: input)
+                    }
+                Spacer()
+                
+                
+
+                
             }
-        
-        }
+            .foregroundColor(.white)
+            .background(Color("Background"))
+
+        //}
 
     }
 }

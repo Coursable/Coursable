@@ -62,8 +62,6 @@ struct LoginButtonView: View {
             .frame(width: UIScreen.main.bounds.width*0.9, height: 65)
             
             .background(LinearGradient.bluePink)
-            //.backgroundStyle(LinearGradient.bluePink)
-            //C olor("Background")
             .opacity(isLoading ? 0.6 : 1)
             .cornerRadius(16)
             

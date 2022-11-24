@@ -30,7 +30,10 @@ class SignInViewModel: ObservableObject {
             try await auth.signIn(withEmail: email, password: password)
             
             DispatchQueue.main.async {
-                self.isSignedIn = true
+                withAnimation {
+                    self.isSignedIn = true
+                }
+                
             }
             
             print("Successfully logged in under user: \(email)")
@@ -39,7 +42,9 @@ class SignInViewModel: ObservableObject {
             
         } catch {
             DispatchQueue.main.async {
-                self.isSignedIn = false
+                withAnimation {
+                    self.isSignedIn = false
+                }
             }
             
             print(error.localizedDescription)
@@ -54,7 +59,9 @@ class SignInViewModel: ObservableObject {
             try auth.signOut()
             
             DispatchQueue.main.async {
-                self.isSignedIn = false
+                withAnimation {
+                    self.isSignedIn = false
+                }
             }
             
             print("Successfully logged out user")
@@ -63,7 +70,9 @@ class SignInViewModel: ObservableObject {
             
         } catch {
             DispatchQueue.main.async {
-                self.isSignedIn = false
+                withAnimation {
+                    self.isSignedIn = false
+                }
             }
             
             print(error.localizedDescription)

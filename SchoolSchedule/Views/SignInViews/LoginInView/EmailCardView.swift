@@ -13,8 +13,14 @@ struct EmailCardView: View {
     
     var body: some View {
         HStack {
-            TextField("Email", text: $email)
+            TextField(text: $email) {
+                Text("Email")
+                    .foregroundColor(Color(.gray))
+                
 
+            }
+            .foregroundColor(.white)
+            
             if hasError {
                 Image(systemName: "exclamationmark.triangle")
                     .foregroundColor(.red)
@@ -24,13 +30,14 @@ struct EmailCardView: View {
                 email = ""
             } label: {
                 Image(systemName: "multiply.circle.fill")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color(.gray))
             }
+            
             
         }
         .padding([.top, .bottom], 5)
         .padding()
-        .background(Color(.secondarySystemBackground))
+        .background(.secondary)
         .autocorrectionDisabled(true)
         .autocapitalization(.none)
         .cornerRadius(16)

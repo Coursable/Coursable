@@ -13,11 +13,10 @@ struct TopInfoLoginView: View {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Welcome")
                     .fontWeight(.bold)
-                    .font(.title)
+                    .font(.largeTitle)
                     
                 Text("To begin using the app, please sign in")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
             }
             .padding()
             Spacer()

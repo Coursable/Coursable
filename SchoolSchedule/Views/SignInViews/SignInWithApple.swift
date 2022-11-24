@@ -16,7 +16,7 @@ struct SignInWithApple: View {
         } onCompletion: { result in
             
         }
-        .signInWithAppleButtonStyle(.black)
+        .signInWithAppleButtonStyle(.white)
         .font(.subheadline)
 
     }

@@ -16,10 +16,18 @@ struct PasswordCardView: View {
         HStack {
             Group {
                 if isSecured {
-                    SecureField("Password", text: $password)
+                    SecureField(text: $password) {
+                        Text("Password")
+                            .foregroundColor(.gray)
+                    }
+                    .foregroundColor(.white)
                 }
                 else {
-                    TextField("Password", text: $password)
+                    TextField(text: $password) {
+                        Text("Password")
+                            .foregroundColor(.gray)
+                    }
+                    .foregroundColor(.white)
                 }
             }
             
@@ -43,7 +51,7 @@ struct PasswordCardView: View {
                         Image(systemName: "eye.slash")
                     }
                 }
-                .foregroundColor(.secondary)
+                .foregroundColor(Color(.gray))
                     
             }
 
@@ -53,7 +61,7 @@ struct PasswordCardView: View {
         }
         .padding([.top, .bottom], 5)
         .padding()
-        .background(Color(.secondarySystemBackground))
+        .background(.secondary)
         .autocorrectionDisabled(true)
         .autocapitalization(.none)
         .cornerRadius(16)

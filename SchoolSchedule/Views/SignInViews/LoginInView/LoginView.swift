@@ -20,21 +20,27 @@ struct LoginView: View {
         ZStack {
             VStack {
                 TopInfoLoginView()
+                    .foregroundColor(.white)
+                    .padding(.top, 30)
                 
                 VStack {
                     Group {
                         EmailCardView(email: $email, hasError: hasError)
+                            .fontWeight(.semibold)
                         
                         
                         VStack {
                             PasswordCardView(isSecured: $isSecured, password: $password, hasError: hasError)
+                                .fontWeight(.semibold)
                             
                             
                             HStack {
                                 Spacer()
                                 Text("Forgot Password?")
+                                    .underline()
                                     .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.white)
+                                    .fontWeight(.semibold)
                             }
                         }
                     }
@@ -45,6 +51,7 @@ struct LoginView: View {
                     
                     
                     OtherOptionsDividerView()
+                        .foregroundColor(.white)
                         .padding(.top)
                     
                     HStack {
@@ -57,15 +64,17 @@ struct LoginView: View {
                     
                     HStack(spacing: 0) {
                         Text("Don't have an account? ")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.white)
                         Text("Sign Up")
                             .fontWeight(.semibold)
-                            .foregroundStyle(LinearGradient.bluePink)
-                            //.foregroundColor(Color("Background"))
+                            .foregroundStyle(.white)
+                            .underline()
                             
                             
                     }
                     .padding(.top)
+
+
                     
                     Spacer()
                     
@@ -77,9 +86,9 @@ struct LoginView: View {
             }
             
         }
-        .onAppear {
-            UIWindow().window?.windowScene?.statusBarManager?.statusBarStyle
-        }
+        
+        .background(Color("Background"))
+        
         
         
     }

@@ -36,8 +36,7 @@ struct SlideUpView: View {
         
         
         
-        SlideUp(startingOffset: UIScreen.main.bounds.height*0.35, endingOffset: UIScreen.main.bounds.height*0.16, backgroundColor: .white, barColor: .secondary) {
-
+        SlideUp(startingOffset: UIScreen.main.bounds.height*0.4, endingOffset: UIScreen.main.bounds.height*0.09, backgroundColor: .white, barColor: .secondary) {
             Form {
                 Section("Progress") {
 
@@ -45,13 +44,13 @@ struct SlideUpView: View {
                         //if isTodaysScheduleValid {
                             ProgressBarStatsView()
                         //}
-                        
-                        
+
+
                         StatsCardView()
                     }
                     .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
-                    
-                    
+
+
                 }
                 Section {
                     ForEach(filteredCourses.sorted { $0.startTimeParsed.timeIntervalSinceReferenceDate < $1.startTimeParsed.timeIntervalSinceReferenceDate || $0.periodNumber < $1.periodNumber}) { period in
@@ -86,16 +85,8 @@ struct SlideUpView: View {
 
 struct SlideUpView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            ZStack {
-                MainPage_FirstLayerView()
-                    .environmentObject(PeriodViewModel())
-                SlideUpView()
-                    //.background(.secondary)
-                
-                    .environmentObject(PeriodViewModel())
-            }
-            
-        }
+        SlideUpView()
+            .background(.secondary)
+            .environmentObject(PeriodViewModel())
     }
 }

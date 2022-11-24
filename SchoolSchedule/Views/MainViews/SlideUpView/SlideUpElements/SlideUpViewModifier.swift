@@ -47,7 +47,7 @@ struct SlideUpViewModifier: ViewModifier {
                 }
                 .background(backgroundColorValue)
                 .cornerRadius(30)
-                .frame(minWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height)
+                //.frame(minWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height)
             }
             
             

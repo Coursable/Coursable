@@ -12,14 +12,11 @@ struct OtherOptionsDividerView: View {
         HStack {
             RoundedRectangle(cornerRadius: 20)
                 .frame(height: 1)
-                .foregroundColor(.secondary)
             
             Text("or sign in with")
-                .foregroundColor(.secondary)
             
             RoundedRectangle(cornerRadius: 20)
                 .frame(height: 1)
-                .foregroundColor(.secondary)
         }
     }
 }
