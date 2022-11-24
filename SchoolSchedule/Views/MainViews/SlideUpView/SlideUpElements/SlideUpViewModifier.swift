@@ -53,7 +53,7 @@ struct SlideUpViewModifier: ViewModifier {
                     }
                     .background(backgroundColorValue)
                     .cornerRadius(30)
-                }.frame(height: UIScreen.main.bounds.height, alignment: .bottom)
+                }.frame(height: UIScreen.main.bounds.height + 100, alignment: .bottom) //extend the view so the user can't see the bottom of the view
                 
                 
             }

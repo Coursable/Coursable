@@ -11,7 +11,7 @@ struct MainSignInView: View {
     @EnvironmentObject var signInViewModel: SignInViewModel
     
     var body: some View {
-        //VStack {
+        VStack {
             if signInViewModel.isSignedIn {
                 
                     MainPage()
@@ -31,12 +31,12 @@ struct MainSignInView: View {
             else {
                 LoginView()
             }
-        //}
-        //.onAppear {
+        }
+        .onAppear {
             //signInViewModel.isSignedIn = signInViewModel.signedIn
             
             
-        //}
+        }
     }
 }
 

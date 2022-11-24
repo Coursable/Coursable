@@ -23,7 +23,10 @@ struct SchoolScheduleApp: App {
                 MainSignInView()
                     .environmentObject(periodViewModel)
                     .environmentObject(signInViewModel)
-                .preferredColorScheme(.light)
+                    .preferredColorScheme(.light)
+                    .onReceive(periodViewModel.timer) { input in
+                        periodViewModel.updateTime(input: input)
+                    }
             }
         }
     }
