@@ -15,22 +15,23 @@ struct LoginView: View {
     @State var isLoading: Bool = false
     @State var hasError: Bool = false
     @State var isSecured: Bool = true
+    @FocusState var isUsernameInputActive: Bool
+    @FocusState var isPasswordInputActive: Bool
     
     var body: some View {
-        ZStack {
+        ScrollView {
             VStack {
                 TopInfoLoginView()
                     .foregroundColor(.white)
-                    .padding(.top, 30)
+                    .padding(.top, 20)
                 
                 VStack {
                     Group {
-                        EmailCardView(email: $email, hasError: hasError)
+                        EmailCardView(email: $email, focused: $isUsernameInputActive, hasError: hasError)
                             .fontWeight(.semibold)
-                        
-                        
+
                         VStack {
-                            PasswordCardView(isSecured: $isSecured, password: $password, hasError: hasError)
+                            PasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: hasError)
                                 .fontWeight(.semibold)
                             
                             
@@ -46,8 +47,62 @@ struct LoginView: View {
                     }
 
 
-                    LoginButtonView(email: email, password: password, isLoading: $isLoading, hasError: $hasError)
-                        .padding(.top, 50)
+
+                    Button {
+                        isUsernameInputActive = false
+                        isPasswordInputActive = false
+                        
+                        if !self.email.isEmpty && !self.password.isEmpty {
+                            Task {
+                                withAnimation {
+                                    isLoading = true
+                                }
+                                
+                                switch await signInViewModel.signIn(email: email, password: password) {
+                                case .invalidEmailPassword:
+                                    withAnimation(.linear(duration: 0.2)) {
+                                        hasError = true
+                                    }
+                                case .success:
+                                    withAnimation(.linear(duration: 0.2)) {
+                                        hasError = false
+                                    }
+                                }
+                                    
+                                withAnimation {
+                                    isLoading = false
+                                }
+                                
+                            }
+                        }
+                        else {
+                            withAnimation {
+                                hasError = true
+                            }
+                        }
+                    } label: {
+                        
+                        Group {
+                            if !isLoading {
+                                Text("Sign In")
+                                    .fontWeight(.semibold)
+                                    .font(.title2)
+                            }
+                            else {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            }
+                            
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: UIScreen.main.bounds.width*0.9, height: 65)
+                        
+                        .background(LinearGradient.bluePink)
+                        .opacity(isLoading ? 0.6 : 1)
+                        .cornerRadius(16)
+                        
+                    }
+                    .padding(.top, 50)
                     
                     
                     OtherOptionsDividerView()
@@ -86,12 +141,21 @@ struct LoginView: View {
             }
             
         }
-        
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+
+                Button("Done") {
+                    isUsernameInputActive = false
+                    isPasswordInputActive = false
+                }
+            }
+        }
         .background(Color("Background"))
-        
-        
-        
+        .scrollDisabled(true)
+
     }
+
 }
 
 struct LoginView_Previews: PreviewProvider {

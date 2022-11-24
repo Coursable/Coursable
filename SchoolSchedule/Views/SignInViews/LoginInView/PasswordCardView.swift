@@ -10,6 +10,7 @@ import SwiftUI
 struct PasswordCardView: View {
     @Binding var isSecured: Bool
     @Binding var password: String
+    var focused: FocusState<Bool>.Binding
     var hasError: Bool
     
     var body: some View {
@@ -30,6 +31,8 @@ struct PasswordCardView: View {
                     .foregroundColor(.white)
                 }
             }
+            .focused(focused)
+
             
                
 
@@ -69,8 +72,3 @@ struct PasswordCardView: View {
     }
 }
 
-struct PasswordCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PasswordCardView(isSecured: .constant(true), password: .constant(""), hasError: false)
-    }
-}

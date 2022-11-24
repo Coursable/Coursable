@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EmailCardView: View {
     @Binding var email: String
+    @FocusState var isInputActive: Bool
+    var focused: FocusState<Bool>.Binding
     var hasError: Bool
     
     var body: some View {
@@ -16,10 +18,11 @@ struct EmailCardView: View {
             TextField(text: $email) {
                 Text("Email")
                     .foregroundColor(Color(.gray))
-                
-
             }
             .foregroundColor(.white)
+            .focused(focused)
+
+            
             
             if hasError {
                 Image(systemName: "exclamationmark.triangle")
@@ -41,11 +44,5 @@ struct EmailCardView: View {
         .autocorrectionDisabled(true)
         .autocapitalization(.none)
         .cornerRadius(16)
-    }
-}
-
-struct EmailCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        EmailCardView(email: .constant(""), hasError: false)
     }
 }

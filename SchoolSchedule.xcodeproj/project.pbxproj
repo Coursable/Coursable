@@ -31,9 +31,7 @@
 		DF616D57292D8D7200727CCB /* EmailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D56292D8D7200727CCB /* EmailCardView.swift */; };
 		DF616D59292D8E0600727CCB /* PasswordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D58292D8E0600727CCB /* PasswordCardView.swift */; };
 		DF616D5B292D8EA000727CCB /* OtherOptionsDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D5A292D8EA000727CCB /* OtherOptionsDividerView.swift */; };
-		DF616D5D292D8ED100727CCB /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D5C292D8ED100727CCB /* LoginButtonView.swift */; };
 		DF616D5F292D8FB700727CCB /* TopInfoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D5E292D8FB700727CCB /* TopInfoLoginView.swift */; };
-		DF616D62292D905400727CCB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D61292D905400727CCB /* SignUpView.swift */; };
 		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4102929B83200DB0364 /* TopNavBar.swift */; };
 		DF92E4132929B9D100DB0364 /* TopNavBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */; };
@@ -87,9 +85,7 @@
 		DF616D56292D8D7200727CCB /* EmailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCardView.swift; sourceTree = "<group>"; };
 		DF616D58292D8E0600727CCB /* PasswordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCardView.swift; sourceTree = "<group>"; };
 		DF616D5A292D8EA000727CCB /* OtherOptionsDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherOptionsDividerView.swift; sourceTree = "<group>"; };
-		DF616D5C292D8ED100727CCB /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		DF616D5E292D8FB700727CCB /* TopInfoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopInfoLoginView.swift; sourceTree = "<group>"; };
-		DF616D61292D905400727CCB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF92E4102929B83200DB0364 /* TopNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBar.swift; sourceTree = "<group>"; };
 		DF92E4122929B9D100DB0364 /* TopNavBarViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBarViewModifier.swift; sourceTree = "<group>"; };
@@ -169,7 +165,6 @@
 				DF616D56292D8D7200727CCB /* EmailCardView.swift */,
 				DF616D58292D8E0600727CCB /* PasswordCardView.swift */,
 				DF616D5A292D8EA000727CCB /* OtherOptionsDividerView.swift */,
-				DF616D5C292D8ED100727CCB /* LoginButtonView.swift */,
 				DF616D5E292D8FB700727CCB /* TopInfoLoginView.swift */,
 			);
 			path = LoginInView;
@@ -178,7 +173,6 @@
 		DF616D60292D903A00727CCB /* SignUpView */ = {
 			isa = PBXGroup;
 			children = (
-				DF616D61292D905400727CCB /* SignUpView.swift */,
 			);
 			path = SignUpView;
 			sourceTree = "<group>";
@@ -456,8 +450,6 @@
 				DF9BD55828E248FE00C60E12 /* CurrentEventTopbarText.swift in Sources */,
 				DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */,
 				DFA463A02920764200FC826B /* CourseCardView.swift in Sources */,
-				DF616D62292D905400727CCB /* SignUpView.swift in Sources */,
-				DF616D5D292D8ED100727CCB /* LoginButtonView.swift in Sources */,
 				DF082100291EBCF800FF4A75 /* SlideUpView.swift in Sources */,
 				DF9B609128DF4DD100086E9E /* MainPage_FirstLayerView.swift in Sources */,
 				DF616D5B292D8EA000727CCB /* OtherOptionsDividerView.swift in Sources */,
