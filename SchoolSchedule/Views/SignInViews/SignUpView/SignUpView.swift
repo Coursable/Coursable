@@ -23,6 +23,7 @@ struct SignUpView: View {
     @FocusState var isUsernameInputActive: Bool
     @FocusState var isPasswordInputActive: Bool
     
+    @State var isAllowedToSubmit = true
     
     var body: some View {
         ScrollView {
@@ -38,6 +39,9 @@ struct SignUpView: View {
                                     Text("Name")
                                         .foregroundColor(Color(.gray))
                                 }
+                                .onChange(of: name, perform: { newValue in
+                                    checkRequirments()
+                                })
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
                                 .focused($isNameInputActive)
@@ -51,27 +55,36 @@ struct SignUpView: View {
                                     Text("Last Name")
                                         .foregroundColor(Color(.gray))
                                 }
+                                .onChange(of: lastName, perform: { newValue in
+                                    checkRequirments()
+                                })
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
-                                .focused($isNameInputActive)
+                                .focused($isLastNameInputActive)
                                 .autocorrectionDisabled(true)
                                 .autocapitalization(.none)
                             }
                             .fontWeight(.semibold)
                         }
                         
-                        LoginTextField {
-                            TextField(text: $email) {
-                                Text("Email")
-                                    .foregroundColor(Color(.gray))
+                        VStack {
+                            LoginTextField {
+                                TextField(text: $email) {
+                                    Text("Email")
+                                        .foregroundColor(Color(.gray))
+                                }
+                                .onChange(of: email, perform: { newValue in
+                                    checkRequirments()
+                                })
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .focused($isUsernameInputActive)
+                                .autocorrectionDisabled(true)
+                                .autocapitalization(.none)
                             }
                             .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .focused($isNameInputActive)
-                            .autocorrectionDisabled(true)
-                            .autocapitalization(.none)
+
                         }
-                        .fontWeight(.semibold)
                         
                         VStack {
                             LoginTextField {
@@ -79,28 +92,62 @@ struct SignUpView: View {
                                     Text("Password")
                                         .foregroundColor(Color(.gray))
                                 }
+                                .onChange(of: password, perform: { newValue in
+                                    checkRequirments()
+                                })
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
-                                .focused($isNameInputActive)
+                                .focused($isPasswordInputActive)
                                 .autocorrectionDisabled(true)
                                 .autocapitalization(.none)
                             }
                             .fontWeight(.semibold)
                             
-                            HStack {
-                                Spacer()
-                                Image(systemName: "checkmark.seal.fill")
-                                Text("Password must be 8 characters")
-
-                            }
-                            .font(.subheadline)
-                            .foregroundColor(password.count >= 8 ? .green : .red)
-                            .fontWeight(.semibold)
+                            
                         }
                         
+
+                        
                     }
+
                 }
-                
+                VStack(alignment: .leading, spacing: 10) {
+                    
+                    HStack {
+                        
+                        Image(systemName: "checkmark.seal.fill")
+                        Text("Name Must Be Valid")
+                        Spacer()
+                    }
+                    .foregroundColor(!name.isEmpty ? .green : .red)
+                    
+                    HStack {
+                        
+                        Image(systemName: "checkmark.seal.fill")
+                        Text("Last Name Must Be Valid")
+                        Spacer()
+                    }
+                    .foregroundColor(!lastName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? .green : .red)
+                    
+                    HStack {
+                        
+                        Image(systemName: "checkmark.seal.fill")
+                        Text("Email Must Be Valid")
+                        Spacer()
+                    }
+                    .foregroundColor(isValidEmailAddress(emailAddressString: email) ? .green : .red)
+                    
+                    
+                    HStack {
+                        Image(systemName: "checkmark.seal.fill")
+                        Text("Password must 8 or more characters")
+                        Spacer()
+                    }
+                    .foregroundColor(password.count >= 8 ? .green : .red)
+                }
+                .padding(.top)
+                .fontWeight(.semibold)
+                .font(.subheadline)
                 
                 Button {
                     isUsernameInputActive = false
@@ -131,7 +178,9 @@ struct SignUpView: View {
                     .cornerRadius(16)
                     
                 }
-                .padding(.top, 50)
+                .disabled(!isAllowedToSubmit)
+                .opacity(isAllowedToSubmit ? 1 : 0.5)
+                .padding(.top, 20)
                 
                 OtherOptionsSignUpDividerView()
                     .foregroundColor(.white)
@@ -148,6 +197,17 @@ struct SignUpView: View {
         }
         .navigationBarBackButtonHidden()
         .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+
+                Button("Done") {
+                    isUsernameInputActive = false
+                    isPasswordInputActive = false
+                    isNameInputActive = false
+                    isLastNameInputActive = false
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     presentationMode.wrappedValue.dismiss()
@@ -167,6 +227,56 @@ struct SignUpView: View {
         .scrollDisabled(true)
             
 
+    }
+    
+    func checkRequirments() {
+        var allRequirementsMet = true
+
+        
+        if !isValidEmailAddress(emailAddressString: email) {
+            allRequirementsMet = false
+        }
+        
+        if password.count < 8 {
+            allRequirementsMet = false
+        }
+        
+        if lastName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            allRequirementsMet = false
+        }
+        
+        if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            allRequirementsMet = false
+        }
+        
+        withAnimation(.linear(duration: 0.1)) {
+            isAllowedToSubmit = allRequirementsMet
+        }
+        
+        
+        
+    }
+    
+    func isValidEmailAddress(emailAddressString: String) -> Bool {
+        var returnValue = true
+        let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: emailRegEx)
+            let nsString = emailAddressString as NSString
+            let results = regex.matches(in: emailAddressString, range: NSRange(location: 0, length: nsString.length))
+            
+            if results.count == 0
+            {
+                returnValue = false
+            }
+            
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            returnValue = false
+        }
+        
+        return  returnValue
     }
 }
 
