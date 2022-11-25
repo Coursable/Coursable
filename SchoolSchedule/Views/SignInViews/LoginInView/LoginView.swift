@@ -26,60 +26,34 @@ struct LoginView: View {
                     .padding(.top, 20)
                 
                 VStack {
-                    Group {
-                        EmailCardView(email: $email, focused: $isUsernameInputActive, hasError: hasError)
-                            .fontWeight(.semibold)
-
-                        VStack {
-                            PasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: hasError)
+                    VStack(spacing: 17) {
+                        Group {
+                            EmailCardView(email: $email, focused: $isUsernameInputActive, hasError: hasError)
                                 .fontWeight(.semibold)
-                            
-                            
-                            HStack {
-                                Spacer()
-                                Text("Forgot Password?")
-                                    .underline()
-                                    .font(.subheadline)
-                                    .foregroundColor(.white)
+
+                            VStack {
+                                PasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: hasError)
                                     .fontWeight(.semibold)
+                                
+                                
+                                HStack {
+                                    Spacer()
+                                    Text("Forgot Password?")
+                                        .underline()
+                                        .font(.subheadline)
+                                        .foregroundColor(.white)
+                                        .fontWeight(.semibold)
+                                }
                             }
                         }
                     }
-
-
 
                     Button {
                         isUsernameInputActive = false
                         isPasswordInputActive = false
                         
-                        if !self.email.isEmpty && !self.password.isEmpty {
-                            Task {
-                                withAnimation {
-                                    isLoading = true
-                                }
-                                
-                                switch await signInViewModel.signIn(email: email, password: password) {
-                                case .invalidEmailPassword:
-                                    withAnimation(.linear(duration: 0.2)) {
-                                        hasError = true
-                                    }
-                                case .success:
-                                    withAnimation(.linear(duration: 0.2)) {
-                                        hasError = false
-                                    }
-                                }
-                                    
-                                withAnimation {
-                                    isLoading = false
-                                }
-                                
-                            }
-                        }
-                        else {
-                            withAnimation {
-                                hasError = true
-                            }
-                        }
+                        signInUIHandler()
+                        
                     } label: {
                         
                         Group {
@@ -105,34 +79,39 @@ struct LoginView: View {
                     .padding(.top, 50)
                     
                     
-                    OtherOptionsDividerView()
+                    OtherOptionsLoginDividerView()
                         .foregroundColor(.white)
                         .padding(.top)
                     
-                    HStack {
-                        SignInWithApple()
-                            .cornerRadius(16)
+                    Button {
+                        
+                    } label: {
+                        SignInWithGoogle()  
                     }
-                    .frame(width: UIScreen.main.bounds.width * 0.9, height: 60)
                     .padding(.top)
+
+
                     
                     
                     HStack(spacing: 0) {
                         Text("Don't have an account? ")
                             .foregroundColor(.white)
-                        Text("Sign Up")
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .underline()
+                        NavigationLink {
+                            SignUpView()
+                        } label: {
+                            Text("Sign Up")
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.white)
+                                .underline()
+                        }
+
+
                             
                             
                     }
                     .padding(.top)
 
-
-                    
                     Spacer()
-                    
                     
                 }
                 .padding()
@@ -153,8 +132,37 @@ struct LoginView: View {
         }
         .background(Color("Background"))
         .scrollDisabled(true)
-        
-
+    }
+    
+    func signInUIHandler() {
+        if !self.email.isEmpty && !self.password.isEmpty {
+            Task {
+                withAnimation {
+                    isLoading = true
+                }
+                
+                switch await signInViewModel.signIn(email: email, password: password) {
+                case .invalidEmailPassword:
+                    withAnimation(.linear(duration: 0.2)) {
+                        hasError = true
+                    }
+                case .success:
+                    withAnimation(.linear(duration: 0.2)) {
+                        hasError = false
+                    }
+                }
+                    
+                withAnimation {
+                    isLoading = false
+                }
+                
+            }
+        }
+        else {
+            withAnimation {
+                hasError = true
+            }
+        }
     }
 
 }

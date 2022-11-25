@@ -14,7 +14,7 @@ struct PasswordCardView: View {
     var hasError: Bool
     
     var body: some View {
-        HStack {
+        LoginTextField {
             Group {
                 if isSecured {
                     SecureField(text: $password) {
@@ -31,6 +31,8 @@ struct PasswordCardView: View {
                     .foregroundColor(.white)
                 }
             }
+            .autocorrectionDisabled(true)
+            .autocapitalization(.none)
             .focused(focused)
 
             
@@ -57,18 +59,10 @@ struct PasswordCardView: View {
                 .foregroundColor(Color(.gray))
                     
             }
-
-            
-            
-                
         }
-        .padding([.top, .bottom], 5)
-        .padding()
-        .background(.secondary)
-        .autocorrectionDisabled(true)
-        .autocapitalization(.none)
-        .cornerRadius(16)
-        .padding(.top, 17)
+
+
+
     }
 }
 

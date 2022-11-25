@@ -14,35 +14,30 @@ struct EmailCardView: View {
     var hasError: Bool
     
     var body: some View {
-        HStack {
+        LoginTextField {
             TextField(text: $email) {
                 Text("Email")
                     .foregroundColor(Color(.gray))
             }
             .foregroundColor(.white)
             .focused(focused)
+            .autocorrectionDisabled(true)
+            .autocapitalization(.none)
 
-            
-            
-            if hasError {
-                Image(systemName: "exclamationmark.triangle")
-                    .foregroundColor(.red)
-            }
-            
+            Image(systemName: "exclamationmark.triangle")
+                .foregroundColor(.red)
+                .opacity(hasError ? 1 : 0)
+
+
             Button {
                 email = ""
             } label: {
                 Image(systemName: "multiply.circle.fill")
                     .foregroundColor(Color(.gray))
             }
-            
-            
+
         }
-        .padding([.top, .bottom], 5)
-        .padding()
-        .background(.secondary)
-        .autocorrectionDisabled(true)
-        .autocapitalization(.none)
-        .cornerRadius(16)
+
+
     }
 }

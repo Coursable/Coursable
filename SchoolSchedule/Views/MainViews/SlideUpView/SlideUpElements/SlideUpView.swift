@@ -11,7 +11,7 @@ struct SlideUpView: View {
     
     @EnvironmentObject var periodViewModel: PeriodViewModel
     @State var hideCompletedCourses: Bool = true
-    
+
     var filteredCourses: [PeriodModel] {
         if let todaysSchedule = periodViewModel.todaysSchedule {
 

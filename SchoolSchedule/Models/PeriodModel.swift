@@ -61,7 +61,7 @@ struct DayModel: Identifiable {
     var day: Int
     var periods: [PeriodModel]
     
-    static let ExampleDay1 = DayModel(id: "1", day: 5, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
+    static let ExampleDay1 = DayModel(id: "1", day: 6, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
     /*
      day 1=Sunday
      day 2=Monday
