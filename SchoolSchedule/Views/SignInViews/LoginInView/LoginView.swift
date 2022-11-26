@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     @EnvironmentObject var signInViewModel: SignInViewModel
+    @EnvironmentObject var viewRouter: ViewRouter
     @State var email = "a.reitman@icloud.com"
     @State var password = "Chess123"
     @State var isLoading: Bool = false
@@ -19,106 +20,93 @@ struct LoginView: View {
     @FocusState var isPasswordInputActive: Bool
     
     var body: some View {
-        ScrollView {
-            VStack {
-                TopInfoLoginView()
-                    .foregroundColor(.white)
-                    .padding(.top, 20)
-                
+            ScrollView {
                 VStack {
-                    VStack(spacing: 17) {
-                        Group {
-                            EmailCardView(email: $email, focused: $isUsernameInputActive, hasError: hasError)
-                                .fontWeight(.semibold)
-
-                            VStack {
-                                PasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: hasError)
+                    LoginTopInfoView()
+                        .foregroundColor(.white)
+                        .padding(.top, 20)
+                    
+                    VStack {
+                        VStack(spacing: 17) {
+                            Group {
+                                LoginEmailCardView(email: $email, focused: $isUsernameInputActive, hasError: hasError)
                                     .fontWeight(.semibold)
-                                
-                                
-                                HStack {
-                                    Spacer()
-                                    Text("Forgot Password?")
-                                        .underline()
-                                        .font(.subheadline)
-                                        .foregroundColor(.white)
+
+                                VStack {
+                                    LoginPasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: hasError)
                                         .fontWeight(.semibold)
+                                    
+                                    
+                                    HStack {
+                                        Spacer()
+                                        Text("Forgot Password?")
+                                            .underline()
+                                            .font(.subheadline)
+                                            .foregroundColor(.white)
+                                            .fontWeight(.semibold)
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    Button {
-                        isUsernameInputActive = false
-                        isPasswordInputActive = false
-                        
-                        signInUIHandler()
-                        
-                    } label: {
-                        
-                        Group {
+                        Button {
+                            isUsernameInputActive = false
+                            isPasswordInputActive = false
                             if !isLoading {
-                                Text("Sign In")
-                                    .fontWeight(.semibold)
-                                    .font(.title2)
-                            }
-                            else {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                signInUIHandler()
                             }
                             
-                        }
-                        .foregroundColor(.white)
-                        .frame(width: UIScreen.main.bounds.width*0.9, height: 65)
-                        
-                        .background(LinearGradient.bluePink)
-                        .opacity(isLoading ? 0.6 : 1)
-                        .cornerRadius(16)
-                        
-                    }
-                    .padding(.top, 50)
-                    
-                    
-                    OtherOptionsLoginDividerView()
-                        .foregroundColor(.white)
-                        .padding(.top)
-                    
-                    Button {
-                        
-                    } label: {
-                        SignInWithGoogle()  
-                    }
-                    .padding(.top)
-
-
-                    
-                    
-                    HStack(spacing: 0) {
-                        Text("Don't have an account? ")
-                            .foregroundColor(.white)
-                        NavigationLink {
-                            SignUpView()
+                            
                         } label: {
-                            Text("Sign Up")
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.white)
-                                .underline()
+                            SignInButtonView(isLoading: isLoading)
                         }
+                        .padding(.top, 50)
+                        
+                        
+                        LoginOtherOptionsDividerView()
+                            .foregroundColor(.white)
+                            .padding(.top)
+                        
+                        Button {
+                            
+                        } label: {
+                            SignInWithGoogle()
+                        }
+                        .padding(.top)
 
 
+                        
+                        
+                        HStack(spacing: 0) {
+                            Text("Don't have an account? ")
+                                .foregroundColor(.white)
                             
-                            
+                            Button {
+                                viewRouter.currentPage = .signUpPage
+                                
+                                
+                            } label: {
+                                Text("Sign Up")
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.white)
+                                    .underline()
+                            }
+
+
+
+                                
+                                
+                        }
+                        .padding(.top)
+
+                        Spacer()
+                        
                     }
-                    .padding(.top)
-
-                    Spacer()
+                    .padding()
                     
+         
                 }
-                .padding()
-                
-     
-            }
-            
+
         }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
@@ -143,13 +131,16 @@ struct LoginView: View {
                 
                 switch await signInViewModel.signIn(email: email, password: password) {
                 case .invalidEmailPassword:
+                    viewRouter.currentPage = .signInPage
                     withAnimation(.linear(duration: 0.2)) {
                         hasError = true
                     }
                 case .success:
+                    viewRouter.currentPage = .mainPage
                     withAnimation(.linear(duration: 0.2)) {
                         hasError = false
                     }
+                    
                 }
                     
                 withAnimation {
@@ -171,5 +162,6 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
             .environmentObject(SignInViewModel())
+            .environmentObject(ViewRouter())
     }
 }

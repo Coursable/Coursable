@@ -13,6 +13,7 @@ import SwiftUI
 class SignInViewModel: ObservableObject {
     let auth = Auth.auth()
     
+    
     @Published var isSignedIn = false
     
     var signedIn: Bool {
@@ -25,20 +26,29 @@ class SignInViewModel: ObservableObject {
         case invalidEmailPassword
     }
     
-    func signIn(email: String, password: String) async -> signInCodes {
+    enum signUpCodes {
+        case success
+        case emailAlreadyTaken
+        case error
+    }
+    
+    func signUp(email: String, password: String) async -> signUpCodes {
         do {
-            try await auth.signIn(withEmail: email, password: password)
+            try await auth.createUser(withEmail: email, password: password)
             
             DispatchQueue.main.async {
                 withAnimation {
                     self.isSignedIn = true
                 }
                 
+                
             }
             
-            print("Successfully logged in under user: \(email)")
+
             
-            return signInCodes.success
+            print("Successfully signed up under user: \(email)")
+            
+            return signUpCodes.success
             
         } catch {
             DispatchQueue.main.async {
@@ -49,7 +59,14 @@ class SignInViewModel: ObservableObject {
             
             print(error.localizedDescription)
             
-            return signInCodes.invalidEmailPassword
+            if error.localizedDescription == "The email address is already in use by another account." {
+                return signUpCodes.emailAlreadyTaken
+            } else {
+                return signUpCodes.error
+            }
+            
+            
+            
         }
     }
     
@@ -81,5 +98,33 @@ class SignInViewModel: ObservableObject {
         }
 
             
+    }
+    
+    func signIn(email: String, password: String) async -> signInCodes {
+        do {
+            try await auth.signIn(withEmail: email, password: password)
+            
+            DispatchQueue.main.async {
+                withAnimation {
+                    self.isSignedIn = true
+                }
+                
+            }
+            
+            print("Successfully signed in user account under: \(email)")
+            
+            return signInCodes.success
+            
+        } catch {
+            DispatchQueue.main.async {
+                withAnimation {
+                    self.isSignedIn = false
+                }
+            }
+            
+            print(error.localizedDescription)
+            
+            return signInCodes.invalidEmailPassword
+        }
     }
 }

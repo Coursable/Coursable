@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PasswordCardView: View {
+struct LoginPasswordCardView: View {
     @Binding var isSecured: Bool
     @Binding var password: String
     var focused: FocusState<Bool>.Binding

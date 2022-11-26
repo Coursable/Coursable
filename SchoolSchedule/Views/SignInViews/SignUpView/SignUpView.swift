@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @Environment(\.presentationMode) var presentationMode
+    
     @EnvironmentObject var signInViewModel: SignInViewModel
+    @EnvironmentObject var viewRouter: ViewRouter
+    
+    
     @State var name = "Ari"
     @State var lastName = "Reitman"
     @State var email = "a.reitman@icloud.com"
@@ -17,172 +20,69 @@ struct SignUpView: View {
     @State var isLoading: Bool = false
     @State var hasError: Bool = false
     @State var isSecured: Bool = true
-    @State var hasFullFilledPasswordRequirments: Bool = false
+
     @FocusState var isNameInputActive: Bool
     @FocusState var isLastNameInputActive: Bool
     @FocusState var isUsernameInputActive: Bool
     @FocusState var isPasswordInputActive: Bool
     
-    @State var isAllowedToSubmit = true
+    @State var nameError: Bool = false
+    @State var lastNameError: Bool = false
+    @State var emailError: Bool = false
+    @State var passwordError: Bool = false
+    
+    @State var showErrorAlert: Bool = false
+    @State var errorMessage: String = ""
+    
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     
     var body: some View {
         ScrollView {
-            TopInfoSignUpView()
+
+
+            
+            SignUpTopInfoView()
                 .foregroundColor(.white)
             
             VStack {
                 VStack(spacing: 17) {
                     Group {
                         HStack(spacing: 17) {
-                            LoginTextField {
-                                TextField(text: $name) {
-                                    Text("Name")
-                                        .foregroundColor(Color(.gray))
-                                }
-                                .onChange(of: name, perform: { newValue in
-                                    checkRequirments()
-                                })
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .focused($isNameInputActive)
-                                .autocorrectionDisabled(true)
-                                .autocapitalization(.none)
-                            }
-                            .fontWeight(.semibold)
+ 
+                            SignUpNameCardView(name: $name, focused: $isNameInputActive, hasError: nameError)
                             
-                            LoginTextField {
-                                TextField(text: $lastName) {
-                                    Text("Last Name")
-                                        .foregroundColor(Color(.gray))
-                                }
-                                .onChange(of: lastName, perform: { newValue in
-                                    checkRequirments()
-                                })
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .focused($isLastNameInputActive)
-                                .autocorrectionDisabled(true)
-                                .autocapitalization(.none)
-                            }
-                            .fontWeight(.semibold)
+                            SignUpLastNameCardView(lastName: $lastName, focused: $isLastNameInputActive, hasError: lastNameError)
                         }
                         
-                        VStack {
-                            LoginTextField {
-                                TextField(text: $email) {
-                                    Text("Email")
-                                        .foregroundColor(Color(.gray))
-                                }
-                                .onChange(of: email, perform: { newValue in
-                                    checkRequirments()
-                                })
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .focused($isUsernameInputActive)
-                                .autocorrectionDisabled(true)
-                                .autocapitalization(.none)
-                            }
-                            .fontWeight(.semibold)
-
-                        }
+                        SignUpEmailCardView(email: $email, focused: $isUsernameInputActive, hasError: emailError)
                         
-                        VStack {
-                            LoginTextField {
-                                TextField(text: $password) {
-                                    Text("Password")
-                                        .foregroundColor(Color(.gray))
-                                }
-                                .onChange(of: password, perform: { newValue in
-                                    checkRequirments()
-                                })
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .focused($isPasswordInputActive)
-                                .autocorrectionDisabled(true)
-                                .autocapitalization(.none)
-                            }
-                            .fontWeight(.semibold)
-                            
-                            
-                        }
+                        SignUpPasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: passwordError)
                         
 
                         
                     }
 
                 }
-                VStack(alignment: .leading, spacing: 10) {
-                    
-                    HStack {
-                        
-                        Image(systemName: "checkmark.seal.fill")
-                        Text("Name Must Be Valid")
-                        Spacer()
-                    }
-                    .foregroundColor(!name.isEmpty ? .green : .red)
-                    
-                    HStack {
-                        
-                        Image(systemName: "checkmark.seal.fill")
-                        Text("Last Name Must Be Valid")
-                        Spacer()
-                    }
-                    .foregroundColor(!lastName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? .green : .red)
-                    
-                    HStack {
-                        
-                        Image(systemName: "checkmark.seal.fill")
-                        Text("Email Must Be Valid")
-                        Spacer()
-                    }
-                    .foregroundColor(isValidEmailAddress(emailAddressString: email) ? .green : .red)
-                    
-                    
-                    HStack {
-                        Image(systemName: "checkmark.seal.fill")
-                        Text("Password must 8 or more characters")
-                        Spacer()
-                    }
-                    .foregroundColor(password.count >= 8 ? .green : .red)
-                }
-                .padding(.top)
-                .fontWeight(.semibold)
-                .font(.subheadline)
-                
                 Button {
                     isUsernameInputActive = false
                     isPasswordInputActive = false
                     isNameInputActive = false
                     isLastNameInputActive = false
                     
-                    
+                    if !isLoading {
+                        checkRequirments()
+                        signUpUIHandler()
+                    }
                 } label: {
                     
-                    Group {
-                        if !isLoading {
-                            Text("Sign Up")
-                                .fontWeight(.semibold)
-                                .font(.title2)
-                        }
-                        else {
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        }
-                        
-                    }
-                    .foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width*0.9, height: 65)
-                    
-                    .background(LinearGradient.bluePink)
-                    .opacity(isLoading ? 0.6 : 1)
-                    .cornerRadius(16)
+                    SignUpButtonView(isLoading: isLoading)
                     
                 }
-                .disabled(!isAllowedToSubmit)
-                .opacity(isAllowedToSubmit ? 1 : 0.5)
                 .padding(.top, 20)
                 
-                OtherOptionsSignUpDividerView()
+                SignUpOtherOptionsDividerView()
                     .foregroundColor(.white)
                     .padding(.top)
                 
@@ -196,7 +96,9 @@ struct SignUpView: View {
             .padding()
         }
         .navigationBarBackButtonHidden()
+        .scrollDisabled(true)
         .toolbar {
+    
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
 
@@ -210,52 +112,121 @@ struct SignUpView: View {
             
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    presentationMode.wrappedValue.dismiss()
+                    isUsernameInputActive = false
+                    isPasswordInputActive = false
+                    isNameInputActive = false
+                    isLastNameInputActive = false
+                    viewRouter.currentPage = .signInPage
+                    
                 } label: {
                     Image(systemName: "chevron.left")
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }
             }
+            
+
         }
         .background {
             Color("Background")
                 .ignoresSafeArea()
                 .frame(width: UIScreen.main.bounds.width * 10) //extend the frame to prevent background clashing
         }
+        .alert(errorMessage, isPresented: $showErrorAlert, actions: {
+            Button {
+                showErrorAlert = false
+            } label: {
+                Text("Ok")
+            }
 
-        .scrollDisabled(true)
-            
-
+        })
+        
     }
     
+    func signUpUIHandler() {
+        if !nameError && !lastNameError && !emailError && !passwordError {
+            Task {
+                withAnimation {
+                    isLoading = true
+                }
+                
+                switch await signInViewModel.signUp(email: email, password: password) {
+                case .success:
+                    viewRouter.currentPage = .mainPage
+                case .error:
+                    viewRouter.currentPage = .signUpPage
+                    showErrorAlert = true
+                    errorMessage = "Unable to create account"
+                case .emailAlreadyTaken:
+                    viewRouter.currentPage = .signUpPage
+                    showErrorAlert = true
+                    errorMessage = "The email address is already in use by another account"
+                }
+                
+                
+                    
+                withAnimation {
+                    isLoading = false
+                }
+                
+            }
+        }
+    }
+    
+    
+    
     func checkRequirments() {
-        var allRequirementsMet = true
-
-        
         if !isValidEmailAddress(emailAddressString: email) {
-            allRequirementsMet = false
+            withAnimation() {
+                emailError = true
+            }
+        }
+        else {
+            withAnimation() {
+                emailError = false
+            }
         }
         
         if password.count < 8 {
-            allRequirementsMet = false
+            withAnimation {
+                passwordError = true
+            }
+        }
+        else {
+            withAnimation {
+                passwordError = false
+            }
         }
         
         if lastName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            allRequirementsMet = false
+            withAnimation(.linear(duration: 0.1)) {
+                lastNameError = true
+            }
+            
+        }
+        else {
+            withAnimation(.linear(duration: 0.1)) {
+                lastNameError = false
+            }
         }
         
         if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            allRequirementsMet = false
+            withAnimation(.linear(duration: 0.1)) {
+                nameError = true
+            }
+            
+        }
+        else {
+            withAnimation(.linear(duration: 0.1)) {
+                nameError = false
+            }
         }
         
-        withAnimation(.linear(duration: 0.1)) {
-            isAllowedToSubmit = allRequirementsMet
-        }
         
         
         
     }
+        
     
     func isValidEmailAddress(emailAddressString: String) -> Bool {
         var returnValue = true
@@ -282,8 +253,8 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            SignUpView()
-        }
+        SignUpView()
+            .environmentObject(SignInViewModel())
+            .environmentObject(ViewRouter())
     }
 }

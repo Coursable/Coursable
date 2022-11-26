@@ -1,21 +1,21 @@
 //
-//  TopInfoLoginView.swift
+//  TopInfoSignUpView.swift
 //  SchoolSchedule
 //
-//  Created by Ari Reitman on 11/22/22.
+//  Created by Ari Reitman on 11/25/22.
 //
 
 import SwiftUI
 
-struct TopInfoLoginView: View {
+struct SignUpTopInfoView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                Text("Welcome")
+                Text("Sign Up")
                     .fontWeight(.bold)
                     .font(.largeTitle)
                     
-                Text("To begin using the app, please sign in")
+                Text("Please enter your valid credentials")
                     .font(.subheadline)
             }
             .padding()
@@ -24,8 +24,8 @@ struct TopInfoLoginView: View {
     }
 }
 
-struct TopInfoLoginView_Previews: PreviewProvider {
+struct TopInfoSignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        TopInfoLoginView()
+        SignUpTopInfoView()
     }
 }

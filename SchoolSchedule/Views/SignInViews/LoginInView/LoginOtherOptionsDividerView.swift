@@ -1,21 +1,19 @@
 //
-//  OtherOptionsSignUpDivider.swift
+//  OtherOptionsDividerView.swift
 //  SchoolSchedule
 //
-//  Created by Ari Reitman on 11/25/22.
+//  Created by Ari Reitman on 11/22/22.
 //
 
 import SwiftUI
 
-import SwiftUI
-
-struct OtherOptionsSignUpDividerView: View {
+struct LoginOtherOptionsDividerView: View {
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 20)
                 .frame(height: 1)
             
-            Text("or sign up with")
+            Text("or sign in with")
             
             RoundedRectangle(cornerRadius: 20)
                 .frame(height: 1)
@@ -23,9 +21,8 @@ struct OtherOptionsSignUpDividerView: View {
     }
 }
 
-struct OtherOptionsSignUpDividerView_Previews: PreviewProvider {
+struct OtherOptionsDividerView_Previews: PreviewProvider {
     static var previews: some View {
-        OtherOptionsSignUpDividerView()
+        LoginOtherOptionsDividerView()
     }
 }
-

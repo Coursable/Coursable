@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EmailCardView: View {
+struct LoginEmailCardView: View {
     @Binding var email: String
     @FocusState var isInputActive: Bool
     var focused: FocusState<Bool>.Binding

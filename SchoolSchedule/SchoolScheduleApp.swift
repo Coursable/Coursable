@@ -14,20 +14,20 @@ struct SchoolScheduleApp: App {
     
     @StateObject var periodViewModel = PeriodViewModel()
     @StateObject var signInViewModel = SignInViewModel()
+    @StateObject var viewRouter = ViewRouter()
     
     var body: some Scene {
         
         
         WindowGroup {
-            NavigationView {
-                MainSignInView()
-                    .environmentObject(periodViewModel)
-                    .environmentObject(signInViewModel)
-                    .preferredColorScheme(.light)
-                    .onReceive(periodViewModel.timer) { input in
-                        periodViewModel.updateTime(input: input)
-                    }
-            }
+            MainSignInView()
+                .environmentObject(periodViewModel)
+                .environmentObject(signInViewModel)
+                .environmentObject(viewRouter)
+                .preferredColorScheme(.light)
+                .onReceive(periodViewModel.timer) { input in
+                    periodViewModel.updateTime(input: input)
+                }
         }
     }
 }
