@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    
     @EnvironmentObject var signInViewModel: SignInViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @State var email = "a.reitman@icloud.com"
@@ -117,6 +116,7 @@ struct LoginView: View {
                     isPasswordInputActive = false
                 }
             }
+            
         }
         .background(Color("Background"))
         .scrollDisabled(true)

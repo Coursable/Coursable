@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 import FirebaseAuth
 import SwiftUI
 
@@ -32,9 +33,9 @@ class SignInViewModel: ObservableObject {
         case error
     }
     
-    func signUp(email: String, password: String) async -> signUpCodes {
+    func signUp(email: String, password: String, name: String, lastName: String) async -> signUpCodes {
         do {
-            try await auth.createUser(withEmail: email, password: password)
+            let userData: AuthDataResult = try await auth.createUser(withEmail: email, password: password)
             
             DispatchQueue.main.async {
                 withAnimation {
@@ -44,9 +45,11 @@ class SignInViewModel: ObservableObject {
                 
             }
             
-
+            
             
             print("Successfully signed up under user: \(email)")
+            
+            
             
             return signUpCodes.success
             

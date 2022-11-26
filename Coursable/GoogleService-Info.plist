@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>192673009678-gia0jr6fq84jn788jdifnlti8tre1cpp.apps.googleusercontent.com</string>
+	<string>192673009678-up3pv5nphci5fr7f9amra8st99tau5kj.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.192673009678-gia0jr6fq84jn788jdifnlti8tre1cpp</string>
+	<string>com.googleusercontent.apps.192673009678-up3pv5nphci5fr7f9amra8st99tau5kj</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCxU_TDNssVEPTHKUQdLT0iGLvzqPSuP_o</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.AriReitman.SchoolSchedule</string>
+	<string>com.AriReitman.Coursable</string>
 	<key>PROJECT_ID</key>
 	<string>schoolschedulefirebase</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:192673009678:ios:92ea451e69229d3bf66c5f</string>
+	<string>1:192673009678:ios:b4a0b89c776bd3dbf66c5f</string>
 </dict>
 </plist>

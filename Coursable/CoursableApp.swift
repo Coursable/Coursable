@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 @main
-struct SchoolScheduleApp: App {
+struct CoursableApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject var periodViewModel = PeriodViewModel()

@@ -41,7 +41,23 @@ struct SignUpView: View {
     var body: some View {
         ScrollView {
 
-
+            HStack {
+                Button {
+                    isUsernameInputActive = false
+                    isPasswordInputActive = false
+                    isNameInputActive = false
+                    isLastNameInputActive = false
+                    viewRouter.currentPage = .signInPage
+                    
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .font(.title2)
+                }
+                .padding(.leading)
+                Spacer()
+            }
             
             SignUpTopInfoView()
                 .foregroundColor(.white)
@@ -110,20 +126,20 @@ struct SignUpView: View {
                 }
             }
             
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    isUsernameInputActive = false
-                    isPasswordInputActive = false
-                    isNameInputActive = false
-                    isLastNameInputActive = false
-                    viewRouter.currentPage = .signInPage
-                    
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                }
-            }
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button {
+//                    isUsernameInputActive = false
+//                    isPasswordInputActive = false
+//                    isNameInputActive = false
+//                    isLastNameInputActive = false
+//                    viewRouter.currentPage = .signInPage
+//
+//                } label: {
+//                    Image(systemName: "chevron.left")
+//                        .fontWeight(.semibold)
+//                        .foregroundColor(.white)
+//                }
+//            }
             
 
         }
@@ -150,7 +166,7 @@ struct SignUpView: View {
                     isLoading = true
                 }
                 
-                switch await signInViewModel.signUp(email: email, password: password) {
+                switch await signInViewModel.signUp(email: email, password: password, name: name, lastName: lastName) {
                 case .success:
                     viewRouter.currentPage = .mainPage
                 case .error:

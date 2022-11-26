@@ -27,6 +27,7 @@
 		DF2329E629327EE300E7B363 /* SignUpPasswordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329E529327EE300E7B363 /* SignUpPasswordCardView.swift */; };
 		DF2329E82932878600E7B363 /* SignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329E72932878600E7B363 /* SignInButtonView.swift */; };
 		DF2329EA293287DC00E7B363 /* SignUpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329E9293287DC00E7B363 /* SignUpButtonView.swift */; };
+		DF2329EC2932C6B400E7B363 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF2329EB2932C6B400E7B363 /* GoogleService-Info.plist */; };
 		DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */; };
 		DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */; };
 		DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */; };
@@ -35,7 +36,6 @@
 		DF616D3F292C43C500727CCB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DF616D3E292C43C500727CCB /* FirebaseFirestore */; };
 		DF616D41292C43C500727CCB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DF616D40292C43C500727CCB /* FirebaseStorage */; };
 		DF616D46292C454800727CCB /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D45292C454800727CCB /* SignInViewModel.swift */; };
-		DF616D4A292C49B600727CCB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF616D49292C49B600727CCB /* GoogleService-Info.plist */; };
 		DF616D4E292C559200727CCB /* MainSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D4D292C559200727CCB /* MainSignInView.swift */; };
 		DF616D50292D1AA500727CCB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D4F292D1AA500727CCB /* LoginView.swift */; };
 		DF616D52292D76E400727CCB /* SignInWithGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D51292D76E400727CCB /* SignInWithGoogle.swift */; };
@@ -65,7 +65,7 @@
 		DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA463A62921995A00FC826B /* DayProgressBarView.swift */; };
 		DFA5807029298C2F000790A4 /* FilterTopBarSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5806F29298C2F000790A4 /* FilterTopBarSectionView.swift */; };
 		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
-		DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */; };
+		DFF73B8528DE87D900EF69D1 /* CoursableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
 		DFF73B8928DE87DA00EF69D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFF73B8828DE87DA00EF69D1 /* Assets.xcassets */; };
 		DFF73B8C28DE87DA00EF69D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFF73B8B28DE87DA00EF69D1 /* Preview Assets.xcassets */; };
@@ -95,11 +95,11 @@
 		DF2329E529327EE300E7B363 /* SignUpPasswordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordCardView.swift; sourceTree = "<group>"; };
 		DF2329E72932878600E7B363 /* SignInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonView.swift; sourceTree = "<group>"; };
 		DF2329E9293287DC00E7B363 /* SignUpButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButtonView.swift; sourceTree = "<group>"; };
+		DF2329EB2932C6B400E7B363 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardModifierView.swift; sourceTree = "<group>"; };
 		DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCoursesCardView.swift; sourceTree = "<group>"; };
 		DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingCoursesCardView.swift; sourceTree = "<group>"; };
 		DF616D45292C454800727CCB /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		DF616D49292C49B600727CCB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF616D4D292C559200727CCB /* MainSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignInView.swift; sourceTree = "<group>"; };
 		DF616D4F292D1AA500727CCB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DF616D51292D76E400727CCB /* SignInWithGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogle.swift; sourceTree = "<group>"; };
@@ -130,8 +130,8 @@
 		DFA463A62921995A00FC826B /* DayProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayProgressBarView.swift; sourceTree = "<group>"; };
 		DFA5806F29298C2F000790A4 /* FilterTopBarSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTopBarSectionView.swift; sourceTree = "<group>"; };
 		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
-		DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolScheduleApp.swift; sourceTree = "<group>"; };
+		DFF73B8128DE87D900EF69D1 /* Coursable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coursable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursableApp.swift; sourceTree = "<group>"; };
 		DFF73B8628DE87D900EF69D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DFF73B8828DE87DA00EF69D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFF73B8B28DE87DA00EF69D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 		DFF73B7828DE87D900EF69D1 = {
 			isa = PBXGroup;
 			children = (
-				DFF73B8328DE87D900EF69D1 /* SchoolSchedule */,
+				DFF73B8328DE87D900EF69D1 /* Coursable */,
 				DFF73B8228DE87D900EF69D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -327,26 +327,26 @@
 		DFF73B8228DE87D900EF69D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */,
+				DFF73B8128DE87D900EF69D1 /* Coursable.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DFF73B8328DE87D900EF69D1 /* SchoolSchedule */ = {
+		DFF73B8328DE87D900EF69D1 /* Coursable */ = {
 			isa = PBXGroup;
 			children = (
-				DF616D49292C49B600727CCB /* GoogleService-Info.plist */,
+				DF2329EB2932C6B400E7B363 /* GoogleService-Info.plist */,
 				DF92E4162929BEA700DB0364 /* Info.plist */,
 				DF9B608F28DF4DC200086E9E /* Views */,
 				DFF73B9928DE8A7D00EF69D1 /* Extensions */,
 				DFF73B9628DE899400EF69D1 /* ViewModels */,
 				DFF73B9228DE886F00EF69D1 /* Models */,
-				DFF73B8428DE87D900EF69D1 /* SchoolScheduleApp.swift */,
+				DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */,
 				DFF73B8628DE87D900EF69D1 /* ContentView.swift */,
 				DFF73B8828DE87DA00EF69D1 /* Assets.xcassets */,
 				DFF73B8A28DE87DA00EF69D1 /* Preview Content */,
 			);
-			path = SchoolSchedule;
+			path = Coursable;
 			sourceTree = "<group>";
 		};
 		DFF73B8A28DE87DA00EF69D1 /* Preview Content */ = {
@@ -387,9 +387,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DFF73B8028DE87D900EF69D1 /* SchoolSchedule */ = {
+		DFF73B8028DE87D900EF69D1 /* Coursable */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DFF73B8F28DE87DA00EF69D1 /* Build configuration list for PBXNativeTarget "SchoolSchedule" */;
+			buildConfigurationList = DFF73B8F28DE87DA00EF69D1 /* Build configuration list for PBXNativeTarget "Coursable" */;
 			buildPhases = (
 				DFF73B7D28DE87D900EF69D1 /* Sources */,
 				DFF73B7E28DE87D900EF69D1 /* Frameworks */,
@@ -399,7 +399,7 @@
 			);
 			dependencies = (
 			);
-			name = SchoolSchedule;
+			name = Coursable;
 			packageProductDependencies = (
 				DF616D3A292C43C500727CCB /* FirebaseAnalytics */,
 				DF616D3C292C43C500727CCB /* FirebaseAuth */,
@@ -407,7 +407,7 @@
 				DF616D40292C43C500727CCB /* FirebaseStorage */,
 			);
 			productName = SchoolSchedule;
-			productReference = DFF73B8128DE87D900EF69D1 /* SchoolSchedule.app */;
+			productReference = DFF73B8128DE87D900EF69D1 /* Coursable.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -425,7 +425,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DFF73B7C28DE87D900EF69D1 /* Build configuration list for PBXProject "SchoolSchedule" */;
+			buildConfigurationList = DFF73B7C28DE87D900EF69D1 /* Build configuration list for PBXProject "Coursable" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -441,7 +441,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DFF73B8028DE87D900EF69D1 /* SchoolSchedule */,
+				DFF73B8028DE87D900EF69D1 /* Coursable */,
 			);
 		};
 /* End PBXProject section */
@@ -452,8 +452,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFF73B8C28DE87DA00EF69D1 /* Preview Assets.xcassets in Resources */,
-				DF616D4A292C49B600727CCB /* GoogleService-Info.plist in Resources */,
 				DFF73B8928DE87DA00EF69D1 /* Assets.xcassets in Resources */,
+				DF2329EC2932C6B400E7B363 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +507,7 @@
 				DF616D50292D1AA500727CCB /* LoginView.swift in Sources */,
 				DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */,
 				DF9BD55628E2489300C60E12 /* NoEventsTopbarText.swift in Sources */,
-				DFF73B8528DE87D900EF69D1 /* SchoolScheduleApp.swift in Sources */,
+				DFF73B8528DE87D900EF69D1 /* CoursableApp.swift in Sources */,
 				DFA463A22921957C00FC826B /* CourseTimeInfoView.swift in Sources */,
 				DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */,
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
@@ -649,12 +649,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SchoolSchedule/Preview Content\"";
-				DEVELOPMENT_TEAM = 7FRTJ9C37P;
+				DEVELOPMENT_ASSET_PATHS = "\"Coursable/Preview Content\"";
+				DEVELOPMENT_TEAM = 8DTP7GJ5ZJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SchoolSchedule/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_FILE = Coursable/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Coursable;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -667,7 +667,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AriReitman.SchoolSchedule;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AriReitman.Coursable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -682,12 +682,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SchoolSchedule/Preview Content\"";
-				DEVELOPMENT_TEAM = 7FRTJ9C37P;
+				DEVELOPMENT_ASSET_PATHS = "\"Coursable/Preview Content\"";
+				DEVELOPMENT_TEAM = 8DTP7GJ5ZJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SchoolSchedule/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_FILE = Coursable/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Coursable;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -700,7 +700,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AriReitman.SchoolSchedule;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AriReitman.Coursable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -711,7 +711,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DFF73B7C28DE87D900EF69D1 /* Build configuration list for PBXProject "SchoolSchedule" */ = {
+		DFF73B7C28DE87D900EF69D1 /* Build configuration list for PBXProject "Coursable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DFF73B8D28DE87DA00EF69D1 /* Debug */,
@@ -720,7 +720,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DFF73B8F28DE87DA00EF69D1 /* Build configuration list for PBXNativeTarget "SchoolSchedule" */ = {
+		DFF73B8F28DE87DA00EF69D1 /* Build configuration list for PBXNativeTarget "Coursable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DFF73B9028DE87DA00EF69D1 /* Debug */,
