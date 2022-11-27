@@ -66,6 +66,8 @@
 		DFA5807029298C2F000790A4 /* FilterTopBarSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5806F29298C2F000790A4 /* FilterTopBarSectionView.swift */; };
 		DFB383142932D0DB00A5FCAE /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB383132932D0DB00A5FCAE /* UserInfoModel.swift */; };
 		DFB383172932E84900A5FCAE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DFB383162932E84900A5FCAE /* FirebaseFirestoreSwift */; };
+		DFB3831D2933D27500A5FCAE /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3831C2933D27500A5FCAE /* CustomAlert.swift */; };
+		DFB383212933EB3700A5FCAE /* CustomLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB383202933EB3700A5FCAE /* CustomLoadingView.swift */; };
 		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
 		DFF73B8528DE87D900EF69D1 /* CoursableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
@@ -132,6 +134,8 @@
 		DFA463A62921995A00FC826B /* DayProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayProgressBarView.swift; sourceTree = "<group>"; };
 		DFA5806F29298C2F000790A4 /* FilterTopBarSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTopBarSectionView.swift; sourceTree = "<group>"; };
 		DFB383132932D0DB00A5FCAE /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		DFB3831C2933D27500A5FCAE /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		DFB383202933EB3700A5FCAE /* CustomLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingView.swift; sourceTree = "<group>"; };
 		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* Coursable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coursable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursableApp.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 		DF9B608F28DF4DC200086E9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DFB3831F2933EB2400A5FCAE /* CustomLoading */,
+				DFB3831E2933EB1A00A5FCAE /* CustomAlert */,
 				DF616D42292C452600727CCB /* SignInViews */,
 				DF92E4172929BEEE00DB0364 /* ViewModifiers */,
 				DF6A548C28E208DC00DD0FEC /* MainViews */,
@@ -325,6 +331,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFB3831E2933EB1A00A5FCAE /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				DFB3831C2933D27500A5FCAE /* CustomAlert.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		DFB3831F2933EB2400A5FCAE /* CustomLoading */ = {
+			isa = PBXGroup;
+			children = (
+				DFB383202933EB3700A5FCAE /* CustomLoadingView.swift */,
+			);
+			path = CustomLoading;
 			sourceTree = "<group>";
 		};
 		DFF73B7828DE87D900EF69D1 = {
@@ -518,6 +540,7 @@
 				DF0820FE291EBB8600FF4A75 /* SlideUp.swift in Sources */,
 				DF082106291FE7E500FF4A75 /* SlideUpCircle.swift in Sources */,
 				DF9BD56328E3A59600C60E12 /* ProgressText.swift in Sources */,
+				DFB3831D2933D27500A5FCAE /* CustomAlert.swift in Sources */,
 				DFA463A42921960900FC826B /* CourseInfoView.swift in Sources */,
 				DF616D50292D1AA500727CCB /* LoginView.swift in Sources */,
 				DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */,
@@ -527,6 +550,7 @@
 				DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */,
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
 				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
+				DFB383212933EB3700A5FCAE /* CustomLoadingView.swift in Sources */,
 				DF2329DA293167DE00E7B363 /* SignUpErrorView.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
 				DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */,

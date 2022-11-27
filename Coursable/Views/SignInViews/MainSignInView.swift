@@ -19,42 +19,16 @@ struct MainSignInView: View {
                     switch viewRouter.currentPage {
                     case .signInPage:
                         LoginView()
-                    case .signUpPage:
-                        SignUpView()
                     case .mainPage:
                         MainPage()
                     }
-                        
-                    //if signInViewModel.isSignedIn {
-                            //MainPage()
-                            
-                            //.transition(.slide)
-        //                    VStack {
-        //                        Text("Your logged in")
-        //                        Button {
-        //                            signInViewModel.signOut()
-        //                        } label: {
-        //                            Text("Sign Out")
-        //                        }
-        //
-        //                    }
-                        
-                    //}
-                    //else {
-                        //LoginView()
-                    //}
-                    
                 }
                 .onAppear {
                     //signInViewModel.isSignedIn = signInViewModel.signedIn
-                    
+//
                     if signInViewModel.isSignedIn {
                         viewRouter.currentPage = .mainPage
                     }
-                    else {
-                        viewRouter.currentPage = .signInPage
-                    }
-                    
                 }
             }
             .background {

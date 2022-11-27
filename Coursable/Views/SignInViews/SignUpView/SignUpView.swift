@@ -39,123 +39,114 @@ struct SignUpView: View {
     
     
     var body: some View {
-        ScrollView {
-
-            HStack {
-                Button {
-                    isUsernameInputActive = false
-                    isPasswordInputActive = false
-                    isNameInputActive = false
-                    isLastNameInputActive = false
-                    viewRouter.currentPage = .signInPage
-                    
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .font(.title2)
-                }
-                .padding(.leading)
-                Spacer()
-            }
-            
-            SignUpTopInfoView()
-                .foregroundColor(.white)
-            
-            VStack {
-                VStack(spacing: 17) {
-                    Group {
-                        HStack(spacing: 17) {
- 
-                            SignUpNameCardView(name: $name, focused: $isNameInputActive, hasError: nameError)
-                            
-                            SignUpLastNameCardView(lastName: $lastName, focused: $isLastNameInputActive, hasError: lastNameError)
-                        }
-                        
-                        SignUpEmailCardView(email: $email, focused: $isUsernameInputActive, hasError: emailError)
-                        
-                        SignUpPasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: passwordError)
-                        
-
-                        
-                    }
-
-                }
-                Button {
-                    isUsernameInputActive = false
-                    isPasswordInputActive = false
-                    isNameInputActive = false
-                    isLastNameInputActive = false
-                    
-                    if !isLoading {
-                        checkRequirments()
-                        signUpUIHandler()
-                    }
-                } label: {
-                    
-                    SignUpButtonView(isLoading: isLoading)
-                    
-                }
-                .padding(.top, 20)
-                
-                SignUpOtherOptionsDividerView()
+        ZStack {
+            ScrollView {
+                SignUpTopInfoView()
                     .foregroundColor(.white)
-                    .padding(.top)
                 
-                Button {
+                VStack {
+                    VStack(spacing: 17) {
+                        Group {
+                            HStack(spacing: 17) {
+     
+                                SignUpNameCardView(name: $name, focused: $isNameInputActive, hasError: nameError)
+                                
+                                SignUpLastNameCardView(lastName: $lastName, focused: $isLastNameInputActive, hasError: lastNameError)
+                            }
+                            
+                            SignUpEmailCardView(email: $email, focused: $isUsernameInputActive, hasError: emailError)
+                            
+                            SignUpPasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: passwordError)
+                            
+
+                            
+                        }
+
+                    }
                     
-                } label: {
-                    SignInWithGoogle()
+                    Button {
+                        isUsernameInputActive = false
+                        isPasswordInputActive = false
+                        isNameInputActive = false
+                        isLastNameInputActive = false
+                        
+                        if !isLoading {
+                            checkRequirments()
+                            signUpUIHandler()
+                        }
+                    } label: {
+                        
+                        SignUpButtonView(isLoading: isLoading)
+                        
+                    }
+                    .padding(.top, 20)
+                    .disabled(isLoading)
+                    
+                    SignUpOtherOptionsDividerView()
+                        .foregroundColor(.white)
+                        .padding(.top)
+                    
+                    Button {
+                        
+                    } label: {
+                        SignInWithGoogle()
+                    }
+                    .padding(.top)
                 }
-                .padding(.top)
+                .padding()
             }
-            .padding()
-        }
-        .navigationBarBackButtonHidden()
-        .scrollDisabled(true)
-        .toolbar {
-    
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
+            .navigationBarBackButtonHidden()
+            .scrollDisabled(true)
+            .toolbar {
+        
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
 
-                Button("Done") {
-                    isUsernameInputActive = false
-                    isPasswordInputActive = false
-                    isNameInputActive = false
-                    isLastNameInputActive = false
+                    Button("Done") {
+                        isUsernameInputActive = false
+                        isPasswordInputActive = false
+                        isNameInputActive = false
+                        isLastNameInputActive = false
+                    }
                 }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        isUsernameInputActive = false
+                        isPasswordInputActive = false
+                        isNameInputActive = false
+                        isLastNameInputActive = false
+                        
+                        presentationMode.wrappedValue.dismiss()
+
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                    }
+                }
+                
+
+            }
+            .background {
+                Color("Background")
+                    .ignoresSafeArea()
+                    .frame(width: UIScreen.main.bounds.width * 10) //extend the frame to prevent background clashing
+            }
+
+            
+            if showErrorAlert {
+                CustomAlert(presentAlert: $showErrorAlert, alertType: .accountAlreadyCreated, rightButtonAction:  {
+                    withAnimation(.easeInOut) {
+                        showErrorAlert = false
+                    }
+                })
             }
             
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button {
-//                    isUsernameInputActive = false
-//                    isPasswordInputActive = false
-//                    isNameInputActive = false
-//                    isLastNameInputActive = false
-//                    viewRouter.currentPage = .signInPage
-//
-//                } label: {
-//                    Image(systemName: "chevron.left")
-//                        .fontWeight(.semibold)
-//                        .foregroundColor(.white)
-//                }
-//            }
-            
-
-        }
-        .background {
-            Color("Background")
-                .ignoresSafeArea()
-                .frame(width: UIScreen.main.bounds.width * 10) //extend the frame to prevent background clashing
-        }
-        .alert(errorMessage, isPresented: $showErrorAlert, actions: {
-            Button {
-                showErrorAlert = false
-            } label: {
-                Text("Ok")
+            if isLoading {
+                CustomLoading()
             }
-
-        })
+        }
         
     }
     
@@ -170,12 +161,14 @@ struct SignUpView: View {
                 case .success:
                     viewRouter.currentPage = .mainPage
                 case .error:
-                    viewRouter.currentPage = .signUpPage
-                    showErrorAlert = true
+                    withAnimation(.easeInOut) {
+                        showErrorAlert = true
+                    }
                     errorMessage = "Unable to create account"
                 case .emailAlreadyTaken:
-                    viewRouter.currentPage = .signUpPage
-                    showErrorAlert = true
+                    withAnimation(.easeInOut) {
+                        showErrorAlert = true
+                    }
                     errorMessage = "The email address is already in use by another account"
                 }
                 
