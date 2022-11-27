@@ -75,7 +75,8 @@ struct CustomAlert: View {
             VStack(spacing: 0) {
                 if alertType.title() != "" {
                     Text(alertType.title())
-                        .font(.headline)
+                        .font(.title2)
+                        .fontWeight(.semibold)
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                         .frame(height: 25)
@@ -86,7 +87,7 @@ struct CustomAlert: View {
 
                 Text(alertType.message())
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .font(.subheadline)
+                    .font(.callout)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 16)
@@ -140,7 +141,8 @@ struct CustomAlert: View {
                     
  
             }
-            .frame(width: 270, height: 150)
+            .frame(width: 300, height: 180)
+            //.frame(width: 270, height: 150)
             .background(Color.white)
             
             .cornerRadius(16)
