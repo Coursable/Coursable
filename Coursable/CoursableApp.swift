@@ -10,6 +10,12 @@ import Firebase
 
 @main
 struct CoursableApp: App {
+    @Environment(\.colorScheme) var colorScheme
+    
+    init() {
+        UITextField.appearance().keyboardAppearance = .dark
+    }
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject var periodViewModel = PeriodViewModel()

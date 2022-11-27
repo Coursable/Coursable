@@ -33,9 +33,17 @@ class SignInViewModel: ObservableObject {
         case error
     }
     
+    enum createUserCodes: Error {
+        case error
+    }
+    
     func signUp(email: String, password: String, name: String, lastName: String) async -> signUpCodes {
         do {
+            //let db = Firestore.firestore()
             let userData: AuthDataResult = try await auth.createUser(withEmail: email, password: password)
+            
+            
+            try createNewUserProfile(userData: userData, name: name, lastName: lastName)
             
             DispatchQueue.main.async {
                 withAnimation {
@@ -45,6 +53,7 @@ class SignInViewModel: ObservableObject {
                 
             }
             
+
             
             
             print("Successfully signed up under user: \(email)")
@@ -71,6 +80,23 @@ class SignInViewModel: ObservableObject {
             
             
         }
+    }
+    
+    private func createNewUserProfile(userData: AuthDataResult, name: String, lastName: String) throws {
+        let db = Firestore.firestore()
+
+        let valueToAdd = UserInfoModel(userId: userData.user.uid, name: name, lastName: lastName)
+        
+        do {
+            try db.collection("users").document(userData.user.uid).setData(from: valueToAdd)
+        }
+        catch {
+            throw createUserCodes.error
+        }
+        
+
+            
+
     }
     
     
