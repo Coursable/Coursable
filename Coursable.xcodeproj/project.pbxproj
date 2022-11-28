@@ -68,6 +68,10 @@
 		DFB383172932E84900A5FCAE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DFB383162932E84900A5FCAE /* FirebaseFirestoreSwift */; };
 		DFB3831D2933D27500A5FCAE /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3831C2933D27500A5FCAE /* CustomAlert.swift */; };
 		DFB383212933EB3700A5FCAE /* CustomLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB383202933EB3700A5FCAE /* CustomLoadingView.swift */; };
+		DFB38324293436F700A5FCAE /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB38323293436F700A5FCAE /* ForgotPasswordView.swift */; };
+		DFB38326293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB38325293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift */; };
+		DFB38328293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB38327293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift */; };
+		DFB3832A2934439600A5FCAE /* ForgotPasswordEmailFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */; };
 		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
 		DFF73B8528DE87D900EF69D1 /* CoursableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
@@ -136,6 +140,10 @@
 		DFB383132932D0DB00A5FCAE /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		DFB3831C2933D27500A5FCAE /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		DFB383202933EB3700A5FCAE /* CustomLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingView.swift; sourceTree = "<group>"; };
+		DFB38323293436F700A5FCAE /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		DFB38325293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordTopInfoView.swift; sourceTree = "<group>"; };
+		DFB38327293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordSubmitButtonView.swift; sourceTree = "<group>"; };
+		DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordEmailFieldView.swift; sourceTree = "<group>"; };
 		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* Coursable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coursable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursableApp.swift; sourceTree = "<group>"; };
@@ -178,6 +186,7 @@
 		DF616D42292C452600727CCB /* SignInViews */ = {
 			isa = PBXGroup;
 			children = (
+				DFB38322293436E100A5FCAE /* ForgotPasswordView */,
 				DF616D51292D76E400727CCB /* SignInWithGoogle.swift */,
 				DF616D60292D903A00727CCB /* SignUpView */,
 				DF616D55292D8D5100727CCB /* LoginInView */,
@@ -349,6 +358,17 @@
 			path = CustomLoading;
 			sourceTree = "<group>";
 		};
+		DFB38322293436E100A5FCAE /* ForgotPasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				DFB38323293436F700A5FCAE /* ForgotPasswordView.swift */,
+				DFB38325293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift */,
+				DFB38327293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift */,
+				DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */,
+			);
+			path = ForgotPasswordView;
+			sourceTree = "<group>";
+		};
 		DFF73B7828DE87D900EF69D1 = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB38324293436F700A5FCAE /* ForgotPasswordView.swift in Sources */,
 				DF23215629271FE2005D5698 /* StatsCardView.swift in Sources */,
 				DF9BD55F28E24B1000C60E12 /* CurrentEventProgressText.swift in Sources */,
 				DFA5807029298C2F000790A4 /* FilterTopBarSectionView.swift in Sources */,
@@ -545,7 +566,9 @@
 				DF616D50292D1AA500727CCB /* LoginView.swift in Sources */,
 				DFA463A72921995A00FC826B /* DayProgressBarView.swift in Sources */,
 				DF9BD55628E2489300C60E12 /* NoEventsTopbarText.swift in Sources */,
+				DFB38328293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift in Sources */,
 				DFF73B8528DE87D900EF69D1 /* CoursableApp.swift in Sources */,
+				DFB38326293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift in Sources */,
 				DFA463A22921957C00FC826B /* CourseTimeInfoView.swift in Sources */,
 				DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */,
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
@@ -557,6 +580,7 @@
 				DF616D59292D8E0600727CCB /* LoginPasswordCardView.swift in Sources */,
 				DF9BD55B28E249CA00C60E12 /* NoMoreEventsProgressText.swift in Sources */,
 				DF616D4E292C559200727CCB /* MainSignInView.swift in Sources */,
+				DFB3832A2934439600A5FCAE /* ForgotPasswordEmailFieldView.swift in Sources */,
 				DF23215429271F5A005D5698 /* CourseFilterMenuView.swift in Sources */,
 				DF2329E429327E9000E7B363 /* SignUpLastNameCardView.swift in Sources */,
 				DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */,
@@ -705,7 +729,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AriReitman.Coursable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -738,7 +762,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AriReitman.Coursable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

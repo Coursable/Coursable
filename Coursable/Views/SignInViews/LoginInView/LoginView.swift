@@ -40,11 +40,17 @@ struct LoginView: View {
                                         
                                         HStack {
                                             Spacer()
-                                            Text("Forgot Password?")
-                                                .underline()
-                                                .font(.subheadline)
-                                                .foregroundColor(.white)
-                                                .fontWeight(.semibold)
+                                            NavigationLink {
+                                                ForgotPasswordView()
+                                            } label: {
+                                                Text("Forgot Password?")
+                                                    .underline()
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.white)
+                                                    .fontWeight(.semibold)
+                                            }
+
+                                            
                                         }
                                     }
                                 }
@@ -143,7 +149,6 @@ struct LoginView: View {
                     withAnimation(.linear(duration: 0.2)) {
                         hasError = false
                     }
-                    
                 }
                     
                 withAnimation {

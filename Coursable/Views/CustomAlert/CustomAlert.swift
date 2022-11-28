@@ -11,6 +11,9 @@ import Combine
 enum AlertType {
     case notification
     case accountAlreadyCreated
+    case resetPasswordSuccessfullySent
+    case resetPasswordErrorSent
+    case resetPasswordNoEmailAssociated
     
     func title() -> String {
         switch self {
@@ -18,6 +21,12 @@ enum AlertType {
             return "Notification"
         case .accountAlreadyCreated:
             return "Error"
+        case .resetPasswordSuccessfullySent:
+            return "Email Sent"
+        case .resetPasswordErrorSent:
+            return "Error"
+        case .resetPasswordNoEmailAssociated:
+            return "No Email"
         }
     }
     
@@ -27,6 +36,12 @@ enum AlertType {
             return "This is a notification to show you information"
         case .accountAlreadyCreated:
             return "An account has already been created under this email"
+        case .resetPasswordSuccessfullySent:
+            return "A reset password email has been sent"
+        case .resetPasswordErrorSent:
+            return "Something went wrong. Please try again later"
+        case .resetPasswordNoEmailAssociated:
+            return "No account was associated with this email"
         }
     }
     
@@ -37,6 +52,12 @@ enum AlertType {
             return "Cancel"
         case .accountAlreadyCreated:
             return ""
+        case .resetPasswordSuccessfullySent:
+            return ""
+        case .resetPasswordErrorSent:
+            return ""
+        case .resetPasswordNoEmailAssociated:
+            return ""
         }
     }
     
@@ -46,6 +67,12 @@ enum AlertType {
         case .notification:
             return "Go"
         case .accountAlreadyCreated:
+            return "Ok"
+        case .resetPasswordSuccessfullySent:
+            return "Ok"
+        case .resetPasswordErrorSent:
+            return "Ok"
+        case .resetPasswordNoEmailAssociated:
             return "Ok"
         }
     }

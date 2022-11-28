@@ -37,6 +37,29 @@ class SignInViewModel: ObservableObject {
         case error
     }
     
+    enum resetPasswordCodes {
+        case success
+        case error
+        case noEmailAssociated
+    }
+    
+    func resetPassword(email: String) async -> resetPasswordCodes  {
+        do {
+            try await auth.sendPasswordReset(withEmail: email)
+            print("Successfully sent an email to: \(email)")
+            return .success
+        }
+        catch {
+            print(error.localizedDescription)
+            if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                return .noEmailAssociated
+            } else {
+                return .error
+            }
+        }
+        
+    }
+    
     func signUp(email: String, password: String, name: String, lastName: String) async -> signUpCodes {
         do {
             //let db = Firestore.firestore()
@@ -49,12 +72,7 @@ class SignInViewModel: ObservableObject {
                 withAnimation {
                     self.isSignedIn = true
                 }
-                
-                
             }
-            
-
-            
             
             print("Successfully signed up under user: \(email)")
             
@@ -155,5 +173,27 @@ class SignInViewModel: ObservableObject {
             
             return signInCodes.invalidEmailPassword
         }
+    }
+    
+    func isValidEmailAddress(emailAddressString: String) -> Bool {
+        var returnValue = true
+        let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: emailRegEx)
+            let nsString = emailAddressString as NSString
+            let results = regex.matches(in: emailAddressString, range: NSRange(location: 0, length: nsString.length))
+            
+            if results.count == 0
+            {
+                returnValue = false
+            }
+            
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            returnValue = false
+        }
+        
+        return  returnValue
     }
 }
