@@ -9,7 +9,13 @@ import Foundation
 import SwiftUI
 
 class PeriodViewModel: ObservableObject {
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @Published var usersSubjects: [Subject] = [Subject.LanguageArtsSubjectExample, Subject.MathSubjectExample, Subject.ScienceSubjectExample] //Subject.LanguageArtsSubjectExample, Subject.MathSubjectExample, Subject.ScienceSubjectExample
+    @Published var usersPeriods: [PeriodModel] = [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample]
+    @Published var usersFullSchedule: [DayModel] = [DayModel.ExampleDay1]
+    
     
     @Published var todaysSchedule: DayModel?
     @Published var currentPeriodNumber: Int?
@@ -105,15 +111,13 @@ class PeriodViewModel: ObservableObject {
     func setTodaysSchedule() {
         currentWeekDay = Calendar.current.dateComponents([.weekday], from: Date()).weekday
         
-        for daySchedule in FullSchedule.FullScheduleExample.allClasses {
+        for daySchedule in usersFullSchedule {
             if daySchedule.day == Calendar.current.dateComponents([.weekday], from: Date()).weekday {
                 todaysSchedule = daySchedule
-                print("Found correct schedule day")
                 break
             }
             else {
                 todaysSchedule = nil
-                print("Not correct schedule day")
             }
         }
 
@@ -127,7 +131,6 @@ class PeriodViewModel: ObservableObject {
             }
         }
         else {
-            print("Current weekday returned nil -> Updated weekday")
             setTodaysSchedule()
         }
     }
@@ -284,8 +287,7 @@ class PeriodViewModel: ObservableObject {
                     }
                     
                     //otherwise switch the period number
-                    
-                    currentRingColor = period.subject.color
+
                     
                     withAnimation {
                         currentPeriodNumber = period.periodNumber
@@ -329,6 +331,28 @@ class PeriodViewModel: ObservableObject {
             currentRingColor = .defaultGray
         }
 
+    }
+    
+    func setSubjectData() {
+        DataViewModel().setSubjectData(subjectsToSave: self.usersSubjects) { succeed in
+            if succeed != true {
+                print("Unable to set subject data to database")
+            }
+        }
+    }
+    
+    func retrieveSubjectData() async {
+        await DataViewModel().getSubjectData() { succeed, data in
+            if succeed == true {
+                DispatchQueue.main.async {
+                    self.usersSubjects = data
+                }
+                
+            }
+            else {
+                print("Unable to write subject data")
+            }
+        }
     }
 
 }

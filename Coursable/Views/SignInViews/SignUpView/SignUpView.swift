@@ -13,10 +13,10 @@ struct SignUpView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     
     
-    @State var name = "Ari"
-    @State var lastName = "Reitman"
-    @State var email = "a.reitman@icloud.com"
-    @State var password = "Chess123"
+    @State var name = ""
+    @State var lastName = ""
+    @State var email = ""
+    @State var password = ""
     @State var isLoading: Bool = false
     @State var hasError: Bool = false
     @State var isSecured: Bool = true
@@ -136,7 +136,7 @@ struct SignUpView: View {
 
             
             if showErrorAlert {
-                CustomAlert(presentAlert: $showErrorAlert, alertType: .accountAlreadyCreated, rightButtonAction:  {
+                CustomAlert(presentAlert: $showErrorAlert, title: "Error", bodyText: "An account has already been created under this email", leftButtonText: "", rightButtonText: "Ok", rightButtonAction:  {
                     withAnimation(.easeInOut) {
                         showErrorAlert = false
                     }

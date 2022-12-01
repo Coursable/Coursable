@@ -24,11 +24,17 @@ struct MainSignInView: View {
                     }
                 }
                 .onAppear {
-                    //signInViewModel.isSignedIn = signInViewModel.signedIn
-//
+                    signInViewModel.isSignedIn = signInViewModel.signedIn
+
+                    
                     if signInViewModel.isSignedIn {
                         viewRouter.currentPage = .mainPage
                     }
+                    else {
+                        viewRouter.currentPage = .signInPage
+                    }
+                    
+                    print(viewRouter.currentPage)
                 }
             }
             .background {

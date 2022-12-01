@@ -8,83 +8,17 @@
 import SwiftUI
 import Combine
 
-enum AlertType {
-    case notification
-    case accountAlreadyCreated
-    case resetPasswordSuccessfullySent
-    case resetPasswordErrorSent
-    case resetPasswordNoEmailAssociated
-    
-    func title() -> String {
-        switch self {
-        case.notification:
-            return "Notification"
-        case .accountAlreadyCreated:
-            return "Error"
-        case .resetPasswordSuccessfullySent:
-            return "Email Sent"
-        case .resetPasswordErrorSent:
-            return "Error"
-        case .resetPasswordNoEmailAssociated:
-            return "No Email"
-        }
-    }
-    
-    func message() -> String {
-        switch self {
-        case .notification:
-            return "This is a notification to show you information"
-        case .accountAlreadyCreated:
-            return "An account has already been created under this email"
-        case .resetPasswordSuccessfullySent:
-            return "A reset password email has been sent"
-        case .resetPasswordErrorSent:
-            return "Something went wrong. Please try again later"
-        case .resetPasswordNoEmailAssociated:
-            return "No account was associated with this email"
-        }
-    }
-    
-    /// Left button action text for the alert view
-    var leftActionText: String {
-        switch self {
-        case .notification:
-            return "Cancel"
-        case .accountAlreadyCreated:
-            return ""
-        case .resetPasswordSuccessfullySent:
-            return ""
-        case .resetPasswordErrorSent:
-            return ""
-        case .resetPasswordNoEmailAssociated:
-            return ""
-        }
-    }
-    
-    /// Right button action text for the alert view
-    var rightActionText: String {
-        switch self {
-        case .notification:
-            return "Go"
-        case .accountAlreadyCreated:
-            return "Ok"
-        case .resetPasswordSuccessfullySent:
-            return "Ok"
-        case .resetPasswordErrorSent:
-            return "Ok"
-        case .resetPasswordNoEmailAssociated:
-            return "Ok"
-        }
-    }
-}
-
 struct CustomAlert: View {
     
     /// Flag used to dismiss the alert on the presenting view
     @Binding var presentAlert: Bool
     
-    /// The alert type being shown
-    @State var alertType: AlertType = .notification
+    
+    var title: String = ""
+    var bodyText: String
+    
+    var leftButtonText: String = ""
+    var rightButtonText: String = ""
     
     
     var leftButtonAction: (() -> ())?
@@ -100,8 +34,8 @@ struct CustomAlert: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0) {
-                if alertType.title() != "" {
-                    Text(alertType.title())
+                if title != "" {
+                    Text(title)
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.black)
@@ -112,7 +46,7 @@ struct CustomAlert: View {
                         .padding(.horizontal, 16)
                 }
 
-                Text(alertType.message())
+                Text(bodyText)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     .font(.callout)
                     .foregroundColor(.black)
@@ -123,11 +57,11 @@ struct CustomAlert: View {
                 
 
                 HStack {
-                    if (!alertType.leftActionText.isEmpty) {
+                    if (!leftButtonText.isEmpty) {
                         Button {
                             leftButtonAction?()
                         } label: {
-                            Text(alertType.leftActionText)
+                            Text(leftButtonText)
                                 .font(.headline)
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
@@ -142,7 +76,7 @@ struct CustomAlert: View {
                     Button {
                         rightButtonAction?()
                     } label: {
-                        Text(alertType.rightActionText)
+                        Text(rightButtonText)
                             //.font(.system(size: 16, weight: .bold))
                             .font(.headline)
                             .foregroundColor(.white)
@@ -183,7 +117,7 @@ struct CustomAlert: View {
 
 struct AlertThing_Previews: PreviewProvider {
     static var previews: some View {
-        CustomAlert(presentAlert: .constant(true))
+        CustomAlert(presentAlert: .constant(true), bodyText: "Body")
     }
 }
 

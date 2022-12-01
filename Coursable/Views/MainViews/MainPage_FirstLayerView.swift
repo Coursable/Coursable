@@ -10,15 +10,69 @@ import SwiftUI
 struct MainPage_FirstLayerView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
     
+    @State var showSettingsSheet: Bool = false
+        
+    
     var body: some View {
         VStack {
+
             
-            HStack {
-                Spacer()
-                TopbarText()
-                    .foregroundColor(.white)
-                Spacer()
+            ZStack {
+                Button {
+                    showSettingsSheet.toggle()
+                } label: {
+                    ZStack {
+                        
+                        Circle()
+                            .opacity(0.3)
+                            .foregroundStyle(.gray)
+                            .frame(width: 50)
+                            .overlay {
+                                Image(systemName: "gearshape.fill")
+                                    .font(.title2)
+                                    .font(.largeTitle)
+                                .foregroundStyle(.white)
+                            }
+                        
+                        
+                    }
+                        
+                }
+                .offset(x: -155)
+                
+                HStack {
+                    Spacer()
+                    TopbarText()
+                       .foregroundColor(.white)
+                    Spacer()
+                }
+                
+                Button {
+                    
+                } label: {
+                    ZStack {
+                        
+                        Circle()
+                            .opacity(0.3)
+                            .foregroundStyle(.gray)
+                            .frame(width: 50)
+                            .overlay {
+                                Image("MyIcon")//"MyIcon"
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 45)
+                                    .font(.largeTitle)
+                                .foregroundStyle(.white)
+                            }
+                        
+                        
+                    }
+                        
+                }
+                .offset(x: 155)
+
             }
+
 
             ProgressRingView()
 
@@ -30,6 +84,10 @@ struct MainPage_FirstLayerView: View {
         }
         .foregroundColor(.white)
         .background(Color("Background"))
+        .fullScreenCover(isPresented: $showSettingsSheet, content: {
+            SettingsView(showSheet: $showSettingsSheet)
+        })
+        
 
     }
 }

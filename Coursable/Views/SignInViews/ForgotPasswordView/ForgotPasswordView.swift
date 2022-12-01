@@ -51,28 +51,27 @@ struct ForgotPasswordView: View {
             if showAlert {
                 if hasError {
                     if errorType == .error {
-                        CustomAlert(presentAlert: $showAlert, alertType: .resetPasswordErrorSent, rightButtonAction:  {
-                            withAnimation {
+                        CustomAlert(presentAlert: $showAlert, title: "Error", bodyText: "Something went wrong. Please try again later", leftButtonText: "", rightButtonText: "Ok", rightButtonAction:  {
+                            withAnimation(.easeInOut) {
                                 showAlert = false
                             }
                         })
                     }
                     else {
-                        CustomAlert(presentAlert: $showAlert, alertType: .resetPasswordNoEmailAssociated, rightButtonAction:  {
-                            withAnimation {
+                        CustomAlert(presentAlert: $showAlert, title: "No Email", bodyText: "No account was associated with this email", leftButtonText: "", rightButtonText: "Ok", rightButtonAction:  {
+                            withAnimation(.easeInOut) {
                                 showAlert = false
                             }
-                            
                         })
                     }
 
                 }
                 else {
-                    CustomAlert(presentAlert: $showAlert, alertType: .resetPasswordSuccessfullySent, rightButtonAction:  {
-                        withAnimation {
+                    CustomAlert(presentAlert: $showAlert, title: "Email Sent", bodyText: "A reset password email has been sent", leftButtonText: "", rightButtonText: "Ok", rightButtonAction:  {
+                        withAnimation(.easeInOut) {
                             showAlert = false
+                            presentationMode.wrappedValue.dismiss()
                         }
-                        presentationMode.wrappedValue.dismiss()
                     })
                 }
 

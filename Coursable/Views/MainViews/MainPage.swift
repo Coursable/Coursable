@@ -15,6 +15,8 @@ struct MainPage: View {
                 .ignoresSafeArea() //remove the extra space from navigation bar
         }
 
+        
+
     }
 }
 

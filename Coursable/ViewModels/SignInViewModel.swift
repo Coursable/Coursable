@@ -13,7 +13,7 @@ import SwiftUI
 
 class SignInViewModel: ObservableObject {
     let auth = Auth.auth()
-    
+    var viewRouter = ViewRouter()
     
     @Published var isSignedIn = false
     
@@ -130,6 +130,8 @@ class SignInViewModel: ObservableObject {
             
             print("Successfully logged out user")
             
+            
+            
             return
             
         } catch {
@@ -138,6 +140,7 @@ class SignInViewModel: ObservableObject {
                     self.isSignedIn = false
                 }
             }
+            
             
             print(error.localizedDescription)
             

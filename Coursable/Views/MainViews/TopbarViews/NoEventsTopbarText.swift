@@ -10,7 +10,7 @@ import SwiftUI
 struct NoEventsTopbarText: View {
     var body: some View {
         Text("No Events Today")
-            .font(.title3.weight(.semibold))
+            .font(.title2.weight(.semibold))
     }
 }
 

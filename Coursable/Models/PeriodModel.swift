@@ -43,17 +43,35 @@ struct PeriodModel: Identifiable {
     static let periodThreeExample = PeriodModel(id: "3", startTime: "22:03:00", endTime: "22:03:30", periodNumber: 5, subject: Subject.ScienceSubjectExample)
 }
 
-struct Subject: Identifiable {
+struct Subject: Identifiable, Codable {
     var id: String
     var name: String
     var teacher: String
-    var color: LinearGradient
+    var colorGradientPrimary: [Double]
+    var colorGradientSecondary: [Double]
     var roomNumber: String
     
-    static let MathSubjectExample = Subject(id: "1", name: "Math", teacher: "Ari Reitman", color: .bluePink, roomNumber: "1")
-    static let LanguageArtsSubjectExample = Subject(id: "2", name: "Language Arts", teacher: "John Reed", color: .yellowOrange, roomNumber: "2")
-    static let ScienceSubjectExample = Subject(id: "3", name: "Science", teacher: "Steve Jobs", color: .orangePurple, roomNumber: "3")
+    static let MathSubjectExample = Subject(id: "1", name: "Math", teacher: "Ari Reitman", colorGradientPrimary: Subject.Blue, colorGradientSecondary: Subject.Pink, roomNumber: "1")
+    static let LanguageArtsSubjectExample = Subject(id: "2", name: "Language Arts", teacher: "John Reed", colorGradientPrimary: Subject.Yellow, colorGradientSecondary: Subject.Orange, roomNumber: "2")
+    static let ScienceSubjectExample = Subject(id: "3", name: "Science", teacher: "Steve Jobs", colorGradientPrimary: Subject.Orange, colorGradientSecondary: Subject.Pink, roomNumber: "3")
+    
+    static let Blue = [23.0, 120.0, 248.0]
+    static let Pink = [250.0, 55.0, 86.0]
+    static let Yellow = [254.0, 209.0, 58.0]
+    static let Orange = [252.0, 150.0, 46.0]
+    static let Purple = [180.0, 82.0, 832.0]
 }
+
+//struct RGBModel: Identifiable, Codable {
+//    var id = UUID()
+//    var colorR, colorG, colorB: Double
+//
+//    static let Blue = RGBModel(colorR: 23, colorG: 120, colorB: 248)
+//    static let Pink = RGBModel(colorR: 250, colorG: 55, colorB: 86)
+//    static let Yellow = RGBModel(colorR: 254, colorG: 209, colorB: 58)
+//    static let Orange = RGBModel(colorR: 252, colorG: 150, colorB: 46)
+//    static let Purple = RGBModel(colorR: 180, colorG: 82, colorB: 832)
+//}
 
 
 struct DayModel: Identifiable {
@@ -61,7 +79,7 @@ struct DayModel: Identifiable {
     var day: Int
     var periods: [PeriodModel]
     
-    static let ExampleDay1 = DayModel(id: "1", day: 7, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
+    static let ExampleDay1 = DayModel(id: "1", day: 4, periods: [PeriodModel.periodOneExample, PeriodModel.periodTwoExample, PeriodModel.periodThreeExample])
     /*
      day 1=Sunday
      day 2=Monday
@@ -74,7 +92,7 @@ struct DayModel: Identifiable {
     
 }
 
-struct FullSchedule: Identifiable {
+struct FullSchedule: Identifiable{
     var id: String
     var allClasses: [DayModel]
     

@@ -10,8 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @EnvironmentObject var signInViewModel: SignInViewModel
     @EnvironmentObject var viewRouter: ViewRouter
-    @State var email = "a.reitman@icloud.com"
-    @State var password = "Chess123"
+    @State var email = ""
+    @State var password = ""
     @State var isLoading: Bool = false
     @State var hasError: Bool = false
     @State var isSecured: Bool = true

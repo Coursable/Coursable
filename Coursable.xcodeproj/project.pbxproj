@@ -72,6 +72,11 @@
 		DFB38326293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB38325293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift */; };
 		DFB38328293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB38327293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift */; };
 		DFB3832A2934439600A5FCAE /* ForgotPasswordEmailFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */; };
+		DFC0E52929356AD1008F2457 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52829356AD1008F2457 /* TestView.swift */; };
+		DFC0E52C293575E8008F2457 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52B293575E8008F2457 /* SettingsView.swift */; };
+		DFC0E52E29357749008F2457 /* SettingsTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */; };
+		DFC0E53029357AF1008F2457 /* SettingsCourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */; };
+		DFC0E534293592F2008F2457 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E533293592F2008F2457 /* DataViewModel.swift */; };
 		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
 		DFF73B8528DE87D900EF69D1 /* CoursableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
@@ -80,6 +85,10 @@
 		DFF73B9428DE888000EF69D1 /* PeriodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B9328DE888000EF69D1 /* PeriodModel.swift */; };
 		DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B9728DE89F900EF69D1 /* PeriodViewModel.swift */; };
 		DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B9A28DE8A8700EF69D1 /* Extensions.swift */; };
+		DFFB0B9629381D5300124A64 /* AddSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB0B9529381D5300124A64 /* AddSubjectView.swift */; };
+		DFFB0B9829381EB500124A64 /* AddSubjectTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB0B9729381EB500124A64 /* AddSubjectTopBarView.swift */; };
+		DFFB0B9A29382A8C00124A64 /* SettingsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB0B9929382A8C00124A64 /* SettingsTextField.swift */; };
+		DFFB0B9C29382DFE00124A64 /* AddSubjectCustomColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB0B9B29382DFE00124A64 /* AddSubjectCustomColorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +153,11 @@
 		DFB38325293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordTopInfoView.swift; sourceTree = "<group>"; };
 		DFB38327293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordSubmitButtonView.swift; sourceTree = "<group>"; };
 		DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordEmailFieldView.swift; sourceTree = "<group>"; };
+		DFC0E52829356AD1008F2457 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		DFC0E52B293575E8008F2457 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTopInfoView.swift; sourceTree = "<group>"; };
+		DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCourseCardView.swift; sourceTree = "<group>"; };
+		DFC0E533293592F2008F2457 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* Coursable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coursable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursableApp.swift; sourceTree = "<group>"; };
@@ -153,6 +167,10 @@
 		DFF73B9328DE888000EF69D1 /* PeriodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodModel.swift; sourceTree = "<group>"; };
 		DFF73B9728DE89F900EF69D1 /* PeriodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodViewModel.swift; sourceTree = "<group>"; };
 		DFF73B9A28DE8A8700EF69D1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DFFB0B9529381D5300124A64 /* AddSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectView.swift; sourceTree = "<group>"; };
+		DFFB0B9729381EB500124A64 /* AddSubjectTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectTopBarView.swift; sourceTree = "<group>"; };
+		DFFB0B9929382A8C00124A64 /* SettingsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextField.swift; sourceTree = "<group>"; };
+		DFFB0B9B29382DFE00124A64 /* AddSubjectCustomColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectCustomColorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +246,7 @@
 		DF6A548C28E208DC00DD0FEC /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
+				DFC0E52A293575DB008F2457 /* SettingsView */,
 				DF0820FA291EBB2300FF4A75 /* SlideUpView */,
 				DF9BD55028E2445600C60E12 /* TopbarViews */,
 				DF9B609028DF4DD100086E9E /* MainPage_FirstLayerView.swift */,
@@ -263,6 +282,7 @@
 				DF92E4172929BEEE00DB0364 /* ViewModifiers */,
 				DF6A548C28E208DC00DD0FEC /* MainViews */,
 				DF8A95AD28DF661700802129 /* ProgressRingViews */,
+				DFC0E52829356AD1008F2457 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,6 +389,18 @@
 			path = ForgotPasswordView;
 			sourceTree = "<group>";
 		};
+		DFC0E52A293575DB008F2457 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				DFFB0B9229381D3B00124A64 /* AddSubjectView */,
+				DFC0E52B293575E8008F2457 /* SettingsView.swift */,
+				DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */,
+				DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */,
+				DFFB0B9929382A8C00124A64 /* SettingsTextField.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
 		DFF73B7828DE87D900EF69D1 = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +458,7 @@
 				DFF73B9728DE89F900EF69D1 /* PeriodViewModel.swift */,
 				DF616D45292C454800727CCB /* SignInViewModel.swift */,
 				DF2329DD29318D0300E7B363 /* ViewRouter.swift */,
+				DFC0E533293592F2008F2457 /* DataViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -437,6 +470,16 @@
 				DFCF684928E0B79400DE77DA /* ColorHandler.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DFFB0B9229381D3B00124A64 /* AddSubjectView */ = {
+			isa = PBXGroup;
+			children = (
+				DFFB0B9529381D5300124A64 /* AddSubjectView.swift */,
+				DFFB0B9729381EB500124A64 /* AddSubjectTopBarView.swift */,
+				DFFB0B9B29382DFE00124A64 /* AddSubjectCustomColorView.swift */,
+			);
+			path = AddSubjectView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -526,6 +569,7 @@
 				DFA5807029298C2F000790A4 /* FilterTopBarSectionView.swift in Sources */,
 				DF2329DE29318D0300E7B363 /* ViewRouter.swift in Sources */,
 				DF9BD56128E39CAF00C60E12 /* TopbarText.swift in Sources */,
+				DFC0E53029357AF1008F2457 /* SettingsCourseCardView.swift in Sources */,
 				DF92E4192929BEF900DB0364 /* Modifiers.swift in Sources */,
 				DF2329EA293287DC00E7B363 /* SignUpButtonView.swift in Sources */,
 				DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */,
@@ -538,24 +582,30 @@
 				DF92E4152929BABF00DB0364 /* DestinationView.swift in Sources */,
 				DF9BD55D28E24A9A00C60E12 /* NextEventProgressText.swift in Sources */,
 				DF2329E82932878600E7B363 /* SignInButtonView.swift in Sources */,
+				DFC0E52C293575E8008F2457 /* SettingsView.swift in Sources */,
 				DF9BD55828E248FE00C60E12 /* CurrentEventTopbarText.swift in Sources */,
 				DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */,
 				DFA463A02920764200FC826B /* CourseCardView.swift in Sources */,
 				DF082100291EBCF800FF4A75 /* SlideUpView.swift in Sources */,
 				DF9B609128DF4DD100086E9E /* MainPage_FirstLayerView.swift in Sources */,
+				DFFB0B9829381EB500124A64 /* AddSubjectTopBarView.swift in Sources */,
 				DFB383142932D0DB00A5FCAE /* UserInfoModel.swift in Sources */,
+				DFC0E52929356AD1008F2457 /* TestView.swift in Sources */,
+				DFFB0B9C29382DFE00124A64 /* AddSubjectCustomColorView.swift in Sources */,
 				DF616D5B292D8EA000727CCB /* LoginOtherOptionsDividerView.swift in Sources */,
 				DF2329E629327EE300E7B363 /* SignUpPasswordCardView.swift in Sources */,
 				DF616D5F292D8FB700727CCB /* LoginTopInfoView.swift in Sources */,
 				DF616D52292D76E400727CCB /* SignInWithGoogle.swift in Sources */,
 				DFF73B9428DE888000EF69D1 /* PeriodModel.swift in Sources */,
 				DF2329D829312A5800E7B363 /* SignUpOtherOptionsDividerView.swift in Sources */,
+				DFFB0B9629381D5300124A64 /* AddSubjectView.swift in Sources */,
 				DF2329D62931259700E7B363 /* SignUpTopInfoView.swift in Sources */,
 				DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */,
 				DF082104291EC7E800FF4A75 /* ProgressRingView.swift in Sources */,
 				DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */,
 				DF2329E229327DDB00E7B363 /* SignUpNameCardView.swift in Sources */,
 				DF2329E029327C1B00E7B363 /* SignUpEmailCardView.swift in Sources */,
+				DFFB0B9A29382A8C00124A64 /* SettingsTextField.swift in Sources */,
 				DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */,
 				DF082102291EC5DF00FF4A75 /* MainPage.swift in Sources */,
 				DF0820FE291EBB8600FF4A75 /* SlideUp.swift in Sources */,
@@ -571,6 +621,7 @@
 				DFB38326293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift in Sources */,
 				DFA463A22921957C00FC826B /* CourseTimeInfoView.swift in Sources */,
 				DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */,
+				DFC0E534293592F2008F2457 /* DataViewModel.swift in Sources */,
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
 				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
 				DFB383212933EB3700A5FCAE /* CustomLoadingView.swift in Sources */,
@@ -581,6 +632,7 @@
 				DF9BD55B28E249CA00C60E12 /* NoMoreEventsProgressText.swift in Sources */,
 				DF616D4E292C559200727CCB /* MainSignInView.swift in Sources */,
 				DFB3832A2934439600A5FCAE /* ForgotPasswordEmailFieldView.swift in Sources */,
+				DFC0E52E29357749008F2457 /* SettingsTopInfoView.swift in Sources */,
 				DF23215429271F5A005D5698 /* CourseFilterMenuView.swift in Sources */,
 				DF2329E429327E9000E7B363 /* SignUpLastNameCardView.swift in Sources */,
 				DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */,
@@ -729,7 +781,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AriReitman.Coursable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -762,7 +814,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AriReitman.Coursable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
