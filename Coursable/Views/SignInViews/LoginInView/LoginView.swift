@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var signInViewModel: SignInViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @State var email = ""
     @State var password = ""
     @State var isLoading: Bool = false
@@ -76,7 +75,7 @@ struct LoginView: View {
                                 .padding(.top)
                             
                             Button {
-                                
+                                signInViewModel.signInWithGoogle()
                             } label: {
                                 SignInWithGoogle()
                             }
@@ -140,12 +139,10 @@ struct LoginView: View {
                 
                 switch await signInViewModel.signIn(email: email, password: password) {
                 case .invalidEmailPassword:
-                    viewRouter.currentPage = .signInPage
                     withAnimation(.linear(duration: 0.2)) {
                         hasError = true
                     }
                 case .success:
-                    viewRouter.currentPage = .mainPage
                     withAnimation(.linear(duration: 0.2)) {
                         hasError = false
                     }
@@ -170,6 +167,5 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
             .environmentObject(SignInViewModel())
-            .environmentObject(ViewRouter())
     }
 }

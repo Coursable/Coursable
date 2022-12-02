@@ -10,12 +10,19 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 import SwiftUI
+import GoogleSignIn
+
 
 class SignInViewModel: ObservableObject {
     let auth = Auth.auth()
-    var viewRouter = ViewRouter()
     
-    @Published var isSignedIn = false
+    enum SignInState {
+        case signedIn
+        case signedOut
+      }
+      
+    @Published var state: SignInState = .signedOut
+    
     
     var signedIn: Bool {
         return auth.currentUser != nil
@@ -70,7 +77,7 @@ class SignInViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 withAnimation {
-                    self.isSignedIn = true
+                    self.state = .signedIn
                 }
             }
             
@@ -83,7 +90,7 @@ class SignInViewModel: ObservableObject {
         } catch {
             DispatchQueue.main.async {
                 withAnimation {
-                    self.isSignedIn = false
+                    self.state = .signedOut
                 }
             }
             
@@ -121,10 +128,10 @@ class SignInViewModel: ObservableObject {
     func signOut() {
         do {
             try auth.signOut()
-            
+            GIDSignIn.sharedInstance.signOut()
             DispatchQueue.main.async {
                 withAnimation {
-                    self.isSignedIn = false
+                    self.state = .signedOut
                 }
             }
             
@@ -137,7 +144,7 @@ class SignInViewModel: ObservableObject {
         } catch {
             DispatchQueue.main.async {
                 withAnimation {
-                    self.isSignedIn = false
+                    self.state = .signedOut
                 }
             }
             
@@ -156,7 +163,7 @@ class SignInViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 withAnimation {
-                    self.isSignedIn = true
+                    self.state = .signedIn
                 }
                 
             }
@@ -168,7 +175,7 @@ class SignInViewModel: ObservableObject {
         } catch {
             DispatchQueue.main.async {
                 withAnimation {
-                    self.isSignedIn = false
+                    self.state = .signedOut
                 }
             }
             
@@ -199,4 +206,53 @@ class SignInViewModel: ObservableObject {
         
         return  returnValue
     }
+    
+    
+    func signInWithGoogle() {
+      if GIDSignIn.sharedInstance.hasPreviousSignIn() {
+        GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
+            authenticateUser(for: user, with: error)
+            
+        }
+      } else {
+
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        let configuration = GIDConfiguration(clientID: clientID)
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
+        
+        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in
+          authenticateUser(for: user, with: error)
+        }
+      }
+
+    }
+    
+    private func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
+        
+
+        if let error = error {
+          print(error.localizedDescription)
+          return
+        }
+
+        guard let authentication = user?.authentication, let idToken = authentication.idToken else { return }
+        
+        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential) { [unowned self] (_, error) in
+          if let error = error {
+            print(error.localizedDescription)
+          } else {
+              DispatchQueue.main.async {
+                  withAnimation {
+                      self.state = .signedIn
+                  }
+              }
+          }
+        }
+
+      }
 }

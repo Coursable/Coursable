@@ -82,11 +82,18 @@ struct MainPage_FirstLayerView: View {
 
             
         }
+        .onAppear {
+            Task {
+                await periodViewModel.retrieveSubjectData()
+            }
+            
+        }
         .foregroundColor(.white)
         .background(Color("Background"))
         .fullScreenCover(isPresented: $showSettingsSheet, content: {
             SettingsView(showSheet: $showSettingsSheet)
         })
+        
         
 
     }

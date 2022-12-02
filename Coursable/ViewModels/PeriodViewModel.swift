@@ -333,24 +333,45 @@ class PeriodViewModel: ObservableObject {
 
     }
     
-    func setSubjectData() {
+    func setSubjectData() -> Bool {
+        var valueToReturn = true
+        
         DataViewModel().setSubjectData(subjectsToSave: self.usersSubjects) { succeed in
             if succeed != true {
                 print("Unable to set subject data to database")
+                valueToReturn = false
             }
         }
+        
+        return valueToReturn
     }
+    
+    func setIndividualSubjectData(subjectToSave: Subject) -> Bool {
+        var valueToReturn = true
+        
+        DataViewModel().setIndividualSubjectData(subjectToSave: subjectToSave) { succeed in
+            if succeed != true {
+                print("Unable to set individual subject data to database")
+                valueToReturn = false
+            }
+        }
+        
+        return valueToReturn
+    }
+    
+    
     
     func retrieveSubjectData() async {
         await DataViewModel().getSubjectData() { succeed, data in
-            if succeed == true {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if succeed == true {
                     self.usersSubjects = data
+                    
                 }
-                
-            }
-            else {
-                print("Unable to write subject data")
+                else {
+                    print("Unable to write subject data")
+                    
+                }
             }
         }
     }

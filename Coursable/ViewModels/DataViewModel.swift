@@ -36,6 +36,26 @@ class DataViewModel {
         }
     }
     
+    public func setIndividualSubjectData(subjectToSave: Subject,completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        
+        
+        if let currentUser = SignInViewModel().auth.currentUser {
+            do {
+                
+                try db.collection("users").document(currentUser.uid).collection("subjects").document(subjectToSave.name).setData(from: subjectToSave)
+                completion(true)
+            }
+            catch {
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+        else {
+            completion(false)
+        }
+    }
+    
     public func getSubjectData(completion: @escaping (Bool, [Subject]) -> Void) async {
         let db = Firestore.firestore()
         

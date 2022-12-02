@@ -21,7 +21,7 @@ struct CourseIconView: View {
             .overlay {
                 
                 
-                Text(period.subject.name.prefix(1))
+                Text(period.subject.name.prefix(1).capitalized)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)

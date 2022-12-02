@@ -19,7 +19,7 @@ struct SettingsCourseCardView: View {
                     .frame(width: 50)
                     .overlay {
                         
-                        Text(subject.name.prefix(1))
+                        Text(subject.name.prefix(1).capitalized)
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.white)

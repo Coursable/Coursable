@@ -9,17 +9,34 @@ import SwiftUI
 
 struct AddSubjectCustomColorView: View {
     
-    @State var colorPrimary: Color = colors[1]
-    @State var colorSecondary: Color = colors[2]
+    var subjectName: String
+    @Binding var colorPrimary: Color
+    @Binding var colorSecondary: Color
+    
     
     
     
     var body: some View {
         HStack(alignment: .center) {
             
-            Circle()
-                .frame(width: 100)
-                .foregroundStyle(LinearGradient(colors: [colorPrimary, colorSecondary], startPoint: .topLeading, endPoint: .bottomTrailing))
+            VStack(spacing: 6) {
+                    Text("Preview")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                
+                Circle()
+                    .frame(width: 100)
+                    .foregroundStyle(LinearGradient(colors: [colorPrimary, colorSecondary], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .overlay {
+                        Text(subjectName.prefix(1).capitalized)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                        
+                    }
+                
+
+            }
 
             
             VStack(spacing: 6) {
@@ -119,7 +136,7 @@ struct AddSubjectCustomColorView: View {
 
 struct AddSubjectCustomColorView_Previews: PreviewProvider {
     static var previews: some View {
-        AddSubjectCustomColorView()
+        AddSubjectCustomColorView(subjectName: "Math", colorPrimary: .constant(.blue), colorSecondary: .constant(.pink))
             .preferredColorScheme(.dark)
     }
 }

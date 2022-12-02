@@ -10,8 +10,6 @@ import SwiftUI
 struct SignUpView: View {
     
     @EnvironmentObject var signInViewModel: SignInViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
-    
     
     @State var name = ""
     @State var lastName = ""
@@ -87,7 +85,7 @@ struct SignUpView: View {
                         .padding(.top)
                     
                     Button {
-                        
+                        signInViewModel.signInWithGoogle()
                     } label: {
                         SignInWithGoogle()
                     }
@@ -159,7 +157,7 @@ struct SignUpView: View {
                 
                 switch await signInViewModel.signUp(email: email, password: password, name: name, lastName: lastName) {
                 case .success:
-                    viewRouter.currentPage = .mainPage
+                    break
                 case .error:
                     withAnimation(.easeInOut) {
                         showErrorAlert = true
@@ -243,6 +241,5 @@ struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()
             .environmentObject(SignInViewModel())
-            .environmentObject(ViewRouter())
     }
 }

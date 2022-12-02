@@ -8,40 +8,43 @@
 import SwiftUI
 
 struct MainSignInView: View {
+    @State var isLoading: Bool = false
     @EnvironmentObject var signInViewModel: SignInViewModel
-    
-    @EnvironmentObject var viewRouter: ViewRouter
 
     var body: some View {
         NavigationView {
             ZStack {
-                Group {
-                    switch viewRouter.currentPage {
-                    case .signInPage:
-                        LoginView()
-                    case .mainPage:
-                        MainPage()
-                    }
+                switch signInViewModel.state {
+                  case .signedIn: MainPage()
+                  case .signedOut: LoginView()
                 }
-                .onAppear {
-                    signInViewModel.isSignedIn = signInViewModel.signedIn
 
-                    
-                    if signInViewModel.isSignedIn {
-                        viewRouter.currentPage = .mainPage
-                    }
-                    else {
-                        viewRouter.currentPage = .signInPage
-                    }
-                    
-                    print(viewRouter.currentPage)
+                
+                if isLoading {
+                    CustomLoading()
                 }
+
+            }
+            .onAppear {
+                withAnimation {
+                    isLoading = true
+                }
+                if signInViewModel.signedIn {
+                    signInViewModel.state = .signedIn
+                }
+                else {
+                    signInViewModel.state = .signedOut
+                }
+                withAnimation {
+                    isLoading = false
+                }
+
             }
             .background {
                 Color("Background")
                     .ignoresSafeArea()
             }
-            .animation(.default, value: viewRouter.currentPage)
+            .animation(.default, value: signInViewModel.state)
         }
         
     }
@@ -51,6 +54,5 @@ struct MainSignInView_Previews: PreviewProvider {
     static var previews: some View {
         MainSignInView()
             .environmentObject(SignInViewModel())
-            .environmentObject(ViewRouter())
     }
 }

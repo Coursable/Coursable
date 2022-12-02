@@ -11,7 +11,6 @@ import FirebaseFirestore
 struct SettingsView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
     @EnvironmentObject var signInViewModel: SignInViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @Binding var showSheet: Bool
     @State var isLoading: Bool = false
     @State var showAddSubjectSheet: Bool = false
@@ -93,7 +92,6 @@ struct SettingsView: View {
                     Section {
                         Button {
                             signInViewModel.signOut()
-                            viewRouter.currentPage = .signInPage
                         } label: {
                             Text("Sign Out")
                         }
@@ -152,6 +150,5 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(showSheet: .constant(false))
             .environmentObject(PeriodViewModel())
             .environmentObject(SignInViewModel())
-            .environmentObject(ViewRouter())
     }
 }
