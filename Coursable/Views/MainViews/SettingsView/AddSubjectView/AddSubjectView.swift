@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct AddSubjectView: View {
+    
+    enum AddSubjectErrors: Error {
+        case alreadyCreated
+        case formNotCompleted
+        case generalError
+    }
+    
     @EnvironmentObject var periodViewModel: PeriodViewModel
     
     @Binding var showAddSubjectSheet: Bool
@@ -22,6 +29,10 @@ struct AddSubjectView: View {
     @State var gradientSecondaryColor: Color = colors[2]
     @State var showAlert: Bool = false
     @State var isLoading: Bool = false
+    @State var errorMessage: AddSubjectErrors = .generalError
+    
+    
+    
     
     
     var body: some View {
@@ -89,20 +100,30 @@ struct AddSubjectView: View {
                                     
                                     let newSubject = Subject(id: UUID().uuidString, name: name, teacher: teacher, colorGradientPrimary: [gradientPrimaryColor.components.red, gradientPrimaryColor.components.green, gradientPrimaryColor.components.blue], colorGradientSecondary: [gradientSecondaryColor.components.red, gradientSecondaryColor.components.green, gradientSecondaryColor.components.blue], roomNumber: roomNumber)
                                     
-                                    if periodViewModel.setIndividualSubjectData(subjectToSave: newSubject) {
-                                        await periodViewModel.retrieveSubjectData()
-                                        showAddSubjectSheet = false
+                                    
+                                    if !periodViewModel.usersSubjects.contains(where:  { $0.name.lowercased() == name.lowercased() } ) {
+                                        if periodViewModel.setIndividualSubjectData(subjectToSave: newSubject) {
+                                            await periodViewModel.retrieveSubjectData()
+                                            showAddSubjectSheet = false
+                                        }
+                                        else {
+                                            errorMessage = .generalError
+                                            withAnimation(.easeInOut) {
+                                                
+                                                showAlert = true
+                                            }
+                                        }
                                     }
                                     else {
+                                        errorMessage = .alreadyCreated
                                         withAnimation(.easeInOut) {
                                             showAlert = true
                                         }
                                     }
-
-                                    
                                     
                                 }
                                 else {
+                                    errorMessage = .formNotCompleted
                                     withAnimation(.easeInOut) {
                                         showAlert = true
                                     }
@@ -151,7 +172,7 @@ struct AddSubjectView: View {
             }
             
             if showAlert {
-                CustomAlert(presentAlert: $showAlert, title: "Error", bodyText: "Unable to create subject. Please check all fields and try again later.", rightButtonText: "Ok", rightButtonAction:  {
+                CustomAlert(presentAlert: $showAlert, title: "Error", bodyText: convertErrorToStringMessage(errorEnum: errorMessage), rightButtonText: "Ok", rightButtonAction:  {
                     withAnimation(.easeInOut) {
                         showAlert = false
                     }
@@ -182,6 +203,17 @@ struct AddSubjectView: View {
         }
         
         return true
+    }
+    
+    func convertErrorToStringMessage(errorEnum: AddSubjectErrors) -> String {
+        switch errorEnum {
+        case .generalError:
+            return "Unable to add subject. Please try again later."
+        case .alreadyCreated:
+            return "Unable to add subject. This subject was already created."
+        case .formNotCompleted:
+            return "Unable to add subject. Some fields were not filled out."
+        }
     }
 }
 
