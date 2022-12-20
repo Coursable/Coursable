@@ -15,7 +15,7 @@ struct SignUpPasswordCardView: View {
     
     var body: some View {
         VStack {
-            LoginTextField {
+            CustomTextField {
                 HStack {
                     Group {
                         if isSecured {

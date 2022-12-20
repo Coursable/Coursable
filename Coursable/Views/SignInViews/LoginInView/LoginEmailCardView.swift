@@ -14,15 +14,15 @@ struct LoginEmailCardView: View {
     var hasError: Bool
     
     var body: some View {
-        LoginTextField {
+
+        CustomTextField {
             TextField(text: $email) {
                 Text("Email")
                     .foregroundColor(Color(.gray))
             }
             .foregroundColor(.white)
             .focused(focused)
-            .autocorrectionDisabled(true)
-            .autocapitalization(.none)
+
 
             Image(systemName: "exclamationmark.triangle")
                 .foregroundColor(.red)
@@ -37,7 +37,6 @@ struct LoginEmailCardView: View {
             }
 
         }
-
 
     }
 }

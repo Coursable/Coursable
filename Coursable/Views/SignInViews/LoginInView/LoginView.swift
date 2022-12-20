@@ -30,14 +30,72 @@ struct LoginView: View {
                             VStack(spacing: 17) {
                                 Group {
                                     
+                                    CustomTextField {
+                                        TextField(text: $email) {
+                                            Text("Email")
+                                                .foregroundColor(Color(.gray))
+                                        }
+                                        .foregroundColor(.white)
+                                        .focused($isUsernameInputActive)
 
-                                    
-                                    LoginEmailCardView(email: $email, focused: $isUsernameInputActive, hasError: hasError)
-                                        .fontWeight(.semibold)
+
+                                        Image(systemName: "exclamationmark.triangle")
+                                            .foregroundColor(.red)
+                                            .opacity(hasError ? 1 : 0)
+
+
+                                        Button {
+                                            email = ""
+                                        } label: {
+                                            Image(systemName: "multiply.circle.fill")
+                                                .foregroundColor(Color(.gray))
+                                        }
+
+                                    }
 
                                     VStack {
-                                        LoginPasswordCardView(isSecured: $isSecured, password: $password, focused: $isPasswordInputActive, hasError: hasError)
-                                            .fontWeight(.semibold)
+                                        CustomTextField {
+                                            Group {
+                                                if isSecured {
+                                                    SecureField(text: $password) {
+                                                        Text("Password")
+                                                            .foregroundColor(.gray)
+                                                    }
+                                                    .foregroundColor(.white)
+                                                }
+                                                else {
+                                                    TextField(text: $password) {
+                                                        Text("Password")
+                                                            .foregroundColor(.gray)
+                                                    }
+                                                    .foregroundColor(.white)
+                                                }
+                                            }
+                                            .autocorrectionDisabled(true)
+                                            .autocapitalization(.none)
+                                            .focused($isPasswordInputActive)
+
+                                            
+                                               
+
+                                            
+                                            if hasError {
+                                                Image(systemName: "exclamationmark.triangle")
+                                                    .foregroundColor(.red)
+                                            }
+                                            
+                                            
+                                            Button {
+                                                isSecured.toggle()
+                                            } label: {
+                                                Group {
+                                                    if isSecured { Image(systemName: "eye") }
+                                                    else { Image(systemName: "eye.slash") }
+                                                }
+                                                .foregroundColor(Color(.gray))
+                                                    
+                                            }
+                                        }
                                         
                                         
                                         HStack {
@@ -56,6 +114,9 @@ struct LoginView: View {
                                         }
                                     }
                                 }
+                                .fontWeight(.semibold)
+                                .autocorrectionDisabled(true)
+                                .autocapitalization(.none)
                             }
 
                             Button {

@@ -1,13 +1,13 @@
 //
-//  SettingsTextField.swift
-//  Coursable
+//  CustomTextFieldView.swift
+//  SchoolSchedule
 //
-//  Created by Ari Reitman on 11/30/22.
+//  Created by Ari Reitman on 11/25/22.
 //
 
 import SwiftUI
 
-struct SettingsTextField<Content> : View where Content : View {
+struct CustomTextField<Content> : View where Content : View {
 
     var content: () -> Content
     
@@ -16,12 +16,12 @@ struct SettingsTextField<Content> : View where Content : View {
     }
     
     public var body: some View {
-        ModifiedContent(content: self.content(), modifier: SettingsTextFieldModifier())
+        ModifiedContent(content: self.content(), modifier: CustomTextFieldModifier())
     }
 }
 
 
-private struct SettingsTextFieldModifier: ViewModifier {
+private struct CustomTextFieldModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         HStack {
@@ -30,9 +30,8 @@ private struct SettingsTextFieldModifier: ViewModifier {
         .padding([.top, .bottom], 5)
         .padding()
         .background(.secondary)
-        .autocorrectionDisabled(true)
-        .autocapitalization(.none)
         .cornerRadius(16)
     }
 }
+
 

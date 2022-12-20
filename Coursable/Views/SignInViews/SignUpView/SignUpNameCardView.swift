@@ -14,7 +14,7 @@ struct SignUpNameCardView: View {
     var hasError: Bool
     
     var body: some View {
-        LoginTextField {
+        CustomTextField {
             HStack {
                 TextField(text: $name) {
                     Text("Name")

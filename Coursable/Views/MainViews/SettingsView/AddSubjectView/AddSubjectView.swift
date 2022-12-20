@@ -32,7 +32,7 @@ struct AddSubjectView: View {
                 
                 ScrollView {
                     VStack(spacing: 17) {
-                        SettingsTextField {
+                        CustomTextField {
                             TextField(text: $name) {
                                 Text("Name")
                                     .foregroundColor(Color(.gray))
@@ -44,7 +44,7 @@ struct AddSubjectView: View {
                             .autocapitalization(.none)
                         }
                         
-                        SettingsTextField {
+                        CustomTextField {
                             TextField(text: $roomNumber) {
                                 Text("Room Number")
                                     .foregroundColor(Color(.gray))
@@ -58,7 +58,7 @@ struct AddSubjectView: View {
                             .autocapitalization(.none)
                         }
                         
-                        SettingsTextField {
+                        CustomTextField {
                             TextField(text: $teacher) {
                                 Text("Teacher")
                                     .foregroundColor(Color(.gray))

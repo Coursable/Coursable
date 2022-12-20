@@ -15,7 +15,7 @@
 		DF23215429271F5A005D5698 /* CourseFilterMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF23215329271F5A005D5698 /* CourseFilterMenuView.swift */; };
 		DF23215629271FE2005D5698 /* StatsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF23215529271FE2005D5698 /* StatsCardView.swift */; };
 		DF2321582927208E005D5698 /* ProgressBarStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2321572927208E005D5698 /* ProgressBarStatsView.swift */; };
-		DF2329D229311C0500E7B363 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329D129311C0500E7B363 /* LoginTextField.swift */; };
+		DF2329D229311C0500E7B363 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329D129311C0500E7B363 /* CustomTextField.swift */; };
 		DF2329D42931212300E7B363 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329D32931212300E7B363 /* SignUpView.swift */; };
 		DF2329D62931259700E7B363 /* SignUpTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329D52931259700E7B363 /* SignUpTopInfoView.swift */; };
 		DF2329D829312A5800E7B363 /* SignUpOtherOptionsDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329D729312A5800E7B363 /* SignUpOtherOptionsDividerView.swift */; };
@@ -27,7 +27,6 @@
 		DF2329E82932878600E7B363 /* SignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329E72932878600E7B363 /* SignInButtonView.swift */; };
 		DF2329EA293287DC00E7B363 /* SignUpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329E9293287DC00E7B363 /* SignUpButtonView.swift */; };
 		DF2329EC2932C6B400E7B363 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF2329EB2932C6B400E7B363 /* GoogleService-Info.plist */; };
-		DF2937D5295151B100F85B68 /* LoginDemoEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2937D4295151B100F85B68 /* LoginDemoEmail.swift */; };
 		DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */; };
 		DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */; };
 		DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */; };
@@ -89,7 +88,6 @@
 		DFF73B9B28DE8A8700EF69D1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B9A28DE8A8700EF69D1 /* Extensions.swift */; };
 		DFFB0B9629381D5300124A64 /* AddSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB0B9529381D5300124A64 /* AddSubjectView.swift */; };
 		DFFB0B9829381EB500124A64 /* AddSubjectTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB0B9729381EB500124A64 /* AddSubjectTopBarView.swift */; };
-		DFFB0B9A29382A8C00124A64 /* SettingsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB0B9929382A8C00124A64 /* SettingsTextField.swift */; };
 		DFFB0B9C29382DFE00124A64 /* AddSubjectCustomColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB0B9B29382DFE00124A64 /* AddSubjectCustomColorView.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,7 +100,7 @@
 		DF23215329271F5A005D5698 /* CourseFilterMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseFilterMenuView.swift; sourceTree = "<group>"; };
 		DF23215529271FE2005D5698 /* StatsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardView.swift; sourceTree = "<group>"; };
 		DF2321572927208E005D5698 /* ProgressBarStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarStatsView.swift; sourceTree = "<group>"; };
-		DF2329D129311C0500E7B363 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		DF2329D129311C0500E7B363 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DF2329D32931212300E7B363 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		DF2329D52931259700E7B363 /* SignUpTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTopInfoView.swift; sourceTree = "<group>"; };
 		DF2329D729312A5800E7B363 /* SignUpOtherOptionsDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpOtherOptionsDividerView.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 		DF2329E72932878600E7B363 /* SignInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonView.swift; sourceTree = "<group>"; };
 		DF2329E9293287DC00E7B363 /* SignUpButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButtonView.swift; sourceTree = "<group>"; };
 		DF2329EB2932C6B400E7B363 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DF2937D4295151B100F85B68 /* LoginDemoEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDemoEmail.swift; sourceTree = "<group>"; };
 		DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardModifierView.swift; sourceTree = "<group>"; };
 		DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCoursesCardView.swift; sourceTree = "<group>"; };
 		DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingCoursesCardView.swift; sourceTree = "<group>"; };
@@ -171,7 +168,6 @@
 		DFF73B9A28DE8A8700EF69D1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DFFB0B9529381D5300124A64 /* AddSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectView.swift; sourceTree = "<group>"; };
 		DFFB0B9729381EB500124A64 /* AddSubjectTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectTopBarView.swift; sourceTree = "<group>"; };
-		DFFB0B9929382A8C00124A64 /* SettingsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextField.swift; sourceTree = "<group>"; };
 		DFFB0B9B29382DFE00124A64 /* AddSubjectCustomColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectCustomColorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +201,14 @@
 			path = SlideUpView;
 			sourceTree = "<group>";
 		};
+		DF2937D6295268C000F85B68 /* CustomTextField */ = {
+			isa = PBXGroup;
+			children = (
+				DF2329D129311C0500E7B363 /* CustomTextField.swift */,
+			);
+			path = CustomTextField;
+			sourceTree = "<group>";
+		};
 		DF616D42292C452600727CCB /* SignInViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +217,6 @@
 				DF616D60292D903A00727CCB /* SignUpView */,
 				DF616D55292D8D5100727CCB /* LoginInView */,
 				DF616D4D292C559200727CCB /* MainSignInView.swift */,
-				DF2329D129311C0500E7B363 /* LoginTextField.swift */,
 			);
 			path = SignInViews;
 			sourceTree = "<group>";
@@ -227,7 +230,6 @@
 				DF616D5A292D8EA000727CCB /* LoginOtherOptionsDividerView.swift */,
 				DF616D5E292D8FB700727CCB /* LoginTopInfoView.swift */,
 				DF2329E72932878600E7B363 /* SignInButtonView.swift */,
-				DF2937D4295151B100F85B68 /* LoginDemoEmail.swift */,
 			);
 			path = LoginInView;
 			sourceTree = "<group>";
@@ -281,6 +283,7 @@
 		DF9B608F28DF4DC200086E9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF2937D6295268C000F85B68 /* CustomTextField */,
 				DFB3831F2933EB2400A5FCAE /* CustomLoading */,
 				DFB3831E2933EB1A00A5FCAE /* CustomAlert */,
 				DF616D42292C452600727CCB /* SignInViews */,
@@ -401,7 +404,6 @@
 				DFC0E52B293575E8008F2457 /* SettingsView.swift */,
 				DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */,
 				DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */,
-				DFFB0B9929382A8C00124A64 /* SettingsTextField.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -611,7 +613,6 @@
 				DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */,
 				DF2329E229327DDB00E7B363 /* SignUpNameCardView.swift in Sources */,
 				DF2329E029327C1B00E7B363 /* SignUpEmailCardView.swift in Sources */,
-				DFFB0B9A29382A8C00124A64 /* SettingsTextField.swift in Sources */,
 				DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */,
 				DF082102291EC5DF00FF4A75 /* MainPage.swift in Sources */,
 				DF0820FE291EBB8600FF4A75 /* SlideUp.swift in Sources */,
@@ -635,7 +636,6 @@
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
 				DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */,
 				DF616D59292D8E0600727CCB /* LoginPasswordCardView.swift in Sources */,
-				DF2937D5295151B100F85B68 /* LoginDemoEmail.swift in Sources */,
 				DF9BD55B28E249CA00C60E12 /* NoMoreEventsProgressText.swift in Sources */,
 				DF616D4E292C559200727CCB /* MainSignInView.swift in Sources */,
 				DFB3832A2934439600A5FCAE /* ForgotPasswordEmailFieldView.swift in Sources */,
@@ -643,7 +643,7 @@
 				DF23215429271F5A005D5698 /* CourseFilterMenuView.swift in Sources */,
 				DF2329E429327E9000E7B363 /* SignUpLastNameCardView.swift in Sources */,
 				DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */,
-				DF2329D229311C0500E7B363 /* LoginTextField.swift in Sources */,
+				DF2329D229311C0500E7B363 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

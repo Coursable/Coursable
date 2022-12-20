@@ -14,7 +14,7 @@ struct LoginPasswordCardView: View {
     var hasError: Bool
     
     var body: some View {
-        LoginTextField {
+        CustomTextField {
             Group {
                 if isSecured {
                     SecureField(text: $password) {

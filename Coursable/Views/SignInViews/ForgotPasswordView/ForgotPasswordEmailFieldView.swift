@@ -15,7 +15,7 @@ struct ForgotPasswordEmailFieldView: View {
     var hasError: Bool
     
     var body: some View {
-        LoginTextField {
+        CustomTextField {
             TextField(text: $email) {
                 Text("Email")
                     .foregroundColor(Color(.gray))

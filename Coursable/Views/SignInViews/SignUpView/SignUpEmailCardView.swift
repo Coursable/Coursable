@@ -15,7 +15,7 @@ struct SignUpEmailCardView: View {
     
     var body: some View {
         VStack {
-            LoginTextField {
+            CustomTextField {
                 HStack {
                     TextField(text: $email) {
                         Text("Email")
