@@ -14,9 +14,6 @@ struct MainPage: View {
             SlideUpView()
                 .ignoresSafeArea() //remove the extra space from navigation bar
         }
-
-        
-
     }
 }
 

@@ -29,6 +29,9 @@ struct LoginView: View {
                         VStack {
                             VStack(spacing: 17) {
                                 Group {
+                                    
+
+                                    
                                     LoginEmailCardView(email: $email, focused: $isUsernameInputActive, hasError: hasError)
                                         .fontWeight(.semibold)
 

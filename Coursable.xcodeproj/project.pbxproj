@@ -27,6 +27,7 @@
 		DF2329E82932878600E7B363 /* SignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329E72932878600E7B363 /* SignInButtonView.swift */; };
 		DF2329EA293287DC00E7B363 /* SignUpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2329E9293287DC00E7B363 /* SignUpButtonView.swift */; };
 		DF2329EC2932C6B400E7B363 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF2329EB2932C6B400E7B363 /* GoogleService-Info.plist */; };
+		DF2937D5295151B100F85B68 /* LoginDemoEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2937D4295151B100F85B68 /* LoginDemoEmail.swift */; };
 		DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */; };
 		DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */; };
 		DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */; };
@@ -113,6 +114,7 @@
 		DF2329E72932878600E7B363 /* SignInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonView.swift; sourceTree = "<group>"; };
 		DF2329E9293287DC00E7B363 /* SignUpButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButtonView.swift; sourceTree = "<group>"; };
 		DF2329EB2932C6B400E7B363 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DF2937D4295151B100F85B68 /* LoginDemoEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDemoEmail.swift; sourceTree = "<group>"; };
 		DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardModifierView.swift; sourceTree = "<group>"; };
 		DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCoursesCardView.swift; sourceTree = "<group>"; };
 		DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingCoursesCardView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				DF616D5A292D8EA000727CCB /* LoginOtherOptionsDividerView.swift */,
 				DF616D5E292D8FB700727CCB /* LoginTopInfoView.swift */,
 				DF2329E72932878600E7B363 /* SignInButtonView.swift */,
+				DF2937D4295151B100F85B68 /* LoginDemoEmail.swift */,
 			);
 			path = LoginInView;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
 				DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */,
 				DF616D59292D8E0600727CCB /* LoginPasswordCardView.swift in Sources */,
+				DF2937D5295151B100F85B68 /* LoginDemoEmail.swift in Sources */,
 				DF9BD55B28E249CA00C60E12 /* NoMoreEventsProgressText.swift in Sources */,
 				DF616D4E292C559200727CCB /* MainSignInView.swift in Sources */,
 				DFB3832A2934439600A5FCAE /* ForgotPasswordEmailFieldView.swift in Sources */,
