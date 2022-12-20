@@ -32,7 +32,7 @@ struct SlideUp<Content> : View where Content : View {
 }
 
 
-struct SlideUpViewModifier: ViewModifier {
+private struct SlideUpViewModifier: ViewModifier {
     
     @State private var dragging = false
     @GestureState private var dragTracker: CGSize = CGSize.zero
