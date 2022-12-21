@@ -25,20 +25,18 @@ struct AddSubjectView: View {
     @State var name = ""
     @State var roomNumber = ""
     @State var teacher = ""
-    @State var gradientPrimaryColor: Color = colors[0]
-    @State var gradientSecondaryColor: Color = colors[2]
+    
+    @State var gradientColors: [Color] = [colors[0], colors[2]]
     @State var showAlert: Bool = false
     @State var isLoading: Bool = false
     @State var errorMessage: AddSubjectErrors = .generalError
+    @Binding var subjectToEdit: Subject?
     
-    
-    
-    
-    
+
     var body: some View {
         ZStack {
             VStack {
-                AddSubjectTopBarView(showAddSubjectSheet: $showAddSubjectSheet)
+                AddSubjectTopBarView(showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
                     .padding(.top)
                 
                 ScrollView {
@@ -81,7 +79,7 @@ struct AddSubjectView: View {
                             .autocapitalization(.none)
                         }
                         
-                        AddSubjectCustomColorView(subjectName: name, colorPrimary: $gradientPrimaryColor, colorSecondary: $gradientSecondaryColor)
+                        AddSubjectCustomColorView(subjectName: name, colorPrimary: $gradientColors[0], colorSecondary: $gradientColors[1])
                             .background(.secondary)
                             .fontWeight(.semibold)
                             .cornerRadius(16)
@@ -98,7 +96,8 @@ struct AddSubjectView: View {
                                 }
                                 if checkRequirments() {
                                     
-                                    let newSubject = Subject(id: UUID().uuidString, name: name, teacher: teacher, colorGradientPrimary: [gradientPrimaryColor.components.red, gradientPrimaryColor.components.green, gradientPrimaryColor.components.blue], colorGradientSecondary: [gradientSecondaryColor.components.red, gradientSecondaryColor.components.green, gradientSecondaryColor.components.blue], roomNumber: roomNumber)
+                                    let newSubject = Subject(id: UUID().uuidString, name: name, teacher: teacher, colorGradientPrimary: [
+                                        gradientColors[0].components.red, gradientColors[0].components.green, gradientColors[0].components.blue], colorGradientSecondary: [gradientColors[1].components.red, gradientColors[1].components.green, gradientColors[1].components.blue], roomNumber: roomNumber)
                                     
                                     
                                     if !periodViewModel.usersSubjects.contains(where:  { $0.name.lowercased() == name.lowercased() } ) {
@@ -149,7 +148,7 @@ struct AddSubjectView: View {
                             
                         }
                         .padding(.top)
-
+                        
                     }
                     
                     
@@ -179,12 +178,37 @@ struct AddSubjectView: View {
                     
                 })
             }
-
+            
             
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .interactiveDismissDisabled(true)
+        .onAppear {
+            if let subjectToEdit = subjectToEdit {
+                name = subjectToEdit.name
+                roomNumber = subjectToEdit.roomNumber
+                teacher = subjectToEdit.teacher
+    
+                for gradient in gradientColors {
+                    for color in colors {
+
+                        if [color.components.red * 255, color.components.blue * 255, color.components.green * 255] == subjectToEdit.colorGradientPrimary {
+                            let index = gradientColors.firstIndex(of: gradient)
+                            gradientColors[index ?? 0] = color
+                        }
+                    }
+                }
+    
+    
+    
+            }
+            else {
+                name = ""
+                roomNumber = ""
+                teacher = ""
+            }
+        }
     }
     
     func checkRequirments() -> Bool {
@@ -219,7 +243,7 @@ struct AddSubjectView: View {
 
 struct AddSubjectView_Previews: PreviewProvider {
     static var previews: some View {
-        AddSubjectView(showAddSubjectSheet: .constant(false))
+        AddSubjectView(showAddSubjectSheet: .constant(false), subjectToEdit: .constant(nil))
             .environmentObject(PeriodViewModel())
     }
 }

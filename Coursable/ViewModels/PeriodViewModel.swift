@@ -365,13 +365,29 @@ class PeriodViewModel: ObservableObject {
         await DataViewModel().getSubjectData() { succeed, data in
             DispatchQueue.main.async {
                 if succeed == true {
-                    self.usersSubjects = data
+                    withAnimation {
+                        self.usersSubjects = data
+                    }
+                    
                     
                 }
                 else {
                     print("Unable to write subject data")
                     
                 }
+            }
+        }
+    }
+    
+    func removeIndividualSubjectData(subjectToRemove: Subject) async {
+        DataViewModel().removeIndividualSubjectData(subjectToRemove: subjectToRemove) { success in
+            if success == true {
+                Task {
+                    await self.retrieveSubjectData()
+                }
+            }
+            else {
+                print("Unable to remove subject data")
             }
         }
     }

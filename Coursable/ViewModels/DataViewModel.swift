@@ -36,6 +36,24 @@ class DataViewModel {
         }
     }
     
+    public func removeIndividualSubjectData(subjectToRemove: Subject, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        
+        if let currentUser = SignInViewModel().auth.currentUser {
+            db.collection("users").document(currentUser.uid).collection("subjects").document(subjectToRemove.name).delete(completion: { error in
+                if let errorValue = error {
+                    print(errorValue.localizedDescription)
+                    completion(false)
+                }
+            })
+            completion(true)
+            
+        }
+        else {
+            completion(false)
+        }
+    }
+    
     public func setIndividualSubjectData(subjectToSave: Subject,completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         
@@ -64,7 +82,7 @@ class DataViewModel {
                 let querySnapshot = try await db.collection("users").document(currentUser.uid).collection("subjects").getDocuments()
                 
                 completion(true, querySnapshot.documents.map { d in
-
+                    
                     return Subject(id: d.documentID, name: d["name"] as? String ?? "", teacher: d["teacher"] as? String ?? "", colorGradientPrimary: d["colorGradientPrimary"] as? [Double] ?? [0.0, 0.0, 0.0], colorGradientSecondary: d["colorGradientSecondary"] as? [Double] ?? [0.0, 0.0, 0.0], roomNumber: d["roomNumber"] as? String ?? "")
                     
                 })

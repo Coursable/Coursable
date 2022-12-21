@@ -14,7 +14,8 @@ struct SettingsView: View {
     @Binding var showSheet: Bool
     @State var isLoading: Bool = false
     @State var showAddSubjectSheet: Bool = false
-    
+    @State var isEdittingSubjects: Bool = false
+    @State var subjectToEdit: Subject?
     
     var body: some View {
         ZStack {
@@ -45,7 +46,7 @@ struct SettingsView: View {
                 Form {
                     Section {
                         ForEach(periodViewModel.usersSubjects) { subject in
-                            SettingsCourseCardView(subject: subject)
+                            SettingsCourseCardView(isEditingSubjects: isEdittingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
                                 .foregroundColor(.white)
                                 .background(Color(UIColor.secondaryLabel))
                                 .cornerRadius(15)
@@ -67,23 +68,59 @@ struct SettingsView: View {
                             
                             Spacer()
                             
+                            if isEdittingSubjects {
+                                Button {
+                                    showAddSubjectSheet = true
+
+                                } label: {
+                                    Text("Add")
+                                        .textCase(.none)
+                                        .font(.footnote)
+                                        .padding([.leading,.trailing], 10)
+                                        .padding([.top, .bottom], 4)
+                                        .foregroundColor(.white)
+                                        .fontWeight(.semibold)
+                                        .background {
+                                            
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .foregroundStyle(.green.gradient)
+                                        }
+                                }
+                            }
+                            
                             Button {
-                                showAddSubjectSheet = true
+                                withAnimation {
+                                    isEdittingSubjects.toggle()
+                                }
+                                 
 
                             } label: {
-                                Text("Add")
-                                    .textCase(.none)
-                                    .font(.footnote)
-                                    .padding([.leading,.trailing], 10)
-                                    .padding([.top, .bottom], 4)
-                                    .foregroundColor(.white)
-                                    .fontWeight(.semibold)
-                                    .background {
-                                        
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .foregroundStyle(LinearGradient.bluePink)
+
+                                Group {
+                                    if !isEdittingSubjects {
+                                        Text("Edit")
+                                            
                                     }
+                                    else {
+                                        Text("Done")
+                                    }
+                                }
+                                .textCase(.none)
+                                .font(.footnote)
+                                .padding([.leading,.trailing], 10)
+                                .padding([.top, .bottom], 4)
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .background {
+                                    
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(.blue.gradient)
+                                }
                             }
+                            
+                            
+                            
+                            
                             //}
 
                         }
@@ -119,7 +156,8 @@ struct SettingsView: View {
                 .ignoresSafeArea()
         }
         .sheet(isPresented: $showAddSubjectSheet, content: {
-            AddSubjectView(showAddSubjectSheet: $showAddSubjectSheet)
+            
+            AddSubjectView(showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
         })
         .onAppear {
             

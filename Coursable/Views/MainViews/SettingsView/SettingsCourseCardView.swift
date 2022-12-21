@@ -9,7 +9,12 @@ import SwiftUI
 
 struct SettingsCourseCardView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
+    var isEditingSubjects: Bool
     var subject: Subject
+    @State var isLoading: Bool = false
+    @Binding var showAddSubjectSheet: Bool
+    @Binding var subjectToEdit: Subject?
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -34,8 +39,53 @@ struct SettingsCourseCardView: View {
 
                     
                 }
-                    .padding(.leading, 3)
+                .padding(.leading, 3)
+                
                 Spacer()
+                
+                Button {
+                    showAddSubjectSheet.toggle()
+                    subjectToEdit = subject
+                } label: {
+                    if isLoading {
+                        CustomLoading(showBackground: false, size:50)
+                    }
+                    else {
+                        Image(systemName: "pencil")
+                            .foregroundStyle(.green.gradient)
+                            .opacity(isEditingSubjects ? 1 : 0)
+                    }
+                    
+                }
+                .disabled(!isEditingSubjects)
+                
+                Button {
+                    Task {
+                        withAnimation {
+                            isLoading = true
+                        }
+                        
+                        await periodViewModel.removeIndividualSubjectData(subjectToRemove: subject)
+                        withAnimation {
+                            isLoading = false
+                        }
+                    }
+                } label: {
+                    if isLoading {
+                        CustomLoading(showBackground: false, size:50)
+                    }
+                    else {
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(.red)
+                            .opacity(isEditingSubjects ? 1 : 0)
+                    }
+                    
+                }
+                .disabled(!isEditingSubjects)
+
+
+                
+                
             }
             
 
@@ -46,7 +96,7 @@ struct SettingsCourseCardView: View {
 
 struct SettingsCourseCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsCourseCardView(subject: Subject.LanguageArtsSubjectExample)
+        SettingsCourseCardView(isEditingSubjects: true, subject: Subject.LanguageArtsSubjectExample, showAddSubjectSheet: .constant(false), subjectToEdit: .constant(Subject.LanguageArtsSubjectExample))
             .environmentObject(PeriodViewModel())
             .preferredColorScheme(.dark)
     }
