@@ -167,6 +167,7 @@ struct AddSubjectView: View {
                             .foregroundColor(.white)
                             .frame(width: UIScreen.main.bounds.width*0.9, height: 65)
                             .background(LinearGradient.bluePink)
+                            
                             //.opacity(isLoading ? 0.6 : 1)
                             .cornerRadius(16)
                             
