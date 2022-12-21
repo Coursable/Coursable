@@ -208,43 +208,19 @@ struct AddSubjectView: View {
                 
                 let subjectToEditGradients = [subjectToEdit.colorGradientPrimary, subjectToEdit.colorGradientSecondary]
                 
-                for gradient in colorGradients {
-                    for subjectGradient in subjectToEditGradients {
-                        for color in colors {
-                        
-                            if color.components.red == subjectGradient[0] {
-                                if color.components.green == subjectGradient[1] {
-                                    if color.components.blue == subjectGradient[2] {
-                                        //print(color)
-                                        var index = colorGradients.firstIndex(where: { $0 == gradient })
-                                        print(index)
-                                        colorGradients[index ?? 0] = color
-                                    }
-                                }
-
-                            }
+                for (index, _) in colorGradients.enumerated() {
+                    setGradient(index: index)
+                }
+                
+                func setGradient(index: Int) {
+                    for color in colors {
+                        let colorArray: [Double] = [color.components.red, color.components.green, color.components.blue]
+                        if subjectToEditGradients[index] == colorArray {
+                            colorGradients[index] = color
                         }
-                        
-
                     }
                 }
-
-
-//                for color in colors {
-//                    if color.components.red == subjectToEdit.colorGradientSecondary[0] {
-//                        if color.components.green == subjectToEdit.colorGradientSecondary[1] {
-//                            if color.components.blue == subjectToEdit.colorGradientSecondary[2] {
-//                                print(color)
-//                                colorGradientSecondary = color
-//                            }
-//                        }
-//
-//                    }
-//
-//                }
-    
-    
-    
+                
             }
             else {
                 name = ""
