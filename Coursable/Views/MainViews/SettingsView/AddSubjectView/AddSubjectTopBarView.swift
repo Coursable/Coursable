@@ -27,8 +27,8 @@ struct AddSubjectTopBarView: View {
                 showAddSubjectSheet.toggle()
                 
             } label: {
-                Text("Cancel")
-                    .font(.subheadline)
+                Image(systemName: "xmark")
+                    .font(.headline)
             }
             .foregroundColor(.white)
             .fontWeight(.semibold)
@@ -41,5 +41,6 @@ struct AddSubjectTopBarView: View {
 struct AddSubjectTopBarView_Previews: PreviewProvider {
     static var previews: some View {
         AddSubjectTopBarView(showAddSubjectSheet: .constant(false), subjectToEdit: .constant(Subject.LanguageArtsSubjectExample))
+            .preferredColorScheme(.dark)
     }
 }

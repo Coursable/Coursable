@@ -152,9 +152,17 @@ struct AddSubjectView: View {
                             
                         } label: {
                             Group {
-                                Text("Add Subject")
-                                    .fontWeight(.semibold)
-                                    .font(.title2)
+                                if subjectToEdit != nil {
+                                    Text("Confirm")
+                                        .fontWeight(.semibold)
+                                        .font(.title2)
+                                }
+                                else {
+                                    Text("Add Subject")
+                                        .fontWeight(.semibold)
+                                        .font(.title2)
+                                }
+                                
                             }
                             .foregroundColor(.white)
                             .frame(width: UIScreen.main.bounds.width*0.9, height: 65)
