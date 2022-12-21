@@ -12,16 +12,18 @@ struct NextEventTopbarText: View {
     
     var body: some View {
         VStack {
-            Text("Next Period: " + periodModel.subject.name)
+            Text("Up Next:")
+                .font(.caption.weight(.semibold))
+            Text(periodModel.subject.name)
                 .font(.title3.weight(.semibold))
             
-            HStack(spacing: 2) {
-                Text("Starts at")
-                Text(periodModel.startTimeParsed, format: .dateTime.hour().minute())
-                Text("-")
-                Text("Room " + periodModel.subject.roomNumber)
-            }
-            .font(.subheadline.weight(.semibold))
+//            HStack(spacing: 2) {
+//                Text("Starts at")
+//                Text(periodModel.startTimeParsed, format: .dateTime.hour().minute())
+//                Text("-")
+//                Text("Room " + periodModel.subject.roomNumber)
+//            }
+//            .font(.subheadline.weight(.semibold))
         }
 
     }

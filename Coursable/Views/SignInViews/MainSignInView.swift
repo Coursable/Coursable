@@ -44,7 +44,7 @@ struct MainSignInView: View {
                 Color("Background")
                     .ignoresSafeArea()
             }
-            .animation(.default, value: signInViewModel.state)
+            //.animation(.default, value: signInViewModel.state)
         }
         
     }

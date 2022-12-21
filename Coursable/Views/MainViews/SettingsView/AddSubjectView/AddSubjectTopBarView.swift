@@ -21,19 +21,21 @@ struct AddSubjectTopBarView: View {
                     .fontWeight(.semibold)
                 Spacer()
             }
-            
-            Button {
-                subjectToEdit = nil
-                showAddSubjectSheet.toggle()
+            .overlay(
+                Button {
+                    subjectToEdit = nil
+                    showAddSubjectSheet.toggle()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.headline)
+                }
+                .foregroundColor(.white)
+                .fontWeight(.bold)
+                .padding(.top, 5)
+                .padding(.trailing, 30)
                 
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.headline)
-            }
-            .foregroundColor(.white)
-            .fontWeight(.semibold)
-            .offset(x: 155)
-            
+                ,alignment: .topTrailing
+            )
         }
     }
 }

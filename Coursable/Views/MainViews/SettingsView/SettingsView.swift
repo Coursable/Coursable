@@ -22,16 +22,6 @@ struct SettingsView: View {
             VStack {
                 
                 ZStack {
-                    Button {
-                        showSheet.toggle()
-                    } label: {
-                        Image(systemName: "chevron.down")
-                            .font(.title2)
-                    }
-                    .foregroundColor(.white)
-                    .fontWeight(.semibold)
-                    .offset(x: -155)
-                    
                     HStack {
                         Spacer()
                         Text("Settings")
@@ -42,8 +32,24 @@ struct SettingsView: View {
                     }
                     
                 }
+                .overlay(
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        Image(systemName: "chevron.down")
+                            .font(.title2)
+                    }
+                    .foregroundColor(.white)
+                    .fontWeight(.semibold)
+                    .padding(.top, 5)
+                    .padding(.trailing, 30)
+                    
+                    ,alignment: .topTrailing
+                )
+                .padding(.bottom)
                 
                 Form {
+                    
                     Section {
                         ForEach(periodViewModel.usersSubjects) { subject in
                             
@@ -67,7 +73,7 @@ struct SettingsView: View {
                                 .foregroundColor(.white)
                             
                             Spacer()
-                            
+
                             if isEdittingSubjects {
                                 Button {
                                     showAddSubjectSheet = true
@@ -81,26 +87,26 @@ struct SettingsView: View {
                                         .foregroundColor(.white)
                                         .fontWeight(.semibold)
                                         .background {
-                                            
+
                                             RoundedRectangle(cornerRadius: 16)
                                                 .foregroundStyle(.green.gradient)
-                                            
+
                                         }
                                 }
                             }
-                            
+
                             Button {
                                 withAnimation {
                                     isEdittingSubjects.toggle()
                                 }
-                                 
+
 
                             } label: {
 
                                 Group {
                                     if !isEdittingSubjects {
                                         Text("Edit")
-                                            
+
                                     }
                                     else {
                                         Text("Done")
@@ -113,19 +119,16 @@ struct SettingsView: View {
                                 .foregroundColor(.white)
                                 .fontWeight(.semibold)
                                 .background {
-                                    
+
                                     RoundedRectangle(cornerRadius: 16)
                                         .fill(.blue.gradient)
                                 }
                             }
                             
-                            
-                            
-                            
-                            //}
 
                         }
                     }
+                    
                     
                     Section {
                         Button {

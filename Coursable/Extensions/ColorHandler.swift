@@ -17,22 +17,41 @@ extension LinearGradient {
 
 
 var colors = [
-    //blue 0
-    Color(red: Subject.Blue[0]/255,
-          green: Subject.Blue[1]/255,
-          blue: Subject.Blue[2]/255),
-    //orange 1
-    Color(red: Subject.Orange[0]/255,
-          green: Subject.Orange[1]/255,
-          blue: Subject.Orange[2]/255),
-    //pink 2
-    Color(red: Subject.Pink[0]/255,
-          green: Subject.Pink[1]/255,
-          blue: Subject.Pink[2]/255),
-    //yellow 3
-    Color(red: Subject.Yellow[0]/255,
-          green: Subject.Yellow[1]/255,
-          blue: Subject.Yellow[2]/255),
+//    //blue 0
+//    Color(red: Subject.Blue[0]/255,
+//          green: Subject.Blue[1]/255,
+//          blue: Subject.Blue[2]/255),
+//    //orange 1
+//    Color(red: Subject.Orange[0]/255,
+//          green: Subject.Orange[1]/255,
+//          blue: Subject.Orange[2]/255),
+//    //pink 2
+//    Color(red: Subject.Pink[0]/255,
+//          green: Subject.Pink[1]/255,
+//          blue: Subject.Pink[2]/255),
+//    //yellow 3
+//    Color(red: Subject.Yellow[0]/255,
+//          green: Subject.Yellow[1]/255,
+//          blue: Subject.Yellow[2]/255),
+    
+    Color.blue,
+    
+    Color.orange,
+    
+    Color.pink,
+    
+    Color.yellow,
+    
+    Color.green,
+    
+    Color.cyan,
+    
+    Color.indigo,
+    
+    Color.mint,
+    
+    Color.teal,
+    
 ]
 
 extension Color {

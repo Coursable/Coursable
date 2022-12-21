@@ -72,6 +72,7 @@ struct MainPage_FirstLayerView: View {
                 .offset(x: 155)
 
             }
+            
 
 
             ProgressRingView()

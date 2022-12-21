@@ -71,7 +71,6 @@
 		DFB3832A2934439600A5FCAE /* ForgotPasswordEmailFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */; };
 		DFBE4155293966B40088523D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DFBE4154293966B40088523D /* GoogleSignIn */; };
 		DFBE4157293966B40088523D /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DFBE4156293966B40088523D /* GoogleSignInSwift */; };
-		DFC0E52929356AD1008F2457 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52829356AD1008F2457 /* TestView.swift */; };
 		DFC0E52C293575E8008F2457 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52B293575E8008F2457 /* SettingsView.swift */; };
 		DFC0E52E29357749008F2457 /* SettingsTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */; };
 		DFC0E53029357AF1008F2457 /* SettingsCourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */; };
@@ -148,7 +147,6 @@
 		DFB38325293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordTopInfoView.swift; sourceTree = "<group>"; };
 		DFB38327293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordSubmitButtonView.swift; sourceTree = "<group>"; };
 		DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordEmailFieldView.swift; sourceTree = "<group>"; };
-		DFC0E52829356AD1008F2457 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		DFC0E52B293575E8008F2457 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTopInfoView.swift; sourceTree = "<group>"; };
 		DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCourseCardView.swift; sourceTree = "<group>"; };
@@ -284,7 +282,6 @@
 				DF92E4172929BEEE00DB0364 /* ViewModifiers */,
 				DF6A548C28E208DC00DD0FEC /* MainViews */,
 				DF8A95AD28DF661700802129 /* ProgressRingViews */,
-				DFC0E52829356AD1008F2457 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -591,7 +588,6 @@
 				DF9B609128DF4DD100086E9E /* MainPage_FirstLayerView.swift in Sources */,
 				DFFB0B9829381EB500124A64 /* AddSubjectTopBarView.swift in Sources */,
 				DFB383142932D0DB00A5FCAE /* UserInfoModel.swift in Sources */,
-				DFC0E52929356AD1008F2457 /* TestView.swift in Sources */,
 				DFFB0B9C29382DFE00124A64 /* AddSubjectCustomColorView.swift in Sources */,
 				DF616D5B292D8EA000727CCB /* LoginOtherOptionsDividerView.swift in Sources */,
 				DF2329E629327EE300E7B363 /* SignUpPasswordCardView.swift in Sources */,

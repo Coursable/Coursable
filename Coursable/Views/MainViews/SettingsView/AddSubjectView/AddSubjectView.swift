@@ -40,7 +40,7 @@ struct AddSubjectView: View {
         ZStack {
             VStack {
                 AddSubjectTopBarView(showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
-                    .padding(.top)
+                    .padding([.top, .bottom])
                 
                 ScrollView {
                     VStack(spacing: 17) {
@@ -103,6 +103,7 @@ struct AddSubjectView: View {
                                         colorGradients[0].components.red, colorGradients[0].components.green, colorGradients[0].components.blue], colorGradientSecondary: [colorGradients[1].components.red, colorGradients[1].components.green, colorGradients[1].components.blue], roomNumber: roomNumber)
                                     
                                     if let subjectToEdit = subjectToEdit {
+                                        
                                         Task {
                                             withAnimation {
                                                 isLoading = true
@@ -112,6 +113,7 @@ struct AddSubjectView: View {
                                             withAnimation {
                                                 isLoading = false
                                             }
+                                            self.subjectToEdit = nil
                                         }
                                     }
                                     else {

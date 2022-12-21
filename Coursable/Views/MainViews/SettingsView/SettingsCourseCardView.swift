@@ -54,6 +54,7 @@ struct SettingsCourseCardView: View {
                         Image(systemName: "pencil")
                             .foregroundStyle(.green.gradient)
                             .opacity(isEditingSubjects ? 1 : 0)
+                            .fontWeight(.bold)
                     }
                     
                 }
@@ -75,9 +76,10 @@ struct SettingsCourseCardView: View {
                         CustomLoading(showBackground: false, size:50)
                     }
                     else {
-                        Image(systemName: "trash.fill")
+                        Image(systemName: "xmark")
                             .foregroundColor(.red)
                             .opacity(isEditingSubjects ? 1 : 0)
+                            .fontWeight(.bold)
                     }
                     
                 }
