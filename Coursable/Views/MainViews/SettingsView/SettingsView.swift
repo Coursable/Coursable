@@ -46,11 +46,11 @@ struct SettingsView: View {
                 Form {
                     Section {
                         ForEach(periodViewModel.usersSubjects) { subject in
+                            
                             SettingsCourseCardView(isEditingSubjects: isEdittingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
                                 .foregroundColor(.white)
                                 .background(Color(UIColor.secondaryLabel))
                                 .cornerRadius(15)
-                                
                         }
                         
                         .transition(AnyTransition.scale)

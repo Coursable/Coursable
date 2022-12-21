@@ -36,6 +36,38 @@ class DataViewModel {
         }
     }
     
+    public func overwriteIndividualSubjectData(subjectToOverwrite: Subject, newSubjectData: Subject, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        
+        if let currentUser = SignInViewModel().auth.currentUser {
+            do {
+                db.collection("users").document(currentUser.uid).collection("subjects").document(subjectToOverwrite.name).delete(completion: { error in
+                    if let errorValue = error {
+                        print(errorValue.localizedDescription)
+                        completion(false)
+                    }
+                })
+
+                completion(true)
+                
+                try db.collection("users").document(currentUser.uid).collection("subjects").document(newSubjectData.name).setData(from: newSubjectData)
+                
+                
+                completion(true)
+            }
+            catch {
+                print(error.localizedDescription)
+                completion(false)
+            }
+
+            
+            
+        }
+        else {
+            completion(false)
+        }
+    }
+    
     public func removeIndividualSubjectData(subjectToRemove: Subject, completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         

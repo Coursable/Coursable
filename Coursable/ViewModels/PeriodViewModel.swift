@@ -379,6 +379,20 @@ class PeriodViewModel: ObservableObject {
         }
     }
     
+    func overwriteIndividualSubjectData(subjectToOverwrite: Subject, newSubjectData: Subject) async {
+        DataViewModel().overwriteIndividualSubjectData(subjectToOverwrite: subjectToOverwrite, newSubjectData: newSubjectData) { success in
+            if success {
+                Task {
+                    await self.retrieveSubjectData()
+                }
+                
+            }
+            else {
+                print("Unable to remove subject data")
+            }
+        }
+    }
+    
     func removeIndividualSubjectData(subjectToRemove: Subject) async {
         DataViewModel().removeIndividualSubjectData(subjectToRemove: subjectToRemove) { success in
             if success == true {

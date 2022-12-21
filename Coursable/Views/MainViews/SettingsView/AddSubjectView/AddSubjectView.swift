@@ -25,8 +25,11 @@ struct AddSubjectView: View {
     @State var name = ""
     @State var roomNumber = ""
     @State var teacher = ""
+//    @State var colorGradientPrimary = colors[0]
+//    @State var colorGradientSecondary = colors[2]
+
+    @State var colorGradients = [colors[0], colors[2]]
     
-    @State var gradientColors: [Color] = [colors[0], colors[2]]
     @State var showAlert: Bool = false
     @State var isLoading: Bool = false
     @State var errorMessage: AddSubjectErrors = .generalError
@@ -79,7 +82,7 @@ struct AddSubjectView: View {
                             .autocapitalization(.none)
                         }
                         
-                        AddSubjectCustomColorView(subjectName: name, colorPrimary: $gradientColors[0], colorSecondary: $gradientColors[1])
+                        AddSubjectCustomColorView(subjectName: name, colorPrimary: $colorGradients[0], colorSecondary: $colorGradients[1])
                             .background(.secondary)
                             .fontWeight(.semibold)
                             .cornerRadius(16)
@@ -97,29 +100,42 @@ struct AddSubjectView: View {
                                 if checkRequirments() {
                                     
                                     let newSubject = Subject(id: UUID().uuidString, name: name, teacher: teacher, colorGradientPrimary: [
-                                        gradientColors[0].components.red, gradientColors[0].components.green, gradientColors[0].components.blue], colorGradientSecondary: [gradientColors[1].components.red, gradientColors[1].components.green, gradientColors[1].components.blue], roomNumber: roomNumber)
+                                        colorGradients[0].components.red, colorGradients[0].components.green, colorGradients[0].components.blue], colorGradientSecondary: [colorGradients[1].components.red, colorGradients[1].components.green, colorGradients[1].components.blue], roomNumber: roomNumber)
                                     
-                                    
-                                    if !periodViewModel.usersSubjects.contains(where:  { $0.name.lowercased() == name.lowercased() } ) {
-                                        if periodViewModel.setIndividualSubjectData(subjectToSave: newSubject) {
-                                            await periodViewModel.retrieveSubjectData()
+                                    if let subjectToEdit = subjectToEdit {
+                                        Task {
+                                            withAnimation {
+                                                isLoading = true
+                                            }
+                                            await periodViewModel.overwriteIndividualSubjectData(subjectToOverwrite: subjectToEdit, newSubjectData: newSubject)
                                             showAddSubjectSheet = false
-                                        }
-                                        else {
-                                            errorMessage = .generalError
-                                            withAnimation(.easeInOut) {
-                                                
-                                                showAlert = true
+                                            withAnimation {
+                                                isLoading = false
                                             }
                                         }
                                     }
                                     else {
-                                        errorMessage = .alreadyCreated
-                                        withAnimation(.easeInOut) {
-                                            showAlert = true
+                                        if !periodViewModel.usersSubjects.contains(where:  { $0.name.lowercased() == name.lowercased() } ) {
+                                            if periodViewModel.setIndividualSubjectData(subjectToSave: newSubject) {
+                                                await periodViewModel.retrieveSubjectData()
+                                                showAddSubjectSheet = false
+                                            }
+                                            else {
+                                                errorMessage = .generalError
+                                                withAnimation(.easeInOut) {
+                                                    
+                                                    showAlert = true
+                                                }
+                                            }
+                                        }
+                                        else {
+                                            errorMessage = .alreadyCreated
+                                            withAnimation(.easeInOut) {
+                                                showAlert = true
+                                            }
                                         }
                                     }
-                                    
+
                                 }
                                 else {
                                     errorMessage = .formNotCompleted
@@ -189,16 +205,43 @@ struct AddSubjectView: View {
                 name = subjectToEdit.name
                 roomNumber = subjectToEdit.roomNumber
                 teacher = subjectToEdit.teacher
-    
-                for gradient in gradientColors {
-                    for color in colors {
+                
+                let subjectToEditGradients = [subjectToEdit.colorGradientPrimary, subjectToEdit.colorGradientSecondary]
+                
+                for gradient in colorGradients {
+                    for subjectGradient in subjectToEditGradients {
+                        for color in colors {
+                        
+                            if color.components.red == subjectGradient[0] {
+                                if color.components.green == subjectGradient[1] {
+                                    if color.components.blue == subjectGradient[2] {
+                                        //print(color)
+                                        var index = colorGradients.firstIndex(where: { $0 == gradient })
+                                        print(index)
+                                        colorGradients[index ?? 0] = color
+                                    }
+                                }
 
-                        if [color.components.red * 255, color.components.blue * 255, color.components.green * 255] == subjectToEdit.colorGradientPrimary {
-                            let index = gradientColors.firstIndex(of: gradient)
-                            gradientColors[index ?? 0] = color
+                            }
                         }
+                        
+
                     }
                 }
+
+
+//                for color in colors {
+//                    if color.components.red == subjectToEdit.colorGradientSecondary[0] {
+//                        if color.components.green == subjectToEdit.colorGradientSecondary[1] {
+//                            if color.components.blue == subjectToEdit.colorGradientSecondary[2] {
+//                                print(color)
+//                                colorGradientSecondary = color
+//                            }
+//                        }
+//
+//                    }
+//
+//                }
     
     
     
