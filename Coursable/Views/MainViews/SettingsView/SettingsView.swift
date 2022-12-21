@@ -84,6 +84,7 @@ struct SettingsView: View {
                                             
                                             RoundedRectangle(cornerRadius: 16)
                                                 .foregroundStyle(.green.gradient)
+                                            
                                         }
                                 }
                             }
