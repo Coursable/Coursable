@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State var showAddSubjectSheet: Bool = false
     @State var isEdittingSubjects: Bool = false
     @State var subjectToEdit: Subject?
+    @State var subjectFolded: Bool = true
     
     var body: some View {
         ZStack {
@@ -49,17 +50,19 @@ struct SettingsView: View {
                 .padding(.bottom,8)
                 .padding(.top,8)
                 
-                Form {
+                List {
                     
                     Section {
-                        ForEach(periodViewModel.usersSubjects) { subject in
-                            
-                            SettingsCourseCardView(isEditingSubjects: isEdittingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
-                                .foregroundColor(.white)
-                                .background(Color(UIColor.secondaryLabel))
-                                .cornerRadius(15)
+
+                        ForEach(Array(periodViewModel.usersSubjects.enumerated()), id: \.offset) { index, subject in
+                            if !subjectFolded || index + 1 <= 3 {
+
+                                SettingsCourseCardView(isEditingSubjects: isEdittingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
+                                    .foregroundColor(.white)
+                                    .background(Color(UIColor.secondaryLabel))
+                                    .cornerRadius(15)
+                            }
                         }
-                        
                         .transition(AnyTransition.scale)
                         .listStyle(InsetGroupedListStyle())
                         .listRowBackground(Color(UIColor.clear))
@@ -100,8 +103,6 @@ struct SettingsView: View {
                                 withAnimation {
                                     isEdittingSubjects.toggle()
                                 }
-
-
                             } label: {
 
                                 Group {
@@ -125,6 +126,25 @@ struct SettingsView: View {
                                         .fill(.blue.gradient)
                                 }
                             }
+                            
+                            if periodViewModel.usersSubjects.count > 3 {
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.2)) {
+                                        subjectFolded.toggle()
+                                    }
+                                    
+                                } label: {
+                                    Image(systemName: "chevron.down")
+                                        .rotationEffect(.degrees(subjectFolded ? 180 : 0))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                        .padding(.leading)
+
+                                }
+                            }
+                            
+                            
+
                             
 
                         }
