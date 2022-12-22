@@ -11,10 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import SwiftUI
 
-class DataViewModel {
-    
-    
-    
+class DataHandler {
     public func setSubjectData(subjectsToSave: [Subject],completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         

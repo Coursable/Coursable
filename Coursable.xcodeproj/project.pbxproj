@@ -74,7 +74,7 @@
 		DFC0E52C293575E8008F2457 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52B293575E8008F2457 /* SettingsView.swift */; };
 		DFC0E52E29357749008F2457 /* SettingsTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */; };
 		DFC0E53029357AF1008F2457 /* SettingsCourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */; };
-		DFC0E534293592F2008F2457 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E533293592F2008F2457 /* DataViewModel.swift */; };
+		DFC0E534293592F2008F2457 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E533293592F2008F2457 /* DataHandler.swift */; };
 		DFCF684A28E0B79400DE77DA /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF684928E0B79400DE77DA /* ColorHandler.swift */; };
 		DFF73B8528DE87D900EF69D1 /* CoursableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */; };
 		DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF73B8628DE87D900EF69D1 /* ContentView.swift */; };
@@ -150,7 +150,7 @@
 		DFC0E52B293575E8008F2457 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTopInfoView.swift; sourceTree = "<group>"; };
 		DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCourseCardView.swift; sourceTree = "<group>"; };
-		DFC0E533293592F2008F2457 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		DFC0E533293592F2008F2457 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		DFCF684928E0B79400DE77DA /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		DFF73B8128DE87D900EF69D1 /* Coursable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coursable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF73B8428DE87D900EF69D1 /* CoursableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursableApp.swift; sourceTree = "<group>"; };
@@ -201,6 +201,14 @@
 				DF2329D129311C0500E7B363 /* CustomTextField.swift */,
 			);
 			path = CustomTextField;
+			sourceTree = "<group>";
+		};
+		DF585A352954B094002E79C1 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				DFC0E533293592F2008F2457 /* DataHandler.swift */,
+			);
+			path = Handlers;
 			sourceTree = "<group>";
 		};
 		DF616D42292C452600727CCB /* SignInViews */ = {
@@ -453,9 +461,9 @@
 		DFF73B9628DE899400EF69D1 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DF585A352954B094002E79C1 /* Handlers */,
 				DFF73B9728DE89F900EF69D1 /* PeriodViewModel.swift */,
 				DF616D45292C454800727CCB /* SignInViewModel.swift */,
-				DFC0E533293592F2008F2457 /* DataViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -617,7 +625,7 @@
 				DFB38326293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift in Sources */,
 				DFA463A22921957C00FC826B /* CourseTimeInfoView.swift in Sources */,
 				DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */,
-				DFC0E534293592F2008F2457 /* DataViewModel.swift in Sources */,
+				DFC0E534293592F2008F2457 /* DataHandler.swift in Sources */,
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
 				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
 				DFB383212933EB3700A5FCAE /* CustomLoadingView.swift in Sources */,

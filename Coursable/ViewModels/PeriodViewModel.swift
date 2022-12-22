@@ -336,7 +336,7 @@ class PeriodViewModel: ObservableObject {
     func setSubjectData() -> Bool {
         var valueToReturn = true
         
-        DataViewModel().setSubjectData(subjectsToSave: self.usersSubjects) { succeed in
+        DataHandler().setSubjectData(subjectsToSave: self.usersSubjects) { succeed in
             if succeed != true {
                 print("Unable to set subject data to database")
                 valueToReturn = false
@@ -349,7 +349,7 @@ class PeriodViewModel: ObservableObject {
     func setIndividualSubjectData(subjectToSave: Subject) -> Bool {
         var valueToReturn = true
         
-        DataViewModel().setIndividualSubjectData(subjectToSave: subjectToSave) { succeed in
+        DataHandler().setIndividualSubjectData(subjectToSave: subjectToSave) { succeed in
             if succeed != true {
                 print("Unable to set individual subject data to database")
                 valueToReturn = false
@@ -362,7 +362,7 @@ class PeriodViewModel: ObservableObject {
     
     
     func retrieveSubjectData() async {
-        await DataViewModel().getSubjectData() { succeed, data in
+        await DataHandler().getSubjectData() { succeed, data in
             DispatchQueue.main.async {
                 if succeed == true {
                     withAnimation {
@@ -380,7 +380,7 @@ class PeriodViewModel: ObservableObject {
     }
     
     func overwriteIndividualSubjectData(subjectToOverwrite: Subject, newSubjectData: Subject) async {
-        DataViewModel().overwriteIndividualSubjectData(subjectToOverwrite: subjectToOverwrite, newSubjectData: newSubjectData) { success in
+        DataHandler().overwriteIndividualSubjectData(subjectToOverwrite: subjectToOverwrite, newSubjectData: newSubjectData) { success in
             if success {
                 Task {
                     await self.retrieveSubjectData()
@@ -394,7 +394,7 @@ class PeriodViewModel: ObservableObject {
     }
     
     func removeIndividualSubjectData(subjectToRemove: Subject) async {
-        DataViewModel().removeIndividualSubjectData(subjectToRemove: subjectToRemove) { success in
+        DataHandler().removeIndividualSubjectData(subjectToRemove: subjectToRemove) { success in
             if success == true {
                 Task {
                     await self.retrieveSubjectData()
