@@ -14,8 +14,6 @@ struct ProgressRingView: View {
         ProgressRing(progress: periodViewModel.currentProgressInPeriod, ringColor: .bluePink, showMoveAnimation: periodViewModel.showRingMoveAnimation)
             .frame(width: UIScreen.main.bounds.width*0.85)
                 .padding()
-                .padding(.top)
-
     }
 }
 

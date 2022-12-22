@@ -46,7 +46,8 @@ struct SettingsView: View {
                     
                     ,alignment: .topTrailing
                 )
-                .padding(.bottom)
+                .padding(.bottom,8)
+                .padding(.top,8)
                 
                 Form {
                     

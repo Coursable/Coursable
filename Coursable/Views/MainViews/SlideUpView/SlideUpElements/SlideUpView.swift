@@ -35,7 +35,7 @@ struct SlideUpView: View {
     var body: some View {
 
         GeometryReader { geometry in
-            SlideUp(startingOffset: geometry.size.height*0.36, endingOffset: geometry.size.height*0.14, backgroundColor: .white, barColor: .secondary, screenHeight: geometry.size.height) {
+            SlideUp(startingOffset: geometry.size.height*0.34, endingOffset: geometry.size.height*0.16, backgroundColor: .white, barColor: .secondary, screenHeight: geometry.size.height) {
                 Form {
                     Section("Progress") {
 
