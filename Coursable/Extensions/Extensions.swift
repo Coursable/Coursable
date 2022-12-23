@@ -87,3 +87,16 @@ extension TimeInterval {
         Int((self*1000).truncatingRemainder(dividingBy: 1000))
     }
 }
+
+extension Int {
+    func convertWeekdayToString() -> String {
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+        
+        if self > 7 {
+            return "Sunday"
+        }
+        else {
+            return days[self - 1]
+        }
+    }
+}

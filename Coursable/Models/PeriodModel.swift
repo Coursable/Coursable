@@ -90,6 +90,8 @@ struct DayModel: Identifiable {
      day 7=Saturday
     */
     
+    static let dayColors: [Color] = [.red, .blue, .green, .pink, .yellow, .orange, .teal]
+    
 }
 
 struct FullSchedule: Identifiable{

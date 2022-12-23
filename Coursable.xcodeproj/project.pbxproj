@@ -30,6 +30,7 @@
 		DF4FCF9E2923023400D82824 /* StatsCardModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */; };
 		DF4FCFA0292302A600D82824 /* CompletedCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */; };
 		DF4FCFA22923099400D82824 /* RemainingCoursesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */; };
+		DF585A3729551143002E79C1 /* SettingsSubjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF585A3629551143002E79C1 /* SettingsSubjectListView.swift */; };
 		DF616D3B292C43C500727CCB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DF616D3A292C43C500727CCB /* FirebaseAnalytics */; };
 		DF616D3D292C43C500727CCB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DF616D3C292C43C500727CCB /* FirebaseAuth */; };
 		DF616D3F292C43C500727CCB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DF616D3E292C43C500727CCB /* FirebaseFirestore */; };
@@ -112,6 +113,7 @@
 		DF4FCF9D2923023400D82824 /* StatsCardModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardModifierView.swift; sourceTree = "<group>"; };
 		DF4FCF9F292302A600D82824 /* CompletedCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCoursesCardView.swift; sourceTree = "<group>"; };
 		DF4FCFA12923099400D82824 /* RemainingCoursesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingCoursesCardView.swift; sourceTree = "<group>"; };
+		DF585A3629551143002E79C1 /* SettingsSubjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubjectListView.swift; sourceTree = "<group>"; };
 		DF616D45292C454800727CCB /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		DF616D4D292C559200727CCB /* MainSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignInView.swift; sourceTree = "<group>"; };
 		DF616D4F292D1AA500727CCB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				DFC0E52B293575E8008F2457 /* SettingsView.swift */,
 				DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */,
 				DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */,
+				DF585A3629551143002E79C1 /* SettingsSubjectListView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				DF9BD55228E247A600C60E12 /* NextEventTopbarText.swift in Sources */,
 				DF9BD56528E3A63200C60E12 /* NoEventsProgressText.swift in Sources */,
 				DFB383212933EB3700A5FCAE /* CustomLoadingView.swift in Sources */,
+				DF585A3729551143002E79C1 /* SettingsSubjectListView.swift in Sources */,
 				DF2329DA293167DE00E7B363 /* SignUpErrorView.swift in Sources */,
 				DFF73B9828DE89F900EF69D1 /* PeriodViewModel.swift in Sources */,
 				DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */,

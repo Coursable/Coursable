@@ -40,28 +40,63 @@ struct SettingsView: View {
                         Image(systemName: "chevron.down")
                             .font(.title2)
                     }
-                    .foregroundColor(.white)
-                    .fontWeight(.semibold)
-                    .padding(.top, 5)
-                    .padding(.trailing, 30)
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                        .padding(.top, 5)
+                        .padding(.trailing, 30)
                     
                     ,alignment: .topTrailing
                 )
                 .padding(.bottom,8)
                 .padding(.top,8)
                 
-                List {
+                Form {
+                    
+                    SettingsSubjectListView(subjectFolded: $subjectFolded, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit, isEdittingSubjects: $isEdittingSubjects)
                     
                     Section {
-
-                        ForEach(Array(periodViewModel.usersSubjects.enumerated()), id: \.offset) { index, subject in
-                            if !subjectFolded || index + 1 <= 3 {
-
-                                SettingsCourseCardView(isEditingSubjects: isEdittingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
-                                    .foregroundColor(.white)
-                                    .background(Color(UIColor.secondaryLabel))
-                                    .cornerRadius(15)
+                        
+                        ForEach(Array(periodViewModel.usersFullSchedule.enumerated()), id: \.offset) { index, day in
+                            VStack(alignment: .leading) {
+                                
+                                HStack {
+                                    
+                                    Circle()
+                                        .fill(DayModel.dayColors[day.day - 1])
+                                        .frame(width: 50)
+                                        .overlay {
+                                            
+                                            Text(day.day.convertWeekdayToString().prefix(1).capitalized)
+                                                .font(.title)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(day.day.convertWeekdayToString())
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                        
+                                    }
+                                    .padding(.leading, 3)
+                                    
+                                    Spacer()
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                }
+                                
+                                
                             }
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(UIColor.secondaryLabel))
+                            .cornerRadius(15)
+                            
                         }
                         .transition(AnyTransition.scale)
                         .listStyle(InsetGroupedListStyle())
@@ -71,49 +106,19 @@ struct SettingsView: View {
                         .padding(.bottom, 10)
                         .listRowSeparator(.hidden)
                     }
-                    header: {
-                        HStack {
-                            Text("Subjects (\(periodViewModel.usersSubjects.count))")
-                                .foregroundColor(.white)
+                header: {
+                    HStack {
+                        Text("Schedule (\(periodViewModel.usersFullSchedule.count))")
+                            .foregroundColor(.white)
+                        
+                        Spacer()
+                        
+                        
+                        Button {
                             
-                            Spacer()
-
-                            if isEdittingSubjects {
-                                Button {
-                                    showAddSubjectSheet = true
-
-                                } label: {
-                                    Text("Add")
-                                        .textCase(.none)
-                                        .font(.footnote)
-                                        .padding([.leading,.trailing], 10)
-                                        .padding([.top, .bottom], 4)
-                                        .foregroundColor(.white)
-                                        .fontWeight(.semibold)
-                                        .background {
-
-                                            RoundedRectangle(cornerRadius: 16)
-                                                .foregroundStyle(.green.gradient)
-
-                                        }
-                                }
-                            }
-
-                            Button {
-                                withAnimation {
-                                    isEdittingSubjects.toggle()
-                                }
-                            } label: {
-
-                                Group {
-                                    if !isEdittingSubjects {
-                                        Text("Edit")
-
-                                    }
-                                    else {
-                                        Text("Done")
-                                    }
-                                }
+                        } label: {
+                            
+                            Image(systemName: "plus")
                                 .textCase(.none)
                                 .font(.footnote)
                                 .padding([.leading,.trailing], 10)
@@ -121,35 +126,14 @@ struct SettingsView: View {
                                 .foregroundColor(.white)
                                 .fontWeight(.semibold)
                                 .background {
-
+                                    
                                     RoundedRectangle(cornerRadius: 16)
                                         .fill(.blue.gradient)
                                 }
-                            }
-                            
-                            if periodViewModel.usersSubjects.count > 3 {
-                                Button {
-                                    withAnimation(.easeInOut(duration: 0.2)) {
-                                        subjectFolded.toggle()
-                                    }
-                                    
-                                } label: {
-                                    Image(systemName: "chevron.down")
-                                        .rotationEffect(.degrees(subjectFolded ? 180 : 0))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white)
-                                        .padding(.leading)
-
-                                }
-                            }
-                            
-                            
-
-                            
-
                         }
+                        
                     }
-                    
+                }
                     
                     Section {
                         Button {
@@ -159,9 +143,9 @@ struct SettingsView: View {
                         }
                         .listRowBackground(Color(UIColor.secondaryLabel))
                         
-
+                        
                     }
-                   
+                    
                 }
                 .scrollContentBackground(.hidden)
                 
@@ -201,7 +185,6 @@ struct SettingsView: View {
                 }
             }
             
-
         }
         
     }
@@ -215,3 +198,4 @@ struct SettingsView_Previews: PreviewProvider {
             .environmentObject(SignInViewModel())
     }
 }
+

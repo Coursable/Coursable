@@ -333,6 +333,8 @@ class PeriodViewModel: ObservableObject {
 
     }
     
+
+    
     func setSubjectData() -> Bool {
         var valueToReturn = true
         
