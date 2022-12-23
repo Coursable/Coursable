@@ -43,8 +43,8 @@ struct PeriodModel: Identifiable {
     static let periodThreeExample = PeriodModel(id: "3", startTime: "22:03:00", endTime: "22:03:30", periodNumber: 5, subject: Subject.ScienceSubjectExample)
 }
 
-struct Subject: Identifiable, Codable {
-    var id: String
+struct Subject: Identifiable, Codable, Hashable {
+    var id: String = UUID().uuidString
     var name: String
     var teacher: String
     var colorGradientPrimary: [Double]

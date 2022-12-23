@@ -76,7 +76,7 @@ struct SettingsView: View {
                                     VStack(alignment: .leading) {
                                         Text(day.day.convertWeekdayToString())
                                             .font(.title3)
-                                            .fontWeight(.bold)
+                                            .fontWeight(.semibold)
                                         
                                     }
                                     .padding(.leading, 3)
@@ -89,8 +89,7 @@ struct SettingsView: View {
                                     
                                     
                                 }
-                                
-                                
+
                             }
                             .padding()
                             .foregroundColor(.white)
@@ -98,7 +97,6 @@ struct SettingsView: View {
                             .cornerRadius(15)
                             
                         }
-                        .transition(AnyTransition.scale)
                         .listStyle(InsetGroupedListStyle())
                         .listRowBackground(Color(UIColor.clear))
                         .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
@@ -106,6 +104,7 @@ struct SettingsView: View {
                         .padding(.bottom, 10)
                         .listRowSeparator(.hidden)
                     }
+                    
                 header: {
                     HStack {
                         Text("Schedule (\(periodViewModel.usersFullSchedule.count))")
@@ -119,7 +118,6 @@ struct SettingsView: View {
                         } label: {
                             
                             Image(systemName: "plus")
-                            
                                 .textCase(.none)
                                 .font(.footnote)
                                 .padding([.leading,.trailing], 10)
@@ -135,6 +133,7 @@ struct SettingsView: View {
                         
                     }
                 }
+                
                     
                     Section {
                         Button {

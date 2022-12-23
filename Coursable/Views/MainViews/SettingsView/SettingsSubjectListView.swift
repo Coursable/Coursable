@@ -17,16 +17,18 @@ struct SettingsSubjectListView: View {
     var body: some View {
         Section {
             
-            ForEach(Array(periodViewModel.usersSubjects.enumerated()), id: \.offset) { index, subject in
+            
+            
+            ForEach(Array(periodViewModel.usersSubjects.enumerated()), id: \.element) { index, subject in
                 if !subjectFolded || index + 1 <= 3 {
                     
                     SettingsCourseCardView(isEditingSubjects: isEdittingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
                         .foregroundColor(.white)
                         .background(Color(UIColor.secondaryLabel))
                         .cornerRadius(15)
+                    
                 }
             }
-            .transition(AnyTransition.scale)
             .listStyle(InsetGroupedListStyle())
             .listRowBackground(Color(UIColor.clear))
             .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
