@@ -119,6 +119,7 @@ struct SettingsView: View {
                         } label: {
                             
                             Image(systemName: "plus")
+                            
                                 .textCase(.none)
                                 .font(.footnote)
                                 .padding([.leading,.trailing], 10)
