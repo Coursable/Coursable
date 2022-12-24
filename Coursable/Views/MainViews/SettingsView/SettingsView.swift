@@ -11,10 +11,12 @@ import FirebaseFirestore
 struct SettingsView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
     @EnvironmentObject var signInViewModel: SignInViewModel
-    @Binding var showSheet: Bool
+    @Binding var showSettingsSheet: Bool
     @State var isLoading: Bool = false
     @State var showAddSubjectSheet: Bool = false
+    @State var showScheduleInfoSheet: Bool = false
     @State var isEdittingSubjects: Bool = false
+    
     @State var subjectToEdit: Subject?
     @State var subjectFolded: Bool = true
     
@@ -35,7 +37,7 @@ struct SettingsView: View {
                 }
                 .overlay(
                     Button {
-                        showSheet.toggle()
+                        showSettingsSheet.toggle()
                     } label: {
                         Image(systemName: "chevron.down")
                             .font(.title2)
@@ -57,44 +59,15 @@ struct SettingsView: View {
                     Section {
                         
                         ForEach(Array(periodViewModel.usersFullSchedule.enumerated()), id: \.offset) { index, day in
-                            VStack(alignment: .leading) {
+                            Button {
                                 
-                                HStack {
-                                    
-                                    Circle()
-                                        .fill(DayModel.dayColors[day.day - 1])
-                                        .frame(width: 50)
-                                        .overlay {
-                                            
-                                            Text(day.day.convertWeekdayToString().prefix(1).capitalized)
-                                                .font(.title)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(.white)
-                                            
-                                        }
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(day.day.convertWeekdayToString())
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                        
-                                    }
-                                    .padding(.leading, 3)
-                                    
-                                    Spacer()
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                }
-
+                            } label: {
+                                SettingsScheduleCardView(dayModel: day)
                             }
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(UIColor.secondaryLabel))
-                            .cornerRadius(15)
+                            
+                            
+
+                            
                             
                         }
                         .listStyle(InsetGroupedListStyle())
@@ -114,7 +87,7 @@ struct SettingsView: View {
                         
                         
                         Button {
-                            
+                            showScheduleInfoSheet.toggle()
                         } label: {
                             
                             Image(systemName: "plus")
@@ -168,6 +141,9 @@ struct SettingsView: View {
             
             AddSubjectView(showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
         })
+        .sheet(isPresented: $showScheduleInfoSheet, content: {
+            //SettingsScheduleInfoView(dayModel: )
+        })
         .onAppear {
             
             Task {
@@ -193,7 +169,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(showSheet: .constant(false))
+        SettingsView(showSettingsSheet: .constant(false))
             .environmentObject(PeriodViewModel())
             .environmentObject(SignInViewModel())
     }

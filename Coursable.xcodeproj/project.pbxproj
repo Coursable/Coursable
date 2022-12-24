@@ -70,6 +70,8 @@
 		DFB38326293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB38325293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift */; };
 		DFB38328293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB38327293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift */; };
 		DFB3832A2934439600A5FCAE /* ForgotPasswordEmailFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */; };
+		DFB9E4D32956776A00AAF116 /* SettingsScheduleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB9E4D22956776A00AAF116 /* SettingsScheduleCardView.swift */; };
+		DFB9E4D52956780A00AAF116 /* SettingsScheduleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB9E4D42956780A00AAF116 /* SettingsScheduleInfoView.swift */; };
 		DFBE4155293966B40088523D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DFBE4154293966B40088523D /* GoogleSignIn */; };
 		DFBE4157293966B40088523D /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DFBE4156293966B40088523D /* GoogleSignInSwift */; };
 		DFC0E52C293575E8008F2457 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0E52B293575E8008F2457 /* SettingsView.swift */; };
@@ -149,6 +151,8 @@
 		DFB38325293438AD00A5FCAE /* ForgotPasswordTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordTopInfoView.swift; sourceTree = "<group>"; };
 		DFB38327293442C100A5FCAE /* ForgotPasswordSubmitButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordSubmitButtonView.swift; sourceTree = "<group>"; };
 		DFB383292934439600A5FCAE /* ForgotPasswordEmailFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordEmailFieldView.swift; sourceTree = "<group>"; };
+		DFB9E4D22956776A00AAF116 /* SettingsScheduleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScheduleCardView.swift; sourceTree = "<group>"; };
+		DFB9E4D42956780A00AAF116 /* SettingsScheduleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScheduleInfoView.swift; sourceTree = "<group>"; };
 		DFC0E52B293575E8008F2457 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTopInfoView.swift; sourceTree = "<group>"; };
 		DFC0E52F29357AF1008F2457 /* SettingsCourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCourseCardView.swift; sourceTree = "<group>"; };
@@ -398,9 +402,19 @@
 			path = ForgotPasswordView;
 			sourceTree = "<group>";
 		};
+		DFB9E4D12956775700AAF116 /* SettingsScheduleViews */ = {
+			isa = PBXGroup;
+			children = (
+				DFB9E4D22956776A00AAF116 /* SettingsScheduleCardView.swift */,
+				DFB9E4D42956780A00AAF116 /* SettingsScheduleInfoView.swift */,
+			);
+			path = SettingsScheduleViews;
+			sourceTree = "<group>";
+		};
 		DFC0E52A293575DB008F2457 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				DFB9E4D12956775700AAF116 /* SettingsScheduleViews */,
 				DFFB0B9229381D3B00124A64 /* AddSubjectView */,
 				DFC0E52B293575E8008F2457 /* SettingsView.swift */,
 				DFC0E52D29357749008F2457 /* SettingsTopInfoView.swift */,
@@ -643,6 +657,8 @@
 				DF23215429271F5A005D5698 /* CourseFilterMenuView.swift in Sources */,
 				DF2329E429327E9000E7B363 /* SignUpLastNameCardView.swift in Sources */,
 				DF9BD55428E2484F00C60E12 /* NoMoreEventsTopbarText.swift in Sources */,
+				DFB9E4D32956776A00AAF116 /* SettingsScheduleCardView.swift in Sources */,
+				DFB9E4D52956780A00AAF116 /* SettingsScheduleInfoView.swift in Sources */,
 				DF2329D229311C0500E7B363 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

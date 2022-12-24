@@ -93,7 +93,7 @@ struct MainPage_FirstLayerView: View {
         .foregroundColor(.white)
         .background(Color("Background"))
         .fullScreenCover(isPresented: $showSettingsSheet, content: {
-            SettingsView(showSheet: $showSettingsSheet)
+            SettingsView(showSettingsSheet: $showSettingsSheet)
         })
         
         
