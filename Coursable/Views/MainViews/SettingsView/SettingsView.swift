@@ -20,6 +20,8 @@ struct SettingsView: View {
     @State var subjectToEdit: Subject?
     @State var subjectFolded: Bool = true
     
+    @State var weekdaySelected: Int = 4
+    
     var body: some View {
         ZStack {
             VStack {
@@ -58,80 +60,128 @@ struct SettingsView: View {
                     
                     Section {
                         
-                        ForEach(Array(periodViewModel.usersFullSchedule.enumerated()), id: \.offset) { index, day in
-                            Button {
-                                
-                            } label: {
-                                SettingsScheduleCardView(dayModel: day)
+                        HStack(spacing: 1) {
+                            Spacer()
+                            ForEach(1...5, id: \.self) {day in
+                                Button {
+                                    withAnimation {
+                                        weekdaySelected = day
+                                    }
+                                } label: {
+                                    Circle()
+                                        .frame(width: 50)
+                                        .foregroundColor(weekdaySelected == day ? .secondary : Color.clear)
+                                        .overlay {
+                                            Group {
+                                                
+                                                switch(day) {
+                                                case 1:
+                                                    Text("M")
+                                                case 2:
+                                                    Text("T")
+                                                case 3:
+                                                    Text("W")
+                                                case 4:
+                                                    Text("T")
+                                                default:
+                                                    Text("F")
+                                                }
+                                                
+                                            }
+                                            .foregroundColor(weekdaySelected == day ? DayModel.dayColors[day] : .white)
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                        }
+                                }
+                                Spacer()
                             }
                             
                             
-
                             
                             
                         }
-                        .listStyle(InsetGroupedListStyle())
-                        .listRowBackground(Color(UIColor.clear))
-                        .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
-                        .buttonStyle(PlainButtonStyle())
-                        .padding(.bottom, 10)
-                        .listRowSeparator(.hidden)
-                    }
-                    
-                header: {
-                    HStack {
-                        Text("Schedule (\(periodViewModel.usersFullSchedule.count))")
-                            .foregroundColor(.white)
                         
-                        Spacer()
-                        
-                        
-                        Button {
-                            showScheduleInfoSheet.toggle()
-                        } label: {
-                            
-                            Image(systemName: "plus")
-                                .textCase(.none)
-                                .font(.footnote)
-                                .padding([.leading,.trailing], 10)
-                                .padding([.top, .bottom], 4)
-                                .foregroundColor(.white)
-                                .fontWeight(.semibold)
-                                .background {
+                        if let dayModel = periodViewModel.usersFullSchedule.first { $0.day == weekdaySelected } {
+                            ForEach(dayModel.periods) { period in
+                                VStack(alignment: .leading) {
                                     
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .fill(.blue.gradient)
+                                    HStack {
+                                        SettingsScheduleInfoIconView(period: period)
+                                        
+                                        VStack(alignment: .leading) {
+                                            Text("Period \(period.periodNumber)")
+                                                .font(.title3)
+                                                .fontWeight(.semibold)
+                                            Text("Subject: Math")
+                                                .font(.subheadline)
+                                        }
+                                        .padding(.leading, 3)
+                                        
+                                    }
+                                    
+                                    HStack {
+                                        Image(systemName: "clock")
+                                        Text("\(DateFormatter.localizedString(from: period.startTimeParsed, dateStyle: .none, timeStyle: .short))-\(DateFormatter.localizedString(from: period.endTimeParsed, dateStyle: .none, timeStyle: .short))")
+                                        Spacer()
+                                        Image(systemName: "book")
+                                        Text("Period \(period.periodNumber)")
+                                        
+                                        
+                                    }
                                 }
+                                
+                                
+                                
+                            }
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(UIColor.secondaryLabel))
+                            .cornerRadius(15)
                         }
-                        
-                    }
-                }
-                
                     
-                    Section {
-                        Button {
-                            signInViewModel.signOut()
-                        } label: {
-                            Text("Sign Out")
-                        }
-                        .listRowBackground(Color(UIColor.secondaryLabel))
-                        
-                        
-                    }
+                    
+                    
+                    
                     
                 }
-                .scrollContentBackground(.hidden)
+            header: {
+                Text("Schedule")
+                    .foregroundColor(.white)
+            }
+            .listStyle(InsetGroupedListStyle())
+            .listRowBackground(Color(UIColor.clear))
+            .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
+            .buttonStyle(PlainButtonStyle())
+            .padding(.bottom, 10)
+            .listRowSeparator(.hidden)
                 
                 
-                Spacer()
+                Section {
+                    Button {
+                        signInViewModel.signOut()
+                    } label: {
+                        Text("Sign Out")
+                    }
+                    .listRowBackground(Color(UIColor.secondaryLabel))
+                    
+                    
+                }
+                
             }
             
-            if isLoading {
-                CustomLoading()
-            }
+            .scrollContentBackground(.hidden)
             
             
+            Spacer()
         }
+        
+        
+        if isLoading {
+            CustomLoading()
+        }
+        
+        
+    }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {
             Color("Background")
@@ -162,9 +212,9 @@ struct SettingsView: View {
             }
             
         }
-        
-    }
     
+}
+
 }
 
 struct SettingsView_Previews: PreviewProvider {
@@ -175,3 +225,21 @@ struct SettingsView_Previews: PreviewProvider {
     }
 }
 
+
+private struct SettingsScheduleInfoIconView: View {
+    
+    var period: PeriodModel
+    
+    var body: some View {
+        Circle()
+            .fill(LinearGradient(colors: [Color(red: period.subject.colorGradientPrimary[0]/255, green: period.subject.colorGradientPrimary[1]/255, blue: period.subject.colorGradientPrimary[2]/255), Color(red: period.subject.colorGradientSecondary[0]/255, green: period.subject.colorGradientSecondary[1]/255, blue: period.subject.colorGradientSecondary[2]/255)], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .frame(width: 50)
+            .overlay {
+                Text(period.subject.name.prefix(1).capitalized)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                
+            }
+    }
+}
