@@ -13,7 +13,7 @@ struct MainPage: View {
             MainPage_FirstLayerView()
             SlideUpView()
                 .ignoresSafeArea() //remove the extra space from navigation bar
-        }
+        }//
     }
 }
 
