@@ -34,8 +34,14 @@ struct SettingsCourseCardView: View {
                     Text(subject.name)
                         .font(.title3)
                         .fontWeight(.semibold)
-                    Text("\(subject.teacher) - Room \(subject.roomNumber)")
-                        .font(.subheadline)
+                    HStack {
+                        //Image(systemName: "person")
+                        Text("\(subject.teacher) - Room \(subject.roomNumber)")
+                        
+                        
+ 
+                    }
+                    .font(.subheadline)
 
                     
                 }

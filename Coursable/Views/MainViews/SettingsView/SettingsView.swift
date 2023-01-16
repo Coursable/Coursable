@@ -21,6 +21,8 @@ struct SettingsView: View {
     @State var subjectFolded: Bool = true
     
     @State var weekdaySelected: Int = 4
+    @Namespace var animation
+    
     
     var body: some View {
         ZStack {
@@ -68,30 +70,39 @@ struct SettingsView: View {
                                         weekdaySelected = day
                                     }
                                 } label: {
-                                    Circle()
-                                        .frame(width: 50)
-                                        .foregroundColor(weekdaySelected == day ? .secondary : Color.clear)
-                                        .overlay {
-                                            Group {
-                                                
-                                                switch(day) {
-                                                case 1:
-                                                    Text("M")
-                                                case 2:
-                                                    Text("T")
-                                                case 3:
-                                                    Text("W")
-                                                case 4:
-                                                    Text("T")
-                                                default:
-                                                    Text("F")
-                                                }
-                                                
-                                            }
-                                            .foregroundColor(weekdaySelected == day ? DayModel.dayColors[day] : .white)
-                                            .font(.title3)
-                                            .fontWeight(.bold)
+                                    VStack {
+                                        switch(day) {
+                                        case 1:
+                                            Text("Mon")
+                                        case 2:
+                                            Text("Tue")
+                                        case 3:
+                                            Text("Wed")
+                                        case 4:
+                                            Text("Thu")
+                                        default:
+                                            Text("Fri")
                                         }
+                                        
+                                        
+                                        Circle()
+                                            .frame(width: 8)
+                                            .opacity(weekdaySelected == day ? 1 : 0)
+                                    }
+                                    .foregroundColor(weekdaySelected == day ? .accentColor : .white)
+                                    .font(.subheadline)
+                                    .fontWeight(.regular)
+                                    .frame(width: 45, height: 90)
+                                    .background(
+                                        ZStack {
+                                            if weekdaySelected == day {
+                                                Capsule()
+                                                    .fill(Color(UIColor.secondaryLabel))
+                                                    .matchedGeometryEffect(id: "CURRENTWEEKDAY", in: animation)
+                                            }
+                                        }
+                                    )
+                                    
                                 }
                                 Spacer()
                             }
@@ -103,7 +114,7 @@ struct SettingsView: View {
                         
                         if let dayModel = periodViewModel.usersFullSchedule.first { $0.day == weekdaySelected } {
                             ForEach(dayModel.periods) { period in
-                                VStack(alignment: .leading) {
+                                VStack(alignment: .leading, spacing: 10) {
                                     
                                     HStack {
                                         SettingsScheduleInfoIconView(period: period)
@@ -112,20 +123,15 @@ struct SettingsView: View {
                                             Text("Period \(period.periodNumber)")
                                                 .font(.title3)
                                                 .fontWeight(.semibold)
-                                            Text("Subject: Math")
-                                                .font(.subheadline)
+                                            HStack {
+                                                //Image(systemName: "book")
+                                                Text("\(period.subject.name) - \(DateFormatter.localizedString(from: period.startTimeParsed, dateStyle: .none, timeStyle: .short))-\(DateFormatter.localizedString(from: period.endTimeParsed, dateStyle: .none, timeStyle: .short))")
+                                                Spacer()
+                                            }
+                                            .font(.subheadline)
+                                            .fontWeight(.regular)
                                         }
                                         .padding(.leading, 3)
-                                        
-                                    }
-                                    
-                                    HStack {
-                                        Image(systemName: "clock")
-                                        Text("\(DateFormatter.localizedString(from: period.startTimeParsed, dateStyle: .none, timeStyle: .short))-\(DateFormatter.localizedString(from: period.endTimeParsed, dateStyle: .none, timeStyle: .short))")
-                                        Spacer()
-                                        Image(systemName: "book")
-                                        Text("Period \(period.periodNumber)")
-                                        
                                         
                                     }
                                 }
@@ -235,7 +241,7 @@ private struct SettingsScheduleInfoIconView: View {
             .fill(LinearGradient(colors: [Color(red: period.subject.colorGradientPrimary[0]/255, green: period.subject.colorGradientPrimary[1]/255, blue: period.subject.colorGradientPrimary[2]/255), Color(red: period.subject.colorGradientSecondary[0]/255, green: period.subject.colorGradientSecondary[1]/255, blue: period.subject.colorGradientSecondary[2]/255)], startPoint: .topLeading, endPoint: .bottomTrailing))
             .frame(width: 50)
             .overlay {
-                Text(period.subject.name.prefix(1).capitalized)
+                Text(String(period.periodNumber))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
