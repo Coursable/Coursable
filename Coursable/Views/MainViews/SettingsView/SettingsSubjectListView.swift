@@ -12,7 +12,7 @@ struct SettingsSubjectListView: View {
     @Binding var subjectFolded: Bool
     @Binding var showAddSubjectSheet: Bool
     @Binding var subjectToEdit: Subject?
-    @Binding var isEdittingSubjects: Bool
+    @Binding var isEditingSubjects: Bool
     
     var body: some View {
         Section {
@@ -22,11 +22,57 @@ struct SettingsSubjectListView: View {
             ForEach(Array(periodViewModel.usersSubjects.enumerated()), id: \.element) { index, subject in
                 if !subjectFolded || index + 1 <= 3 {
                     
-                    SettingsCourseCardView(isEditingSubjects: isEdittingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
-                        .foregroundColor(.white)
-                        .background(Color(UIColor.secondaryLabel))
-                        .cornerRadius(15)
+                    ZStack {
+                        HStack(spacing: 15) {
+                            Button {
+                                showAddSubjectSheet.toggle()
+                                subjectToEdit = subject
+                            } label: {
+                                Circle()
+                                    .frame(width: 45)
+                                    .foregroundStyle(.green.gradient)
+                                    .overlay {
+                                        Image(systemName: "pencil")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                    }
+                            }
+
+                            Button {
+                                Task {
+                                    await periodViewModel.removeIndividualSubjectData(subjectToRemove: subject)
+                                }
+                            } label: {
+                                Circle()
+                                    .frame(width: 45)
+                                    .foregroundStyle(.red.gradient)
+                                    .overlay {
+                                        Image(systemName: "xmark")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                    }
+                            }
+
+                            
+                            
+                            
+                            Spacer()
+                        }
+                        .padding(.leading)
+                      
+
+                        
+                        SettingsCourseCardView(isEditingSubjects: isEditingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
+                            .offset(x: isEditingSubjects ? 150 : 0)
+                            //.offset(x: 150)
+                            .animation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0), value: isEditingSubjects)
+                        
+                        
+                    }
                     
+                    
+                        
+                        
                 }
             }
             .listStyle(InsetGroupedListStyle())
@@ -43,7 +89,7 @@ struct SettingsSubjectListView: View {
                 
                 Spacer()
                 
-                if isEdittingSubjects {
+                if isEditingSubjects {
                     Button {
                         showAddSubjectSheet = true
                         
@@ -66,12 +112,12 @@ struct SettingsSubjectListView: View {
                 
                 Button {
                     withAnimation {
-                        isEdittingSubjects.toggle()
+                        isEditingSubjects.toggle()
                     }
                 } label: {
                     
                     Group {
-                        if !isEdittingSubjects {
+                        if !isEditingSubjects {
                             Text("Edit")
                             
                         }
@@ -111,6 +157,9 @@ struct SettingsSubjectListView: View {
             }
         }
     }
+    
+
+
 }
 
 
@@ -118,7 +167,7 @@ struct SettingsSubjectListView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Form {
-                SettingsSubjectListView(subjectFolded: .constant(false), showAddSubjectSheet: .constant(false), subjectToEdit: .constant(nil), isEdittingSubjects: .constant(false))
+                SettingsSubjectListView(subjectFolded: .constant(false), showAddSubjectSheet: .constant(false), subjectToEdit: .constant(nil), isEditingSubjects: .constant(false))
                     .environmentObject(PeriodViewModel())
                 
             }

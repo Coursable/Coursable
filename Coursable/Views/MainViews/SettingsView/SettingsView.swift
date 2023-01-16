@@ -15,7 +15,7 @@ struct SettingsView: View {
     @State var isLoading: Bool = false
     @State var showAddSubjectSheet: Bool = false
     @State var showScheduleInfoSheet: Bool = false
-    @State var isEdittingSubjects: Bool = false
+    @State var isEditingSubjects: Bool = false
     
     @State var subjectToEdit: Subject?
     @State var subjectFolded: Bool = true
@@ -58,7 +58,7 @@ struct SettingsView: View {
                 
                 Form {
                     
-                    SettingsSubjectListView(subjectFolded: $subjectFolded, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit, isEdittingSubjects: $isEdittingSubjects)
+                    SettingsSubjectListView(subjectFolded: $subjectFolded, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit, isEditingSubjects: $isEditingSubjects)
                     
                     Section {
                         
@@ -72,7 +72,7 @@ struct SettingsView: View {
                                 } label: {
                                     VStack {
                                         switch(day) {
-                                        case 1:
+                                        case 1: 
                                             Text("Mon")
                                         case 2:
                                             Text("Tue")
@@ -84,22 +84,19 @@ struct SettingsView: View {
                                             Text("Fri")
                                         }
                                         
-                                        
-                                        Circle()
-                                            .frame(width: 8)
-                                            .opacity(weekdaySelected == day ? 1 : 0)
+                                        if weekdaySelected == day {
+                                            Circle()
+                                                .frame(width: 8)
+                                        }
                                     }
-                                    .foregroundColor(weekdaySelected == day ? .accentColor : .white)
+                                    .foregroundColor(.white)
                                     .font(.subheadline)
                                     .fontWeight(.regular)
-                                    .frame(width: 45, height: 90)
+                                    .frame(width: 50, height: weekdaySelected == day ? 90 : 50)
                                     .background(
                                         ZStack {
-                                            if weekdaySelected == day {
-                                                Capsule()
-                                                    .fill(Color(UIColor.secondaryLabel))
-                                                    .matchedGeometryEffect(id: "CURRENTWEEKDAY", in: animation)
-                                            }
+                                            Capsule()
+                                                .fill( weekdaySelected == day ? Color.accentColor : Color("SecondaryBackground"))
                                         }
                                     )
                                     
@@ -141,7 +138,7 @@ struct SettingsView: View {
                             }
                             .padding()
                             .foregroundColor(.white)
-                            .background(Color(UIColor.secondaryLabel))
+                            .background(Color("SecondaryBackground"))
                             .cornerRadius(15)
                         }
                     
@@ -168,7 +165,7 @@ struct SettingsView: View {
                     } label: {
                         Text("Sign Out")
                     }
-                    .listRowBackground(Color(UIColor.secondaryLabel))
+                    .listRowBackground(Color("SecondaryBackground"))
                     
                     
                 }
