@@ -41,7 +41,6 @@
 		DF616D52292D76E400727CCB /* SignInWithGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D51292D76E400727CCB /* SignInWithGoogle.swift */; };
 		DF616D5B292D8EA000727CCB /* LoginOtherOptionsDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D5A292D8EA000727CCB /* LoginOtherOptionsDividerView.swift */; };
 		DF616D5F292D8FB700727CCB /* LoginTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF616D5E292D8FB700727CCB /* LoginTopInfoView.swift */; };
-		DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */; };
 		DF92E4112929B83200DB0364 /* TopNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4102929B83200DB0364 /* TopNavBar.swift */; };
 		DF92E4152929BABF00DB0364 /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4142929BABF00DB0364 /* DestinationView.swift */; };
 		DF92E4192929BEF900DB0364 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92E4182929BEF900DB0364 /* Modifiers.swift */; };
@@ -122,7 +121,6 @@
 		DF616D51292D76E400727CCB /* SignInWithGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogle.swift; sourceTree = "<group>"; };
 		DF616D5A292D8EA000727CCB /* LoginOtherOptionsDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOtherOptionsDividerView.swift; sourceTree = "<group>"; };
 		DF616D5E292D8FB700727CCB /* LoginTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTopInfoView.swift; sourceTree = "<group>"; };
-		DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		DF92E4102929B83200DB0364 /* TopNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBar.swift; sourceTree = "<group>"; };
 		DF92E4142929BABF00DB0364 /* DestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationView.swift; sourceTree = "<group>"; };
 		DF92E4162929BEA700DB0364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -272,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				DF9BD55928E249B500C60E12 /* ProgressViews */,
-				DF87A65F28DF65CC001CE6C6 /* ProgressRing.swift */,
 				DF082103291EC7E800FF4A75 /* ProgressRingView.swift */,
 			);
 			path = ProgressRingViews;
@@ -627,7 +624,6 @@
 				DFF73B8728DE87D900EF69D1 /* ContentView.swift in Sources */,
 				DF2329E229327DDB00E7B363 /* SignUpNameCardView.swift in Sources */,
 				DF2329E029327C1B00E7B363 /* SignUpEmailCardView.swift in Sources */,
-				DF87A66028DF65CC001CE6C6 /* ProgressRing.swift in Sources */,
 				DF082102291EC5DF00FF4A75 /* MainPage.swift in Sources */,
 				DF0820FE291EBB8600FF4A75 /* SlideUp.swift in Sources */,
 				DF082106291FE7E500FF4A75 /* SlideUpCircle.swift in Sources */,

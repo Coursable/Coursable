@@ -77,6 +77,7 @@ struct MainPage_FirstLayerView: View {
 
 
             ProgressRingView()
+                
 
             Spacer()
             
