@@ -13,6 +13,7 @@ struct SettingsSubjectListView: View {
     @Binding var showAddSubjectSheet: Bool
     @Binding var subjectToEdit: Subject?
     @Binding var isEditingSubjects: Bool
+    @Binding var isEditingSchedule: Bool
     
     var body: some View {
         Section {
@@ -89,7 +90,9 @@ struct SettingsSubjectListView: View {
                 
                 Spacer()
                 
-                if isEditingSubjects {
+
+                
+                ZStack {
                     Button {
                         showAddSubjectSheet = true
                         
@@ -108,35 +111,38 @@ struct SettingsSubjectListView: View {
                                 
                             }
                     }
+                    .offset(x: isEditingSubjects ? -60 : 0)
+                    
+                    Button {
+                        withAnimation {
+                            isEditingSchedule = false
+                            isEditingSubjects.toggle()
+                        }
+                    } label: {
+                        
+                        Group {
+                            if !isEditingSubjects {
+                                Text("Edit")
+                                
+                            }
+                            else {
+                                Text("Done")
+                            }
+                        }
+                        .textCase(.none)
+                        .font(.footnote)
+                        .padding([.leading,.trailing], 10)
+                        .padding([.top, .bottom], 4)
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                        .background {
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(.blue.gradient)
+                        }
+                    }
                 }
                 
-                Button {
-                    withAnimation {
-                        isEditingSubjects.toggle()
-                    }
-                } label: {
-                    
-                    Group {
-                        if !isEditingSubjects {
-                            Text("Edit")
-                            
-                        }
-                        else {
-                            Text("Done")
-                        }
-                    }
-                    .textCase(.none)
-                    .font(.footnote)
-                    .padding([.leading,.trailing], 10)
-                    .padding([.top, .bottom], 4)
-                    .foregroundColor(.white)
-                    .fontWeight(.semibold)
-                    .background {
-                        
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(.blue.gradient)
-                    }
-                }
+                
                 
                 if periodViewModel.usersSubjects.count > 3 {
                     Button {
@@ -167,7 +173,7 @@ struct SettingsSubjectListView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Form {
-                SettingsSubjectListView(subjectFolded: .constant(false), showAddSubjectSheet: .constant(false), subjectToEdit: .constant(nil), isEditingSubjects: .constant(false))
+                SettingsSubjectListView(subjectFolded: .constant(false), showAddSubjectSheet: .constant(false), subjectToEdit: .constant(nil), isEditingSubjects: .constant(false), isEditingSchedule: .constant(false))
                     .environmentObject(PeriodViewModel())
                 
             }

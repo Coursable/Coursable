@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State var showAddSubjectSheet: Bool = false
     @State var showScheduleInfoSheet: Bool = false
     @State var isEditingSubjects: Bool = false
+    @State var isEditingSchedule: Bool = false
     
     @State var subjectToEdit: Subject?
     @State var subjectFolded: Bool = true
@@ -58,7 +59,7 @@ struct SettingsView: View {
                 
                 Form {
                     
-                    SettingsSubjectListView(subjectFolded: $subjectFolded, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit, isEditingSubjects: $isEditingSubjects)
+                    SettingsSubjectListView(subjectFolded: $subjectFolded, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit, isEditingSubjects: $isEditingSubjects, isEditingSchedule: $isEditingSchedule)
                     
                     Section {
                         
@@ -103,10 +104,6 @@ struct SettingsView: View {
                                 }
                                 Spacer()
                             }
-                            
-                            
-                            
-                            
                         }
                         
                         if let dayModel = periodViewModel.usersFullSchedule.first { $0.day == weekdaySelected } {
@@ -148,8 +145,66 @@ struct SettingsView: View {
                     
                 }
             header: {
-                Text("Schedule")
-                    .foregroundColor(.white)
+                HStack {
+                    Text("Schedule")
+                        .foregroundColor(.white)
+                    
+                    Spacer()
+                    
+                    
+                    
+                    ZStack {
+                        Button {
+                            showAddSubjectSheet = true
+                            
+                        } label: {
+                            Text("Add")
+                                .textCase(.none)
+                                .font(.footnote)
+                                .padding([.leading,.trailing], 10)
+                                .padding([.top, .bottom], 4)
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .background {
+                                    
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .foregroundStyle(.green.gradient)
+                                    
+                                }
+                        }
+                        .offset(x: isEditingSchedule ? -60 : 0)
+                        
+                        Button {
+                            withAnimation {
+                                isEditingSubjects = false
+                                isEditingSchedule.toggle()
+                            }
+                        } label: {
+                            
+                            Group {
+                                if !isEditingSchedule {
+                                    Text("Edit")
+                                    
+                                }
+                                else {
+                                    Text("Done")
+                                }
+                            }
+                            .textCase(.none)
+                            .font(.footnote)
+                            .padding([.leading,.trailing], 10)
+                            .padding([.top, .bottom], 4)
+                            .foregroundColor(.white)
+                            .fontWeight(.semibold)
+                            .background {
+                                
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(.blue.gradient)
+                            }
+                        }
+                    }
+                    
+                }
             }
             .listStyle(InsetGroupedListStyle())
             .listRowBackground(Color(UIColor.clear))
