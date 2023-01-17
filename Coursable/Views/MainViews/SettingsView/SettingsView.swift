@@ -24,7 +24,6 @@ struct SettingsView: View {
     @State var weekdaySelected: Int = 4
     @Namespace var animation
     
-    
     var body: some View {
         ZStack {
             VStack {
@@ -68,6 +67,7 @@ struct SettingsView: View {
                             ForEach(1...5, id: \.self) {day in
                                 Button {
                                     withAnimation {
+                                        isEditingSchedule = false
                                         weekdaySelected = day
                                     }
                                 } label: {
@@ -97,7 +97,8 @@ struct SettingsView: View {
                                     .background(
                                         ZStack {
                                             Capsule()
-                                                .fill( weekdaySelected == day ? Color.accentColor : Color("SecondaryBackground"))
+                                                .fill(weekdaySelected == day ? Color.blue :  Color("SecondaryBackground"))
+//                                                
                                         }
                                     )
                                     
@@ -108,35 +109,58 @@ struct SettingsView: View {
                         
                         if let dayModel = periodViewModel.usersFullSchedule.first { $0.day == weekdaySelected } {
                             ForEach(dayModel.periods) { period in
-                                VStack(alignment: .leading, spacing: 10) {
-                                    
-                                    HStack {
-                                        SettingsScheduleInfoIconView(period: period)
-                                        
-                                        VStack(alignment: .leading) {
-                                            Text("Period \(period.periodNumber)")
-                                                .font(.title3)
-                                                .fontWeight(.semibold)
-                                            HStack {
-                                                //Image(systemName: "book")
-                                                Text("\(period.subject.name) - \(DateFormatter.localizedString(from: period.startTimeParsed, dateStyle: .none, timeStyle: .short))-\(DateFormatter.localizedString(from: period.endTimeParsed, dateStyle: .none, timeStyle: .short))")
-                                                Spacer()
-                                            }
-                                            .font(.subheadline)
-                                            .fontWeight(.regular)
+                                
+                                ZStack {
+                                    HStack(spacing: 15) {
+                                        Button {
+                                            
+                                        } label: {
+                                            Circle()
+                                                .frame(width: 45)
+                                                .foregroundStyle(.green.gradient)
+                                                .overlay {
+                                                    Image(systemName: "pencil")
+                                                        .foregroundColor(.white)
+                                                        .fontWeight(.bold)
+                                                }
                                         }
-                                        .padding(.leading, 3)
+
+                                        Button {
+                                            
+                                        } label: {
+                                            Circle()
+                                                .frame(width: 45)
+                                                .foregroundStyle(.red.gradient)
+                                                .overlay {
+                                                    Image(systemName: "xmark")
+                                                        .foregroundColor(.white)
+                                                        .fontWeight(.bold)
+                                                }
+                                        }
+
                                         
+                                        
+                                        
+                                        Spacer()
                                     }
+                                    .padding(.leading)
+                                  
+
+                                    
+                                    SettingsScheduleCardView(period: period)
+                                        .offset(x: isEditingSchedule ? 150 : 0)
+                                        //.offset(x: 150)
+                                        .animation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0), value: isEditingSubjects)
+                                    
+                                    
                                 }
                                 
                                 
                                 
+                                
+                                
                             }
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color("SecondaryBackground"))
-                            .cornerRadius(15)
+                            
                         }
                     
                     
@@ -155,7 +179,7 @@ struct SettingsView: View {
                     
                     ZStack {
                         Button {
-                            showAddSubjectSheet = true
+                            
                             
                         } label: {
                             Text("Add")
@@ -166,10 +190,8 @@ struct SettingsView: View {
                                 .foregroundColor(.white)
                                 .fontWeight(.semibold)
                                 .background {
-                                    
                                     RoundedRectangle(cornerRadius: 16)
                                         .foregroundStyle(.green.gradient)
-                                    
                                 }
                         }
                         .offset(x: isEditingSchedule ? -60 : 0)
@@ -299,5 +321,38 @@ private struct SettingsScheduleInfoIconView: View {
                     .foregroundColor(.white)
                 
             }
+    }
+}
+
+private struct SettingsScheduleCardView: View {
+    var period: PeriodModel
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+
+            HStack {
+                SettingsScheduleInfoIconView(period: period)
+
+                VStack(alignment: .leading) {
+                    Text("Period \(period.periodNumber)")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    HStack {
+                        //Image(systemName: "book")
+                        Text("\(period.subject.name) - \(DateFormatter.localizedString(from: period.startTimeParsed, dateStyle: .none, timeStyle: .short))-\(DateFormatter.localizedString(from: period.endTimeParsed, dateStyle: .none, timeStyle: .short))")
+                        Spacer()
+                    }
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                }
+                .padding(.leading, 3)
+
+            }
+        }
+        .padding()
+        .foregroundColor(.white)
+        .background(Color("SecondaryBackground"))
+        .cornerRadius(15)
+        
     }
 }

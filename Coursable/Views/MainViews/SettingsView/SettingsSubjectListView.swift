@@ -22,58 +22,8 @@ struct SettingsSubjectListView: View {
             
             ForEach(Array(periodViewModel.usersSubjects.enumerated()), id: \.element) { index, subject in
                 if !subjectFolded || index + 1 <= 3 {
-                    
-                    ZStack {
-                        HStack(spacing: 15) {
-                            Button {
-                                showAddSubjectSheet.toggle()
-                                subjectToEdit = subject
-                            } label: {
-                                Circle()
-                                    .frame(width: 45)
-                                    .foregroundStyle(.green.gradient)
-                                    .overlay {
-                                        Image(systemName: "pencil")
-                                            .foregroundColor(.white)
-                                            .fontWeight(.bold)
-                                    }
-                            }
+                    SettingsCourseCardView(isEditingSubjects: isEditingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
 
-                            Button {
-                                Task {
-                                    await periodViewModel.removeIndividualSubjectData(subjectToRemove: subject)
-                                }
-                            } label: {
-                                Circle()
-                                    .frame(width: 45)
-                                    .foregroundStyle(.red.gradient)
-                                    .overlay {
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(.white)
-                                            .fontWeight(.bold)
-                                    }
-                            }
-
-                            
-                            
-                            
-                            Spacer()
-                        }
-                        .padding(.leading)
-                      
-
-                        
-                        SettingsCourseCardView(isEditingSubjects: isEditingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
-                            .offset(x: isEditingSubjects ? 150 : 0)
-                            //.offset(x: 150)
-                            .animation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0), value: isEditingSubjects)
-                        
-                        
-                    }
-                    
-                    
-                        
-                        
                 }
             }
             .listStyle(InsetGroupedListStyle())
@@ -89,46 +39,11 @@ struct SettingsSubjectListView: View {
                     .foregroundColor(.white)
                 
                 Spacer()
-                
-
-                
-                ZStack {
-                    Button {
-                        showAddSubjectSheet = true
-                        
-                    } label: {
-                        Text("Add")
-                            .textCase(.none)
-                            .font(.footnote)
-                            .padding([.leading,.trailing], 10)
-                            .padding([.top, .bottom], 4)
-                            .foregroundColor(.white)
-                            .fontWeight(.semibold)
-                            .background {
-                                
-                                RoundedRectangle(cornerRadius: 16)
-                                    .foregroundStyle(.green.gradient)
-                                
-                            }
-                    }
-                    .offset(x: isEditingSubjects ? -60 : 0)
+                Button {
+                    showAddSubjectSheet = true
                     
-                    Button {
-                        withAnimation {
-                            isEditingSchedule = false
-                            isEditingSubjects.toggle()
-                        }
-                    } label: {
-                        
-                        Group {
-                            if !isEditingSubjects {
-                                Text("Edit")
-                                
-                            }
-                            else {
-                                Text("Done")
-                            }
-                        }
+                } label: {
+                    Text("Add")
                         .textCase(.none)
                         .font(.footnote)
                         .padding([.leading,.trailing], 10)
@@ -136,14 +51,14 @@ struct SettingsSubjectListView: View {
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .background {
+                            
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(.blue.gradient)
+                                .foregroundStyle(.green.gradient)
+                            
                         }
-                    }
                 }
                 
-                
-                
+
                 if periodViewModel.usersSubjects.count > 3 {
                     Button {
                         withAnimation(.easeInOut(duration: 0.2)) {
