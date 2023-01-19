@@ -17,9 +17,6 @@ struct SettingsSubjectListView: View {
     
     var body: some View {
         Section {
-            
-            
-            
             ForEach(Array(periodViewModel.usersSubjects.enumerated()), id: \.element) { index, subject in
                 if !subjectFolded || index + 1 <= 3 {
                     SettingsCourseCardView(isEditingSubjects: isEditingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)

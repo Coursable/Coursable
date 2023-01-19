@@ -14,7 +14,6 @@ struct SettingsCourseCardView: View {
     @State var isLoading: Bool = false
     @Binding var showAddSubjectSheet: Bool
     @Binding var subjectToEdit: Subject?
-    
     @State var dragging = false
     @State var position: CGFloat = 0
     @GestureState var dragTracker: CGSize = CGSize.zero
@@ -33,7 +32,7 @@ struct SettingsCourseCardView: View {
                     
                 } label: {
                     Circle()
-                        .frame(width: 45)
+                        .frame(width: 50)
                         .foregroundStyle(.green.gradient)
                         .overlay {
                             Image(systemName: "pencil")
@@ -52,7 +51,7 @@ struct SettingsCourseCardView: View {
                     }
                 } label: {
                     Circle()
-                        .frame(width: 45)
+                        .frame(width: 50)
                         .foregroundStyle(.red.gradient)
                         .overlay {
                             Image(systemName: "xmark")
@@ -88,11 +87,8 @@ struct SettingsCourseCardView: View {
                             .font(.title3)
                             .fontWeight(.semibold)
                         HStack {
-                            
                             Text("\(subject.teacher) - Room \(subject.roomNumber)")
-                            
-                            
-                            
+
                         }
                         .font(.subheadline)
                         
