@@ -14,88 +14,93 @@ struct MainPage_FirstLayerView: View {
         
     
     var body: some View {
-        VStack {
+        GeometryReader { proxy in
+            VStack {
 
-            
-            ZStack {
-                Button {
-                    showSettingsSheet.toggle()
-                } label: {
-                    ZStack {
-                        
-                        Circle()
-                            .opacity(0.3)
-                            .foregroundStyle(.gray)
-                            .frame(width: 50)
-                            .overlay {
-                                Image(systemName: "gearshape.fill")
-                                    .font(.title2)
-                                    .font(.largeTitle)
-                                .foregroundStyle(.white)
-                            }
-                        
-                        
+                
+                ZStack {
+                    Button {
+                        showSettingsSheet.toggle()
+                    } label: {
+                        ZStack {
+                            
+                            Circle()
+                                .opacity(0.3)
+                                .foregroundStyle(.gray)
+                                .frame(width: 50)
+                                .overlay {
+                                    Image(systemName: "gearshape.fill")
+                                        .font(.title2)
+                                        .font(.largeTitle)
+                                    .foregroundStyle(.white)
+                                }
+                            
+                            
+                        }
+                            
                     }
-                        
-                }
-                .offset(x: -155)
-                
-                HStack {
-                    Spacer()
-                    TopbarText()
-                       .foregroundColor(.white)
-                    Spacer()
-                }
-                
-                Button {
+                    .offset(x: -155)
                     
-                } label: {
-                    ZStack {
-                        
-                        Circle()
-                            .opacity(0.3)
-                            .foregroundStyle(.gray)
-                            .frame(width: 50)
-                            .overlay {
-                                Image("MyIcon")//"MyIcon"
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 45)
-                                    .font(.largeTitle)
-                                .foregroundStyle(.white)
-                            }
-                        
-                        
+                    HStack {
+                        Spacer()
+                        TopbarText()
+                           .foregroundColor(.white)
+                        Spacer()
                     }
+                    
+                    Button {
                         
+                    } label: {
+                        ZStack {
+                            
+                            Circle()
+                                .opacity(0.3)
+                                .foregroundStyle(.gray)
+                                .frame(width: 50)
+                                .overlay {
+                                    Text("\(proxy.size.width)")
+//                                    Image("MyIcon")//"MyIcon"
+//                                        .resizable()
+//                                        .scaledToFit()
+//                                        .frame(width: 45)
+//                                        .font(.largeTitle)
+//                                    .foregroundStyle(.white)
+                                }
+                            
+                            
+                        }
+                            
+                    }
+                    .offset(x: 155)
+
                 }
-                .offset(x: 155)
-
-            }
-            .padding(.top)
-            
-
-
-            ProgressRingView()
+                //.padding(.top)
                 
 
-            Spacer()
-            
-            
 
-            
-        }
-        .onAppear {
-            Task {
-                await periodViewModel.retrieveSubjectData()
+                ProgressRingView(screenWidth: proxy.size.width)
+                    .padding()
+                    
+
+                Spacer()
+                
+                
+
+                
             }
-            
+            .onAppear {
+                Task {
+                    await periodViewModel.retrieveSubjectData()
+                }
+                
+            }
+            .foregroundColor(.white)
+            .background(Color("Background"))
+            .fullScreenCover(isPresented: $showSettingsSheet, content: {
+                SettingsView(showSettingsSheet: $showSettingsSheet)
+            })
         }
-        .foregroundColor(.white)
-        .background(Color("Background"))
-        .fullScreenCover(isPresented: $showSettingsSheet, content: {
-            SettingsView(showSettingsSheet: $showSettingsSheet)
-        })
+        
         
         
 

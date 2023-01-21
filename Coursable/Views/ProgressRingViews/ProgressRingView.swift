@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ProgressRingView: View {
     @EnvironmentObject var periodViewModel: PeriodViewModel
+    var screenWidth: CGFloat
     
     var body: some View {
         ProgressRing(progress: periodViewModel.currentProgressInPeriod, ringColor: .bluePink, showMoveAnimation: periodViewModel.showRingMoveAnimation)
-            .frame(width: UIScreen.main.bounds.width*0.85)
-                .padding()
+            .frame(maxWidth: screenWidth*0.85)
+                
     }
 }
 
 struct ProgressRingView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressRingView()
+        ProgressRingView(screenWidth: 1000)
             .environmentObject(PeriodViewModel())
     }
 }
@@ -31,10 +32,11 @@ private struct ProgressRing: View {
     var ringColor: LinearGradient = .bluePink
     var showMoveAnimation: Bool
     
+    
     var body: some View {
         ZStack {
             Circle()
-                .stroke(lineWidth: 20.0)
+                .stroke(lineWidth: 20)
                 .opacity(0.3)
                 .foregroundStyle(.gray)
             Circle()

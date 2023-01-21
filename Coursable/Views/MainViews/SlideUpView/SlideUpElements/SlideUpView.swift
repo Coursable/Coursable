@@ -35,7 +35,7 @@ struct SlideUpView: View {
     var body: some View {
 
         GeometryReader { geometry in
-            SlideUp(startingOffset: geometry.size.height*0.34, endingOffset: geometry.size.height*0.16, backgroundColor: .white, barColor: .secondary, screenHeight: geometry.size.height) {
+            SlideUp(startingOffset: geometry.size.height*0.34, endingOffset: geometry.size.height*0.15, backgroundColor: .white, barColor: .secondary, screenHeight: geometry.size.height) {
                 Form {
                     Section("Progress") {
 
@@ -83,8 +83,9 @@ struct SlideUpView: View {
 
 struct SlideUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SlideUpView()
-            .background(.secondary)
+        MainPage()
+//        SlideUpView()
+//            .background(.secondary)
             .environmentObject(PeriodViewModel())
     }
 }
