@@ -58,13 +58,12 @@ struct MainPage_FirstLayerView: View {
                                 .foregroundStyle(.gray)
                                 .frame(width: 50)
                                 .overlay {
-                                    Text("\(proxy.size.width)")
-//                                    Image("MyIcon")//"MyIcon"
-//                                        .resizable()
-//                                        .scaledToFit()
-//                                        .frame(width: 45)
-//                                        .font(.largeTitle)
-//                                    .foregroundStyle(.white)
+                                    Image("MyIcon")//"MyIcon"
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 45)
+                                        .font(.largeTitle)
+                                        .foregroundStyle(.white)
                                 }
                             
                             
