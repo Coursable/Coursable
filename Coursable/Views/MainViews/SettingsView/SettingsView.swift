@@ -21,7 +21,7 @@ struct SettingsView: View {
     @State var subjectToEdit: Subject?
     @State var subjectFolded: Bool = true
     
-    @State var weekdaySelected: Int = 4
+    @State var weekdaySelected: Int = 2
     @Namespace var animation
     
     var body: some View {
@@ -57,100 +57,115 @@ struct SettingsView: View {
                 .padding(.top,8)
                 
                 Form {
-                    
-                    SettingsSubjectListView(subjectFolded: $subjectFolded, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit, isEditingSubjects: $isEditingSubjects, isEditingSchedule: $isEditingSchedule)
-                    
-                    Section {
-                        
-                        HStack(spacing: 1) {
-                            Spacer()
-                            ForEach(1...5, id: \.self) {day in
+                    Group {
+                        Section {
+                            ForEach(Array(periodViewModel.usersSubjects.enumerated()), id: \.element) { index, subject in
+                                if !subjectFolded || index + 1 <= 3 {
+                                    SettingsCourseCardView(isEditingSubjects: isEditingSubjects, subject: subject, showAddSubjectSheet: $showAddSubjectSheet, subjectToEdit: $subjectToEdit)
+
+                                }
+                            }
+                        }
+                        header: {
+                            HStack {
+                                Text("Subjects (\(periodViewModel.usersSubjects.count))")
+                                    .foregroundColor(.white)
+                                
+                                Spacer()
                                 Button {
-                                    withAnimation {
-                                        isEditingSchedule = false
-                                        weekdaySelected = day
-                                    }
+                                    showAddSubjectSheet = true
+                                    
                                 } label: {
-                                    VStack {
-                                        switch(day) {
-                                        case 1:
-                                            Text("Mon")
-                                        case 2:
-                                            Text("Tue")
-                                        case 3:
-                                            Text("Wed")
-                                        case 4:
-                                            Text("Thu")
-                                        default:
-                                            Text("Fri")
+                                    Text("Add")
+                                        .textCase(.none)
+                                        .font(.footnote)
+                                        .padding([.leading,.trailing], 10)
+                                        .padding([.top, .bottom], 4)
+                                        .foregroundColor(.white)
+                                        .fontWeight(.semibold)
+                                        .background {
+                                            
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .foregroundStyle(.green.gradient)
+                                            
+                                        }
+                                }
+                                
+
+                                if periodViewModel.usersSubjects.count > 3 {
+                                    Button {
+                                        withAnimation(.easeInOut(duration: 0.2)) {
+                                            subjectFolded.toggle()
                                         }
                                         
-                                        if weekdaySelected == day {
-                                            Circle()
-                                                .frame(width: 8)
-                                        }
+                                    } label: {
+                                        Image(systemName: "chevron.down")
+                                            .rotationEffect(.degrees(subjectFolded ? 180 : 0))
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white)
+                                            .padding(.leading)
+                                        
                                     }
+                                }
+                
+                            }
+                    }
+                        
+                        Section {
+                            
+                            SettingsDaySelectionView(isEditingSchedule: $isEditingSchedule, weekdaySelected: $weekdaySelected)
+                            
+                            
+                            if let dayModel = periodViewModel.usersFullSchedule.first { $0.day == weekdaySelected } {
+                                ForEach(dayModel.periods) { period in
+                                    SettingsScheduleCardView(period: period)
+                                }
+                                
+                            }
+                        }
+                        
+                        header: {
+                            HStack {
+                                Text("Schedule")
                                     .foregroundColor(.white)
-                                    .font(.subheadline)
-                                    .fontWeight(.regular)
-                                    .frame(width: 50, height: weekdaySelected == day ? 90 : 50)
-                                    .background(
-                                        ZStack {
-                                            Capsule()
-                                                .fill(weekdaySelected == day ? Color.blue :  Color("SecondaryBackground"))
-                                            //
-                                        }
-                                    )
-                                    
-                                }
+                                
                                 Spacer()
-                            }
-                        }
-                        
-                        if let dayModel = periodViewModel.usersFullSchedule.first { $0.day == weekdaySelected } {
-                            ForEach(dayModel.periods) { period in
-                                SettingsScheduleCardView(period: period)
-                            }
-                        }
-                    }
-                header: {
-                    HStack {
-                        Text("Schedule")
-                            .foregroundColor(.white)
-                        
-                        Spacer()
-                        
-                        
+                                
+                                
 
-                        Button {
-                            
-                            
-                        } label: {
-                            Text("Add")
-                                .textCase(.none)
-                                .font(.footnote)
-                                .padding([.leading,.trailing], 10)
-                                .padding([.top, .bottom], 4)
-                                .foregroundColor(.white)
-                                .fontWeight(.semibold)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .foregroundStyle(.green.gradient)
+                                Button {
+                                    
+                                    
+                                } label: {
+                                    Text("Add")
+                                        .textCase(.none)
+                                        .font(.footnote)
+                                        .padding([.leading,.trailing], 10)
+                                        .padding([.top, .bottom], 4)
+                                        .foregroundColor(.white)
+                                        .fontWeight(.semibold)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .foregroundStyle(.green.gradient)
+                                        }
                                 }
+                                    
+                                    
+                                    
+                                
+                                
+                            }
                         }
-                            
-                            
-                            
-                        
-                        
                     }
-                }
-                .listStyle(InsetGroupedListStyle())
-                .listRowBackground(Color(UIColor.clear))
-                .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
-                .buttonStyle(PlainButtonStyle())
-                .padding(.bottom, 10)
-                .listRowSeparator(.hidden)
+                    .listStyle(InsetGroupedListStyle())
+                    .listRowBackground(Color(UIColor.clear))
+                    .listRowInsets(EdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1))
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.bottom, 10)
+                    .listRowSeparator(.hidden)
+                    
+
+                    
                     
                     
                     Section {
@@ -165,6 +180,7 @@ struct SettingsView: View {
                     }
                     
                 }
+                
                 
                 .scrollContentBackground(.hidden)
                 
@@ -222,6 +238,269 @@ struct SettingsView_Previews: PreviewProvider {
     }
 }
 
+private struct SettingsDaySelectionView: View {
+    
+    @Binding var isEditingSchedule: Bool
+    @Binding var weekdaySelected: Int
+    
+    var body: some View {
+        HStack(spacing: 1) {
+            Spacer()
+            ForEach(1...5, id: \.self) {day in
+                Button {
+                    withAnimation {
+                        isEditingSchedule = false
+                        weekdaySelected = day
+                    }
+                } label: {
+                    VStack {
+                        switch(day) {
+                        case 1:
+                            Text("Mon")
+                        case 2:
+                            Text("Tue")
+                        case 3:
+                            Text("Wed")
+                        case 4:
+                            Text("Thu")
+                        default:
+                            Text("Fri")
+                        }
+                        
+                        if weekdaySelected == day {
+                            Circle()
+                                .frame(width: 8)
+                        }
+                    }
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .frame(width: 50, height: weekdaySelected == day ? 90 : 50)
+                    .background(
+                        ZStack {
+                            Capsule()
+                                .fill(weekdaySelected == day ? Color.blue :  Color("SecondaryBackground"))
+                            //
+                        }
+                    )
+                    
+                    
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+private struct SettingsCourseCardView: View {
+    @EnvironmentObject var periodViewModel: PeriodViewModel
+    var isEditingSubjects: Bool
+    var subject: Subject
+    @State var isLoading: Bool = false
+    @Binding var showAddSubjectSheet: Bool
+    @Binding var subjectToEdit: Subject?
+    @State var dragging = false
+    @State var position: CGFloat = 0
+    @GestureState var dragTracker: CGSize = CGSize.zero
+    @State var buttonOpacity = 0.0
+    @State var button1SizeMultiplier = 0.8
+    @State var button2SizeMultiplier = 0.8
+    
+    var body: some View {
+        ZStack {
+            HStack(spacing: 15) {
+                Group {
+                    Button {
+                        withAnimation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0)) {
+                            position = 0
+                        }
+                        showAddSubjectSheet.toggle()
+                        subjectToEdit = subject
+                        
+                        
+                    } label: {
+                        Circle()
+                            .frame(width: 50)
+                            .foregroundStyle(.green.gradient)
+                            .overlay {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                    }
+                    .scaleEffect(button1SizeMultiplier)
+                    
+                    Button {
+                        
+                        Task {
+                            await periodViewModel.removeIndividualSubjectData(subjectToRemove: subject)
+                        }
+                        withAnimation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0)) {
+                            position = 0
+                        }
+                    } label: {
+                        Circle()
+                            .frame(width: 50)
+                            .foregroundStyle(.red.gradient)
+                            .overlay {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                    }
+                    .scaleEffect(button2SizeMultiplier)
+                    
+                }
+                .animation(.easeInOut, value: button1SizeMultiplier)
+                .animation(.easeInOut, value: button2SizeMultiplier)
+                
+                
+                
+                Spacer()
+                
+                
+            }
+            .padding(.leading)
+            .opacity(buttonOpacity)
+            
+            VStack(alignment: .leading) {
+                
+                HStack {
+                    Circle()
+                        .fill(LinearGradient(colors: [Color(red: subject.colorGradientPrimary[0]/255, green: subject.colorGradientPrimary[1]/255, blue: subject.colorGradientPrimary[2]/255), Color(red: subject.colorGradientSecondary[0]/255, green: subject.colorGradientSecondary[1]/255, blue: subject.colorGradientSecondary[2]/255)], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .frame(width: 50)
+                        .overlay {
+                            
+                            Text(subject.name.prefix(1).capitalized)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                            
+                        }
+                    VStack(alignment: .leading) {
+                        Text(subject.name)
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        HStack {
+                            Text("\(subject.teacher) - Room \(subject.roomNumber)")
+                            
+                        }
+                        .font(.subheadline)
+                        
+                        
+                    }
+                    .padding(.leading, 3)
+                    
+                    Spacer()
+                    
+                }
+            }
+            
+            .padding()
+            .foregroundColor(.white)
+            .background(Color("SecondaryBackground"))
+            .cornerRadius(15)
+            .offset(x: position + self.dragTracker.width)
+            .gesture(DragGesture()
+                .updating($dragTracker) { value, state, transaction in
+                    state = value.translation
+                    adjustButtonSizes()
+                }
+                .onChanged { _ in  dragging = true }
+                .onEnded(onEnd)
+            )
+            .animation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0), value: dragging)
+        }
+        
+    }
+    
+    
+    func onEnd(value: DragGesture.Value) {
+        
+        dragging = false
+        
+        let dragDirection = value.predictedEndLocation.x - value.location.x
+        
+        if dragDirection > 0 {
+            position = 150
+            button1SizeMultiplier = 1
+            button2SizeMultiplier = 1
+            withAnimation {
+                buttonOpacity = 1
+                
+                
+            }
+        }
+        else {
+            position = 0
+            button1SizeMultiplier = 0.8
+            button2SizeMultiplier = 0.8
+            withAnimation {
+                buttonOpacity = 0
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    func adjustButtonSizes() {
+        if dragTracker.width > 40 && position == 0 { // initial pull back
+            
+            button1SizeMultiplier = 1
+            
+        }
+        else if dragTracker.width < -109 && position != 0 { // slide leftwards back to original spot
+            
+            button1SizeMultiplier = 0.8
+            
+        }
+        else if dragTracker.width > -109 && position != 0 { // slide right from new spot
+            button1SizeMultiplier = 1
+        }
+        else {
+            
+            button1SizeMultiplier = 0.8
+            
+        }
+        
+        if dragTracker.width > 106 && position == 0 { // initial pull back
+            
+            button2SizeMultiplier = 1
+            
+        }
+        else if dragTracker.width < -40 && position != 0 { // slide leftwards back to original spot
+            
+            button2SizeMultiplier = 0.8
+            
+        }
+        else if dragTracker.width > -40 && position != 0 { // slide right from new spot
+            
+            button2SizeMultiplier = 1
+            
+        }
+        else {
+            
+            button2SizeMultiplier = 0.8
+            
+            
+        }
+        
+        if dragTracker.width < -140 {
+            buttonOpacity = 0
+        }
+        else {
+            
+            withAnimation {
+                buttonOpacity = 1
+            }
+            
+        }
+    }
+    
+}
 
 private struct SettingsScheduleInfoIconView: View {
     
@@ -246,6 +525,8 @@ private struct SettingsScheduleCardView: View {
     @State var position: CGFloat = 0
     @GestureState var dragTracker: CGSize = CGSize.zero
     @State var buttonOpacity = 0.0
+    @State var button1SizeMultiplier = 0.8
+    @State var button2SizeMultiplier = 0.8
     
     
     var period: PeriodModel
@@ -253,38 +534,46 @@ private struct SettingsScheduleCardView: View {
     var body: some View {
         ZStack {
             HStack(spacing: 15) {
-                Button {
-                    withAnimation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0)) {
-                        position = 0
-                    }
-                    
-                    
-                } label: {
-                    Circle()
-                        .frame(width: 50)
-                        .foregroundStyle(.green.gradient)
-                        .overlay {
-                            Image(systemName: "pencil")
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
+                Group {
+                    Button {
+                        withAnimation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0)) {
+                            position = 0
                         }
-                }
-                
-                Button {
+                        
+                        
+                    } label: {
+                        Circle()
+                            .frame(width: 50)
+                            .foregroundStyle(.green.gradient)
+                            .overlay {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                    }
+                    .scaleEffect(button1SizeMultiplier)
+                    
+                    Button {
 
-                    withAnimation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0)) {
-                        position = 0
-                    }
-                } label: {
-                    Circle()
-                        .frame(width: 50)
-                        .foregroundStyle(.red.gradient)
-                        .overlay {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
+                        withAnimation(Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0)) {
+                            position = 0
                         }
+                    } label: {
+                        Circle()
+                            .frame(width: 50)
+                            .foregroundStyle(.red.gradient)
+                            .overlay {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                    }
+                    .scaleEffect(button2SizeMultiplier)
                 }
+                .animation(.easeInOut, value: button1SizeMultiplier)
+                .animation(.easeInOut, value: button2SizeMultiplier)
+                
+                
                 
                 
                 Spacer()
@@ -323,17 +612,7 @@ private struct SettingsScheduleCardView: View {
             .gesture(DragGesture()
                 .updating($dragTracker) { value, state, transaction in
                     state = value.translation
-
-                    if dragTracker.width < -140 {
-                        buttonOpacity = 0
-                    }
-                    else {
-
-                        withAnimation {
-                            buttonOpacity = 1
-                        }
-
-                    }
+                    adjustButtonSizes()
 
                 }
                 .onChanged { _ in  dragging = true }
@@ -347,26 +626,87 @@ private struct SettingsScheduleCardView: View {
     
     
     func onEnd(value: DragGesture.Value) {
-
+        
         dragging = false
-
+        
         let dragDirection = value.predictedEndLocation.x - value.location.x
-
+        
         if dragDirection > 0 {
             position = 150
+            button1SizeMultiplier = 1
+            button2SizeMultiplier = 1
             withAnimation {
                 buttonOpacity = 1
+                
+                
             }
         }
         else {
             position = 0
+            button1SizeMultiplier = 0.8
+            button2SizeMultiplier = 0.8
             withAnimation {
                 buttonOpacity = 0
+                
             }
-
-
+            
+            
         }
-
-
+        
+        
+    }
+    
+    func adjustButtonSizes() {
+        if dragTracker.width > 40 && position == 0 { // initial pull back
+            
+            button1SizeMultiplier = 1
+            
+        }
+        else if dragTracker.width < -109 && position != 0 { // slide leftwards back to original spot
+            
+            button1SizeMultiplier = 0.8
+            
+        }
+        else if dragTracker.width > -109 && position != 0 { // slide right from new spot
+            button1SizeMultiplier = 1
+        }
+        else {
+            
+            button1SizeMultiplier = 0.8
+            
+        }
+        
+        if dragTracker.width > 106 && position == 0 { // initial pull back
+            
+            button2SizeMultiplier = 1
+            
+        }
+        else if dragTracker.width < -40 && position != 0 { // slide leftwards back to original spot
+            
+            button2SizeMultiplier = 0.8
+            
+        }
+        else if dragTracker.width > -40 && position != 0 { // slide right from new spot
+            
+            button2SizeMultiplier = 1
+            
+        }
+        else {
+            
+            button2SizeMultiplier = 0.8
+            
+            
+        }
+        
+        if dragTracker.width < -140 {
+            buttonOpacity = 0
+        }
+        else {
+            
+            withAnimation {
+                buttonOpacity = 1
+            }
+            
+        }
     }
 }
